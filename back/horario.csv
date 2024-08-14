@@ -1,0 +1,151 @@
+dia,curso,bloque,materia,aula
+Lunes,A,1,Economia,L200
+Lunes,A,2,Etica / Biologia,L200
+Lunes,A,3,Matematica,L200
+Lunes,A,4,Lengua,L200
+Lunes,A,5,Fisico-Quimica,L200
+Lunes,A,6,Ed. Fisica,E
+Lunes,B,1,Fisico-Quimica,FQ1
+Lunes,B,2,Economia,L201
+Lunes,B,3,Lengua,L201
+Lunes,B,4,Historia,L201
+Lunes,B,5,Fuentes,L201
+Lunes,B,6,Ed. Fisica,E
+Lunes,C,1,Fuentes,L106
+Lunes,C,2,Comunicaciones,L2
+Lunes,C,3,Hardware,L1
+Lunes,C,4,Ingles,I
+Lunes,C,5,TIMI,L1
+Lunes,C,6,Ed. Fisica,E
+Lunes,D,1,Hist. Judia,L203
+Lunes,D,2,TIMI,L1
+Lunes,D,3,Comunicaciones,L4
+Lunes,D,4,Ingles,I
+Lunes,D,5,Hardware,L2
+Lunes,D,6,nada,0
+Lunes,E,1,Lengua,L202
+Lunes,E,2,Matematica,L106
+Lunes,E,3,Economia,L202
+Lunes,E,4,Fisico-Quimica,FQ2
+Lunes,E,5,Fuentes,L202
+Lunes,E,6,nada,0
+Martes,A,1,Comunicaciones,L203
+Martes,A,2,Hist. Judia,L213
+Martes,A,3,Ingles,I
+Martes,A,4,Software,L3
+Martes,A,5,Hardware,L2
+Martes,A,6,nada,0
+Martes,B,1,Software,L4
+Martes,B,2,Etica / Biologia,L202
+Martes,B,3,Ingles,I
+Martes,B,4,Hardware,L2
+Martes,B,5,TIMI,L1
+Martes,B,6,nada,0
+Martes,C,1,Etica / Biologia,L200
+Martes,C,2,Economia,L200
+Martes,C,3,Lengua,L202
+Martes,C,4,Ingles,I
+Martes,C,5,Comunicaciones,L3
+Martes,C,6,nada,0
+Martes,D,1,Lengua,L201
+Martes,D,2,Historia,L201
+Martes,D,3,Etica / Biologia,L201
+Martes,D,4,Ingles,I
+Martes,D,5,Hardware,L203
+Martes,D,6,Geografia,L201
+Martes,E,1,Hardware,L205
+Martes,E,2,Etica / Biologia,L203
+Martes,E,3,Ingles,I
+Martes,E,4,TIMI,L1
+Martes,E,5,Software,L4
+Martes,E,6,Ed. Fisica,E
+Miercoles,A,1,Hist. Judia,L200
+Miercoles,A,2,Software,L205
+Miercoles,A,3,Lengua,L200
+Miercoles,A,4,Geografia,L200
+Miercoles,A,5,TIMI,L1
+Miercoles,A,6,nada,0
+Miercoles,B,1,Geografia,L201
+Miercoles,B,2,TIMI,L1
+Miercoles,B,3,Hist. Judia,L201
+Miercoles,B,4,Matematica,L201
+Miercoles,B,5,Comunicaciones,L3
+Miercoles,B,6,nada,0
+Miercoles,C,1,Fisico-Quimica,FQ2
+Miercoles,C,2,Hardware,L2
+Miercoles,C,3,Software,L3
+Miercoles,C,4,Etica / Biologia,L213
+Miercoles,C,5,Matematica,L200
+Miercoles,C,6,Geografia,L213
+Miercoles,D,1,Fuentes,L213
+Miercoles,D,2,Software,L203
+Miercoles,D,3,Comunicaciones,L2
+Miercoles,D,4,Fisico-Quimica,L202
+Miercoles,D,5,Matematica,L202
+Miercoles,D,6,Ed. Fisica,E
+Miercoles,E,1,Lengua,L203
+Miercoles,E,2,Comunicaciones,L3
+Miercoles,E,3,Matematica,L203
+Miercoles,E,4,Fisico-Quimica,L203
+Miercoles,E,5,Software,L2
+Miercoles,E,6,nada,0
+Jueves,A,1,Matematica,L200
+Jueves,A,2,Historia,L200
+Jueves,A,3,Ingles,I
+Jueves,A,4,Fisico-Quimica,FQ1
+Jueves,A,5,Fuentes,204
+Jueves,A,6,nada,0
+Jueves,B,1,Fisico-Quimica,L202
+Jueves,B,2,Etica / Biologia,L202
+Jueves,B,3,Ingles,I
+Jueves,B,4,Hist. Judia,L202
+Jueves,B,5,Matematica,L202
+Jueves,B,6,nada,0
+Jueves,C,1,Hist. Judia,L201
+Jueves,C,2,TIMI,L1
+Jueves,C,3,Software,L2
+Jueves,C,4,Ingles,I
+Jueves,C,5,Historia,L201
+Jueves,C,6,nada,0
+Jueves,D,1,Matematica,L213
+Jueves,D,2,Software,L2
+Jueves,D,3,TIMI,L1
+Jueves,D,4,Ingles,I
+Jueves,D,5,Fisico-Quimica,FQ2
+Jueves,D,6,nada,0
+Jueves,E,1,Hist. Judia,L204
+Jueves,E,2,Etica / Biologia,L213
+Jueves,E,3,Ingles,I
+Jueves,E,4,Historia,L200
+Jueves,E,5,Geografia,L213
+Jueves,E,6,nada,0
+Viernes,A,1,Etica / Biologia,L006
+Viernes,A,2,Comunicaciones,L203
+Viernes,A,3,Ingles,I
+Viernes,A,4,TIMI,L1
+Viernes,A,5,Hardware,L2
+Viernes,A,6,nada,0
+Viernes,B,1,Lengua,L201
+Viernes,B,2,Software,L4
+Viernes,B,3,Ingles,I
+Viernes,B,4,Hardware,L2
+Viernes,B,5,Comunicaciones,L3
+Viernes,B,6,nada,0
+Viernes,C,1,Lengua,L200
+Viernes,C,2,Hist. Judia,L200
+Viernes,C,3,Fisico-Quimica,L200
+Viernes,C,4,Matematica,L200
+Viernes,C,5,nada,0
+Viernes,C,6,nada,0
+Viernes,D,1,Hist. Judia,L202
+Viernes,D,2,Etica / Biologia,L202
+Viernes,D,3,Economia,L202
+Viernes,D,4,Lengua,L202
+Viernes,D,5,nada,0
+Viernes,D,6,nada,0
+Viernes,E,1,Hist. Judia,L206
+Viernes,E,2,Hardware,L205
+Viernes,E,3,Ingles,I
+Viernes,E,4,Comunicaciones,L3
+Viernes,E,5,TIMI,L1
+Viernes,E,6,nada,0

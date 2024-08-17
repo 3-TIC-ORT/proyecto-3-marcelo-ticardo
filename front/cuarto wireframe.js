@@ -1,3 +1,9 @@
+//falta hacer que funcione esto:
+fetchData("horario", (data) => {
+    console.log(data)
+    });
+
+
 
 
 document.getElementById("boton-SI").addEventListener("click", function() {

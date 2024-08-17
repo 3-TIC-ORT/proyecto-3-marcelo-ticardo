@@ -1,20 +1,20 @@
 {
-  "dependencies": {
-    "csv-parser": "^3.0.0",
-    "soquetic": "^1.0.3"
-  },
-  "name": "back",
-  "version": "1.0.0",
+  "name": "proyecto-3-marcelo-ticardo",
+  "version": "1.0.1",
   "main": "main.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node handler.js",
+    "dev": "npx nodemon handler.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "soquetic": "^1.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/3-TIC-ORT/proyecto-3-marcelo-ticardo.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/3-TIC-ORT/proyecto-3-marcelo-ticardo/issues"
   },

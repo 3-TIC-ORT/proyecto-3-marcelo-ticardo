@@ -17,6 +17,7 @@ const contenedor = document.getElementById('botones');
 niveles.forEach((nivel, aula) => {
   const boton = document.createElement('button');
   boton.innerText = nivel;
+  boton.className = "boton-nivel";
 
   boton.addEventListener('click', () => {
     const parametro = aulas[aula];

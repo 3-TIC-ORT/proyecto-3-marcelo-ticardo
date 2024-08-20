@@ -11,6 +11,7 @@ int IN2= 4;
   digitalWrite (IN2,LOW);
   delay (3000);
   digitalWrite (IN1,LOW);
+  digitalWrite (IN2,HIGH);
   delay (3000);
   
  }

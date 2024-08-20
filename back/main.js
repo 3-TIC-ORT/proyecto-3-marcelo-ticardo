@@ -1,16 +1,28 @@
-const fs = require('fs');
+import { onEvent, sendEvent, startServer } from "soquetic";
+import { readFileSync } from 'fs';
 
-const horario = JSON.parse(fs.readFileSync('horario.json'));
-const ingles = JSON.parse(fs.readFileSync('ingles.json'));
+const horario = JSON.parse(readFileSync('horario.json'));
+const ingles = JSON.parse(readFileSync('ingles.json'));
 
 let date = new Date().getDay() - 1;
 const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
 let dia = diasSemana[date];
 
-let curso = 'B';
-let bloque = 3;
+let curso
+let bloque
 
-horario.forEach((row) => {
+onEvent("bloque", (data) => {
+  bloque = data.bloque
+  console.log(bloque)
+});
+
+onEvent("curso", (data) => {
+  curso = data.curso
+  console.log(curso)
+});
+
+//falta hacer que funcione esto:
+onEvent("horario", () => horario.forEach((row) => {
   if (row.dia === dia && row.curso === curso && row.bloque === bloque) {
     if (row.aula === 'E') {
       console.log('Tenés Ed. Física');
@@ -26,4 +38,6 @@ horario.forEach((row) => {
       console.log(`Tenés ${row.materia} en el Aula ${row.aula}`);
     }
   }
-});
+}));
+
+startServer()

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Franjas Superpuestas</title>
+    <style>
+        /* Contenedor principal del header */
+        .header {
+            position: relative;
+            background-color: #00796B; /* Color de la franja verde */
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding-left: 80px; /* Espacio para que el texto no esté sobre las franjas */
+            color: white;
+            justify-content: center;
+
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 30px;
+        }
+
+        /* Franjas superpuestas */
+        .franja-negra, .franja-violeta, .franja-verde {
+            position: absolute;
+            height: 60px;
+            width: 80px;
+            border-radius: 30px;
+        }
+
+        .franja-negra {
+            background-color: #2D2D3A;
+            left: 0;
+            z-index: 3;
+        }
+
+        .franja-violeta {
+            background-color: #80407D;
+            left: 40px;
+            z-index: 2;
+        }
+
+        .franja-verde {
+            background-color: #00796B;
+            left: 80px;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="franja-negra"></div>
+        <div class="franja-violeta"></div>
+        <div class="franja-verde"></div>
+        ¿De qué curso sos?
+    </div>
+</body>
+</html>

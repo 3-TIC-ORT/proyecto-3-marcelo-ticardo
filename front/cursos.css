@@ -1,29 +1,96 @@
+.header{
+    background-color: #0F7173;; /* Color de fondo */
+    padding: 20px;
+    text-align: center;
+    border-radius: 30px;
+    color: #FEFDFF;;
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+
+
+.contenedor-botones{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+}
+
 #boton-cursoA {
+    color: #FEFDFF;
+    background-color: #0F7173;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    border-width: 0px;
+}
+#boton-cursoA:hover {
+    background-color: #094d4e; /* Color de fondo al pasar el mouse */
+    transform: scale(1.01);
+    cursor: pointer;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoB {
+    color: #FEFDFF;
+    background-color: #0F7173;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    border-width: 0px;
+}
+#boton-cursoB:hover {
+    background-color: #094d4e; /* Color de fondo al pasar el mouse */
+    transform: scale(1.01);
+    cursor: pointer;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoC {
+    color: #FEFDFF;
+    background-color: #0F7173;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    border-width: 0px;
+}
+#boton-cursoC:hover {
+    background-color: #094d4e; /* Color de fondo al pasar el mouse */
+    transform: scale(1.01);
+    cursor: pointer;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoD {
+    color: #FEFDFF;
+    background-color: #0F7173;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    border-width: 0px;
+}
+#boton-cursoD:hover {
+    background-color: #094d4e; /* Color de fondo al pasar el mouse */
+    transform: scale(1.01);
+    cursor: pointer;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoE {
+    color: #FEFDFF;
+    background-color: #0F7173;  
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    border-width: 0px;
+}
+#boton-cursoE:hover {
+    background-color: #094d4e; /* Color de fondo al pasar el mouse */
+    transform: scale(1.01);
+    cursor: pointer;
+    transition: color 0.5s ease, background-color 0.5s ease;
+    
+    
 }

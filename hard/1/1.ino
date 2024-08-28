@@ -1,13 +1,21 @@
-int IN1= 3;
-int IN2= 4;
-int IN3= 2;
-int IN4= 5;
+#define BUTTON 7
+#define IN1 3
+#define IN2 4
+#define IN3 2
+#define IN4  5
+#define ENA 11
+#define ENB 12
 
+int speedMotor = 255;
+bool statusButton
  void setup (){
   pinMode(IN1,OUTPUT);
   pinMode(IN2,OUTPUT);
   pinMode(IN3,OUTPUT);
   pinMode(IN4,OUTPUT);
+  pinMode(BUTTON,INPUT);
+  pinMode(ENA,OUTPUT);
+  pinMode(ENB,OUTPUT);
  }
 
  void loop (){

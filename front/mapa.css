@@ -1,0 +1,37 @@
+.recorrido{
+    color: white;
+}
+
+.contenedor {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    background-color: #0F7173;
+    border-radius: 150px;
+    margin: 50px;
+}
+
+/* Primer elemento superpuesto */
+.elemento1 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 600px;
+    height: 600px;
+    background-color: #963484;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Segundo elemento superpuesto */
+.elemento2 {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 500px;
+    height:500px;
+    background-color: #1F2232;
+    border-radius: 50%;
+    z-index: 2;
+    color: white;
+}

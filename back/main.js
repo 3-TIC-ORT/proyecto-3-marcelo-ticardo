@@ -24,7 +24,7 @@ function contestarHorario(dia, curso, bloque) {
     if (row.dia === dia && row.curso === curso && row.bloque === bloque) {
       if (row.aula === 'E') {
         return 'Tenés Ed. Física';
-      } else if (row.aula === '0') {
+      } else if (row.aula === 0) {
         return 'No tenés ninguna materia en este bloque';
       } else {
         return `Tenés ${row.materia} en el Aula ${row.aula}`;

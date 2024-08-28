@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="respuestaingles.css">
 
@@ -9,9 +10,14 @@
 </head>
 <body>
     <h1 id="resultado"></h1>
-    <h1>¿Querés guía?</h1>
+    <h1 id="guia">¿Querés guía?</h1>
+    <h1 id="otropiso">Como el aula queda en otro piso, no te puedo llevar</h1>
     <button id="boton-SI">Si</button> 
     <button id="boton-NO">No</button>
-    <script src="respuestaIngles.js"></script>
+    <button id="boton-volver">volver al inicio (logo)</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+<script src="socket.js"></script>
+<script src="respuestaIngles.js"></script>
 </body>
 </html>

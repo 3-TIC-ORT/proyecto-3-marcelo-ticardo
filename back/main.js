@@ -6,8 +6,7 @@ const ingles = JSON.parse(readFileSync('ingles.json'));
 
 let date = new Date().getDay() - 1;
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
-// let dia = diasSemana[date]
-let dia = 'Viernes'
+let dia = diasSemana[date]
 let curso
 let bloque
 let respuesta

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superposición de Elementos</title>
+    <style>
+        /* Contenedor para el fondo */
+        .contenedor {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin: 50px;
+        }
+
+        /* Primer elemento superpuesto */
+        .elemento1 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 0, 0, 0.5); /* Rojo semi-transparente */
+            z-index: 1;
+        }
+
+        /* Segundo elemento superpuesto */
+        .elemento2 {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 255, 0.5); /* Azul semi-transparente */
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="elemento1"></div>
+        <div class="elemento2"></div>
+    </div>
+</body>
+</html>

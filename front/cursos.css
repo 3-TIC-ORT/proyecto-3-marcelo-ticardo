@@ -59,75 +59,75 @@
 }
 
 #boton-cursoA {
-    color: #FEFDFF;
-    background-color: #0F7173;
+    color: #0F7173;
+    border-color: #0F7173;
+    border-style: solid;
+    border-width: 8px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
-    border-width: 0px;
 }
 #boton-cursoA:hover {
-    background-color: #094d4e; /* Color de fondo al pasar el mouse */
     transform: scale(1.01);
     cursor: pointer;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoB {
-    color: #FEFDFF;
-    background-color: #0F7173;
+    color: #0F7173;
+    border-color: #0F7173;
+    border-style: solid;
+    border-width: 8px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
-    border-width: 0px;
 }
 #boton-cursoB:hover {
-    background-color: #094d4e; /* Color de fondo al pasar el mouse */
     transform: scale(1.01);
     cursor: pointer;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoC {
-    color: #FEFDFF;
-    background-color: #0F7173;
+    color: #0F7173;
+    border-color: #0F7173;
+    border-style: solid;
+    border-width: 8px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
-    border-width: 0px;
 }
 #boton-cursoC:hover {
-    background-color: #094d4e; /* Color de fondo al pasar el mouse */
     transform: scale(1.01);
     cursor: pointer;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoD {
-    color: #FEFDFF;
-    background-color: #0F7173;
+    color: #0F7173;
+    border-color: #0F7173;
+    border-style: solid;
+    border-width: 8px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
-    border-width: 0px;
 }
 #boton-cursoD:hover {
-    background-color: #094d4e; /* Color de fondo al pasar el mouse */
     transform: scale(1.01);
     cursor: pointer;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 #boton-cursoE {
-    color: #FEFDFF;
-    background-color: #0F7173;  
+    color: #0F7173;
+    border-color: #0F7173;
+    border-style: solid;
+    border-width: 8px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
-    border-width: 0px;
 }
 #boton-cursoE:hover {
-    background-color: #094d4e; /* Color de fondo al pasar el mouse */
     transform: scale(1.01);
     cursor: pointer;
     transition: color 0.5s ease, background-color 0.5s ease;

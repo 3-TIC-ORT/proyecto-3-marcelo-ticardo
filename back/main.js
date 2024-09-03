@@ -9,9 +9,11 @@ const ingles = JSON.parse(readFileSync('ingles.json'));
 let date = new Date().getDay() - 1;
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 let dia = diasSemana[date]
+const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217', 'L218', 'L216', 'L207', 'L205', 'L203', 'L201', 'L5', 'L200'];
 let curso
 let bloque
 let respuesta
+let aulaObjetivo
 
 onEvent("bloque", (data) => {
   bloque = Number(data.bloque)
@@ -21,7 +23,7 @@ onEvent("curso", (data) => {
   curso = data.curso
 });
 
-function contestarHorario(dia, curso, bloque) {
+function responderHorario(dia, curso, bloque) {
   for (const row of horario) {
     if (row.dia === dia && row.curso === curso && row.bloque === bloque) {
       if (row.aula === 'E') {
@@ -29,6 +31,7 @@ function contestarHorario(dia, curso, bloque) {
       } else if (row.aula === 0) {
         return 'No tenés ninguna materia en este bloque';
       } else {
+        aulaObjetivo = row.aula
         return `Tenés ${row.materia} en el Aula ${row.aula}`;
       }
     }
@@ -46,66 +49,62 @@ function contestarIngles(dia, bloque){
   return todos
 }
 
+function responderCamino(aulas, objetivo){
+  const length = aulas.length;
+  const objetivoIndex = aulas.indexOf(objetivo);
+  const distanciaAdelante = (objetivoIndex + length) % length;
+  const distanciaAtras = (length - distanciaAdelante) % length;
+
+  if (distanciaAdelante <= distanciaAtras) {
+      return {
+          direccion: 'adelante',
+          distancia: distanciaAdelante
+      };
+  } else {
+      return {
+          direccion: 'atrás',
+          distancia: distanciaAtras
+      };
+  }
+}
+
 onEvent("preguntarHorario", () => {
-  respuesta = contestarHorario(dia, curso, bloque)
-  return respuesta})
+  respuesta = responderHorario(dia, curso, bloque)
+  return respuesta
+});
 
 onEvent("preguntarIngles", () => {
   respuesta = contestarIngles(dia, bloque)
   return respuesta
+});
+
+onEvent("mapa", ()=> {
+  camino = responderCamino(aulas, aulaObjetivo);
+  return camino
 })
 
-/* TEST:
-onEvent("mapa", ()=> {
-  // Lista de aulas en orden.
-  const aulas = ['L205', 'L203', 'L201', 'L5', 'L200', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217', 'L218', 'L216', 'L207'];
-
-  // Función para calcular la distancia mínima entre dos aulas y la dirección.
-  function calcularCaminoMasCorto(aulaInicio, aulaDestino) {
-      const indexInicio = aulas.indexOf(aulaInicio);
-      const indexDestino = aulas.indexOf(aulaDestino);
-      
-      if (indexInicio === -1 || indexDestino === -1) {
-          return `Una o ambas aulas no existen en la lista.`;
-      }
-
-      const distanciaAdelante = (indexDestino >= indexInicio) 
-          ? indexDestino - indexInicio 
-          : aulas.length - indexInicio + indexDestino;
-
-      const distanciaAtras = (indexInicio >= indexDestino)
-          ? indexInicio - indexDestino
-          : indexInicio + aulas.length - indexDestino;
-
-      if (distanciaAdelante <= distanciaAtras) {
-          return { distancia: distanciaAdelante, direccion: 'adelante' };
-      } else {
-          return { distancia: distanciaAtras, direccion: 'atras' };
-      }
-  }
-
-  const port = new SerialPort('COM4', { baudRate: 9600 });
-  const parser = port.pipe(new Readline({ delimiter: '\r\n' }));
-
-  // Ejemplo de uso
-  const aulaInicio = 'L205';
-  const aulaDestino = 'L202';
-  const resultado = calcularCaminoMasCorto(aulaInicio, aulaDestino);
-
-  // Envía la información a   l Arduino
-  port.write(`Distancia: ${resultado.distancia}, Direccion: ${resultado.direccion}\n`, (err) => {
-      if (err) {
-          return console.log('Error en la escritura:', err.message);
-      }
-      console.log('Mensaje enviado al Arduino:', `Distancia: ${resultado.distancia}, Direccion: ${resultado.direccion}`);
-  });
-
-  // Lee los datos que envía el Arduino (opcional)
-  parser.on('data', (data) => {
-      console.log('Recibido del Arduino:', data);
-  }); 
-}); 
-
-*/
 
 startServer()
+
+/* conexión con hard:
+
+const port = new SerialPort({
+    path: 'COM4',
+    baudRate: 9600
+});
+
+const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
+
+port.on('open', function() {
+    console.log('Conexión serial abierta');
+});
+
+parser.on('data', function(data) {
+    console.log('Recibido del Arduino:', data);
+});
+
+function enviarInstrucciones(direccion, distancia) {
+    port.write(`${direccion}\n`);
+    port.write(`${distancia}\n`);
+}
+*/

@@ -1,6 +1,10 @@
-// Define los pines de los motores
-const int motorPinA = 3;  // Motor A (dirección hacia adelante)
-const int motorPinB = 4;  // Motor B (dirección hacia atrás)
+// Definición de pines del puente H
+#define IN1 3
+#define IN2 4
+#define IN3 2
+#define IN4 5
+#define ENA 11
+#define ENB 12
 
 // Define los pines de los sensores IR
 const int sensorIR1 = A0; // Sensor 1 - Izquierda, blanco
@@ -25,8 +29,12 @@ void setup() {
   Serial.begin(9600);
 
   // Configura los pines de los motores como salidas
-  pinMode(motorPinA, OUTPUT);
-  pinMode(motorPinB, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
 
   // Configura los pines de los sensores IR como entradas
   pinMode(sensorIR1, INPUT);
@@ -83,8 +91,7 @@ void loop() {
   if (distanceFront < 20) { // Ajusta el umbral según sea necesario
     obstacleFront = true;
     if (running) {
-      digitalWrite(motorPinA, LOW);
-      digitalWrite(motorPinB, LOW);
+      stopMotors();
       running = false;
       Serial.println("obstáculo adelante");
     }
@@ -96,8 +103,7 @@ void loop() {
   if (distanceBack < 20) { // Ajusta el umbral según sea necesario
     obstacleBack = true;
     if (running && direction == "atras") {
-      digitalWrite(motorPinA, LOW);
-      digitalWrite(motorPinB, LOW);
+      stopMotors();
       running = false;
       Serial.println("obstáculo atrás");
     }
@@ -108,11 +114,9 @@ void loop() {
   // Control de los motores
   if (running && !obstacleFront && !obstacleBack) {
     if (direction == "adelante") {
-      digitalWrite(motorPinA, HIGH);
-      digitalWrite(motorPinB, LOW);
+      moveForward();
     } else if (direction == "atras") {
-      digitalWrite(motorPinA, LOW);
-      digitalWrite(motorPinB, HIGH);
+      moveBackward();
     }
 
     // Contar las marcas detectadas
@@ -124,8 +128,7 @@ void loop() {
 
     if (count >= targetCount) {
       // Detener los motores
-      digitalWrite(motorPinA, LOW);
-      digitalWrite(motorPinB, LOW);
+      stopMotors();
       running = false;
       Serial.println("Llegué");
     }
@@ -135,17 +138,37 @@ void loop() {
       // Ajusta los motores para seguir la línea
       if (digitalRead(sensorIR3) == HIGH && digitalRead(sensorIR4) == HIGH) {
         // Mantenerse en la línea
-        digitalWrite(motorPinA, HIGH);
-        digitalWrite(motorPinB, LOW);
+        moveForward();
       } else if (digitalRead(sensorIR3) == LOW && digitalRead(sensorIR4) == HIGH) {
         // Ajustar si se sale de la línea
-        digitalWrite(motorPinA, LOW);
-        digitalWrite(motorPinB, HIGH);
+        moveBackward();
       } else if (digitalRead(sensorIR3) == HIGH && digitalRead(sensorIR4) == LOW) {
         // Ajustar si se sale de la línea
-        digitalWrite(motorPinA, HIGH);
-        digitalWrite(motorPinB, LOW);
+        moveForward();
       }
     }
   }
+}
+
+void moveForward() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, 255); // Velocidad máxima
+  analogWrite(ENB, 255); // Velocidad máxima
+}
+
+void moveBackward() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  analogWrite(ENA, 255); // Velocidad máxima
+  analogWrite(ENB, 255); // Velocidad máxima
+}
+
+void stopMotors() {
+  analogWrite(ENA, 0); // Apaga los motores
+  analogWrite(ENB, 0); // Apaga los motores
 }

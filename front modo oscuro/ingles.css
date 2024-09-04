@@ -1,13 +1,43 @@
-#botones {
+body{
+    
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
+    background-size: cover; /* Escala la imagen para cubrir el fondo */
+    position: relative;
+    background-color: #2C3148;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('brujula-removebg-preview 1.png') no-repeat center center;
+    background-size: cover;
+    filter: brightness(0) invert(0);
+    z-index: -1; /* Asegura que los otros elementos se superpongan */
+    pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
+}
+
+.boton-nivel {
+    background-color: #1F2232;
+    color: #fff;
+    border-color: #fff;
+    border-width: 8px;
     border-radius: 96px;
-    width: 465px;
-    height: 125px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
 }
 
 
 .header{
     
-    background-color: #1F2232; /* Color de la franja verde */
+    background-color: #2C3148; /* Color de la franja verde */
     height: 60px;
     width: 500px;
     display: flex;
@@ -26,7 +56,7 @@ margin: 10px;
 }
 
 .franja-negra {
-background-color: #1F2232;
+background-color: white;
 left: 0;
 z-index: 1;
 }

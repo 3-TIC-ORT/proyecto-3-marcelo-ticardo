@@ -2,7 +2,7 @@
 
 .contenedor-bloques{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     flex-direction: row;
     text-align: center;

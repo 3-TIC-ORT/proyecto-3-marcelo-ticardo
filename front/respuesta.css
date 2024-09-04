@@ -1,16 +1,17 @@
 #boton-SI {
     border-radius: 50%;
-    background-color: #0F7173;
+    background-color: white;
     width: 200px;
     height: 200px;
-    color: white;
-    border: 0px;
+    color: black;
+    border-width: 3px;
+    border-color: black;
+    border-style: solid;
     
     
     
 }
     #boton-SI:hover {
-    background-color: #094d4e; /* Color de fondo al pasar el mouse */
     width: 210px;
     height: 210px;
     cursor: pointer;
@@ -19,11 +20,13 @@
 
 #boton-NO {
     border-radius: 50%;
-    background-color: #963484;
+    background-color: white;
     width: 200px;
     height: 200px;
-    color: white;
-    border: 0px;
+    color: black;
+    border-width: 3px;
+    border-color: black;
+    border-style: solid;
     margin-left: 15px;
     /*font-family: sans-serif;
     font-style: normal;
@@ -33,7 +36,6 @@
     font-weight: 400;*/
 }
 #boton-NO:hover {
-    background-color: #6e2661; /* Color de fondo al pasar el mouse */
     width: 210px;
     height: 210px;
     cursor: pointer;

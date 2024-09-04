@@ -49,24 +49,6 @@ function contestarIngles(dia, bloque){
   return todos
 }
 
-function responderCamino(aulas, objetivo){
-  const length = aulas.length;
-  const objetivoIndex = aulas.indexOf(objetivo);
-  const distanciaAdelante = (objetivoIndex + length) % length;
-  const distanciaAtras = (length - distanciaAdelante) % length;
-
-  if (distanciaAdelante <= distanciaAtras) {
-      return {
-          direccion: 'adelante',
-          distancia: distanciaAdelante
-      };
-  } else {
-      return {
-          direccion: 'atrás',
-          distancia: distanciaAtras
-      };
-  }
-}
 
 onEvent("preguntarHorario", () => {
   respuesta = responderHorario(dia, curso, bloque)
@@ -84,27 +66,47 @@ onEvent("mapa", ()=> {
 })
 
 
-startServer()
-
 /* conexión con hard:
 
+const SerialPort = require('serialport');
+const ReadlineParser = require('@serialport/parser-readline');
+
+// Configura el puerto serie
 const port = new SerialPort({
     path: 'COM4',
     baudRate: 9600
 });
 
+// Configura el parser para leer líneas
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 
+// Evento cuando se abre la conexión
 port.on('open', function() {
     console.log('Conexión serial abierta');
 });
 
+// Evento cuando se recibe un dato del Arduino
 parser.on('data', function(data) {
-    console.log('Recibido del Arduino:', data);
+    data = data.trim(); // Elimina espacios en blanco alrededor
+    if (data === 'llegué') {
+        console.log('Notificación recibida del Arduino: Llegué');
+    } else if (data === 'obstáculo adelante') {
+        console.log('Notificación recibida del Arduino: Obstáculo adelante');
+        // Aquí puedes agregar el código para manejar la parada por obstáculo
+    } else if (data === 'obstáculo atrás') {
+        console.log('Notificación recibida del Arduino: Obstáculo atrás');
+        // Aquí puedes agregar el código para manejar la parada por obstáculo trasero
+    } else {
+        console.log('Recibido del Arduino:', data);
+    }
 });
 
+// Función para enviar instrucciones al Arduino
 function enviarInstrucciones(direccion, distancia) {
     port.write(`${direccion}\n`);
     port.write(`${distancia}\n`);
 }
+
 */
+
+startServer()

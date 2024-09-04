@@ -1,4 +1,20 @@
-
+.franja{
+    content: '';
+    position: absolute;
+    width: 380px;
+    height: 65px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #0F7173; /* Color verde */
+    border-radius: 96px; /* Bordes redondeados */
+    border-style: solid;
+    border-color: #1F2232;
+    border-width: 2px;
+    z-index: -1; /* Coloca el pseudo-elemento debajo del botón */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
 
 .contenedor-bloques{
     display: flex;

@@ -23,23 +23,25 @@
     transition: 0.4s;
 }
 #boton-bloque1 {
-    color: #0F7173;
-    border-color: #0F7173;
-    border-width: 8px;
+    color: black;
+    border-color: black;
+    border-width: 3px;
     border-radius: 96px;
     border-style: solid;
     width: 400px;
     height: 100px;
+    background-color: white;
 }
 
 #boton-bloque2 {
-    color: #0F7173;
-    border-color: #0F7173;
-    border-width: 8px;
+    color: black;
+    border-color: black;
+    border-width: 3px;
     border-radius: 96px;
     border-style: solid;
     width: 400px;
     height: 100px;
+    background-color: white;
 }
 #boton-bloque2:hover {
     width: 405px;
@@ -49,13 +51,14 @@
 }
 
 #boton-bloque3 {
-    color: #0F7173;
-    border-color: #0F7173;
-    border-width: 8px;
+    color: black;
+    border-color: black;
+    border-width: 3px;
     border-radius: 96px;
     border-style: solid;
     width: 400px;
     height: 100px;
+    background-color: white;
 }
 #boton-bloque3:hover {
     width: 405px;
@@ -65,13 +68,14 @@
 }
 
 #boton-bloque4 {
-    color: #0F7173;
-    border-color: #0F7173;
-    border-width: 8px;
+    color: black;
+    border-color:black;
+    border-width: 3px;
     border-radius: 96px;
     border-style: solid;
     width: 400px;
     height: 100px;
+    background-color: white;
 }
 #boton-bloque4:hover {
     
@@ -82,13 +86,14 @@
 }
 
 #boton-bloque5 {
-    color: #0F7173;
-    border-color: #0F7173;
-    border-width: 8px;
+    color: black;
+    border-color: black;
+    border-width: 3px;
     border-radius: 96px;
     border-style: solid;
     width: 400px;
     height: 100px;
+    background-color: white;
 }
 #boton-bloque5:hover {
     width: 405px;
@@ -98,13 +103,14 @@
 }
 
 #boton-bloque6 {
-    color: #0F7173;
-    border-color: #0F7173;
-    border-width: 8px;
+    color: black;
+    border-color: black;
+    border-width: 3px;
     border-radius: 96px;
     border-style: solid;
     width: 400px;
     height: 100px;
+    background-color: white;
 }
 #boton-bloque6:hover {
     

@@ -1,5 +1,5 @@
 body{
-    background-color: #1F2232;
+    background-color: #2C3148;
 }
 
 .contenedor-bloques{
@@ -25,7 +25,7 @@ body{
     transition: 0.4s;
 }
 #boton-bloque1 {
-    background-color: #0F7173;
+    background-color: #1F2232;
     color: #fff;
     border-color: #fff;
     border-width: 8px;
@@ -36,7 +36,7 @@ body{
 }
 
 #boton-bloque2 {
-    background-color: #0F7173;
+    background-color: #1F2232;
     color: #fff;
     border-color: #fff;
     border-width: 8px;
@@ -53,7 +53,7 @@ body{
 }
 
 #boton-bloque3 {
-    background-color: #0F7173;
+    background-color: #1F2232;
     color: #fff;
     border-color: #fff;
     border-width: 8px;
@@ -70,7 +70,7 @@ body{
 }
 
 #boton-bloque4 {
-    background-color: #0F7173;
+    background-color: #1F2232;
     color: #fff;
     border-color: #fff;
     border-width: 8px;
@@ -88,7 +88,7 @@ body{
 }
 
 #boton-bloque5 {
-    background-color: #0F7173;
+    background-color: #1F2232;
     color: #fff;
     border-color: #fff;
     border-width: 8px;
@@ -105,7 +105,7 @@ body{
 }
 
 #boton-bloque6 {
-    background-color: #0F7173;
+    background-color: #1F2232;
     color: #fff;
     border-color: #fff;
     border-width: 8px;

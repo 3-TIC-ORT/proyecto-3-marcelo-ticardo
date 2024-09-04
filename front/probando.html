@@ -1,47 +1,63 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superposición de Elementos</title>
-    <style>
-        /* Contenedor para el fondo */
-        .contenedor {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            margin: 50px;
-        }
-
-        /* Primer elemento superpuesto */
-        .elemento1 {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(255, 0, 0, 0.5); /* Rojo semi-transparente */
-            z-index: 1;
-        }
-
-        /* Segundo elemento superpuesto */
-        .elemento2 {
-            position: absolute;
-            top: 50px;
-            left: 50px;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(0, 0, 255, 0.5); /* Azul semi-transparente */
-            z-index: 2;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div class="contenedor">
-        <div class="elemento1"></div>
-        <div class="elemento2"></div>
-    </div>
+    <button class="custom-button" 
+        onmousedown="pressButton(this)" 
+        onmouseup="releaseButton(this)">
+    1er Bloque
+</button>
+
+<style>
+.custom-button {
+    background-color: white; /* Color de fondo del botón */
+    color: #1a1a1a; /* Color del texto */
+    border: 2px solid #1a1a1a; /* Borde principal (negro) */
+    border-radius: 30px; /* Bordes redondeados */
+    padding: 10px 25px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño del texto */
+    position: relative; /* Necesario para el pseudo-elemento */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    outline: none; /* Elimina el borde de enfoque */
+    font-family: Arial, sans-serif; /* Familia de la fuente */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+.custom-button::after {
+    content: '';
+    position: absolute;
+    bottom: -8px; /* Posición más cercana al borde inferior del botón */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 10px;
+    background-color: #00796B; /* Color verde */
+    border-radius: 20px; /* Bordes redondeados */
+    z-index: -1; /* Coloca el pseudo-elemento debajo del botón */
+    
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+.pressed::after {
+    opacity: 0; /* Oculta el pseudo-elemento (borde verde) */
+}
+
+</style>
+<script>
+function pressButton(button) {
+    button.classList.add('pressed');
+}
+
+function releaseButton(button) {
+    setTimeout(() => {
+        button.classList.remove('pressed');
+    }, 100);  // El tiempo de espera puede ajustarse si lo deseas
+}
+</script>
 </body>
 </html>

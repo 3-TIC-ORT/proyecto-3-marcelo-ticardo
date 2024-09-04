@@ -59,13 +59,14 @@
 }
 
 #boton-cursoA {
-    color: #0F7173;
-    border-color: #0F7173;
+    color: black;
+    border-color: black;
     border-style: solid;
-    border-width: 8px;
+    border-width: 3px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    background-color: white;
 }
 #boton-cursoA:hover {
     transform: scale(1.01);
@@ -74,13 +75,14 @@
 }
 
 #boton-cursoB {
-    color: #0F7173;
-    border-color: #0F7173;
+    color: black;
+    border-color: black;
     border-style: solid;
-    border-width: 8px;
+    border-width: 3px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    background-color: white;
 }
 #boton-cursoB:hover {
     transform: scale(1.01);
@@ -89,13 +91,14 @@
 }
 
 #boton-cursoC {
-    color: #0F7173;
-    border-color: #0F7173;
+    color: black;
+    border-color: black;
     border-style: solid;
-    border-width: 8px;
+    border-width: 3px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    background-color: white;
 }
 #boton-cursoC:hover {
     transform: scale(1.01);
@@ -104,13 +107,14 @@
 }
 
 #boton-cursoD {
-    color: #0F7173;
-    border-color: #0F7173;
+    color: black;
+    border-color: black;
     border-style: solid;
-    border-width: 8px;
+    border-width: 3px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    background-color: white;
 }
 #boton-cursoD:hover {
     transform: scale(1.01);
@@ -119,13 +123,14 @@
 }
 
 #boton-cursoE {
-    color: #0F7173;
-    border-color: #0F7173;
+    color: black;
+    border-color: black;
     border-style: solid;
-    border-width: 8px;
+    border-width: 3px;
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    background-color: white;
 }
 #boton-cursoE:hover {
     transform: scale(1.01);

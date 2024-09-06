@@ -8,16 +8,15 @@
 </head>
 <body>
     <div class="contenedor-botones">
-        <div class="boton-con-franja">
+        <div class="boton-con-franja" id="boton-con-franja-SI">
             <div id="boton-SI" class="boton">Si</div>
             <div class="franja"></div>
         </div>
-        <div class="boton-con-franja">
+        <div class="boton-con-franja" id="boton-con-franja-NO">
             <div id="boton-NO" class="boton">No</div>
             <div class="franja"></div>
         </div>
     </div>
-
 <style>
     .contenedor-botones {
     display: flex;
@@ -61,8 +60,40 @@
     border-style: solid;
     border-color: white;
     top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
+
+}
+
+.boton.grande {
+    width: 210px; /* Aumenta el tamaño del botón */
+    height: 210px;
+}
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
 }
 
 </style>
+<script>
+    // Selecciona los botones y las franjas
+document.getElementById("boton-SI").addEventListener("click", function() {
+    agrandarBoton("boton-con-franja-SI");
+});
+
+document.getElementById("boton-NO").addEventListener("click", function() {
+    agrandarBoton("boton-con-franja-NO");
+});
+
+function agrandarBoton(id) {
+    var botonConFranja = document.getElementById(id);
+    var boton = botonConFranja.querySelector(".boton");
+    var franja = botonConFranja.querySelector(".franja");
+
+    // Agrandar el botón y ocultar la franja
+    boton.classList.toggle("grande");
+    franja.classList.toggle("oculta");
+}
+
+</script>
 </body>
 </html>

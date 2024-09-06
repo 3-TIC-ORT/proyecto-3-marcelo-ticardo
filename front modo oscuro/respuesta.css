@@ -2,51 +2,64 @@ body{
     background-color: #2C3148;
     color: white;
 }
-#boton-SI {
-    border-radius: 50%;
-    background-color: #1F2232;
-    width: 200px;
-    height: 200px;
-    color: white;
-    border-width: 3px;
-    border-color: white;
-    border-style: solid;
-    
-    
-    
-}
-    #boton-SI:hover {
-    background-color: #1F2232; /* Color de fondo al pasar el mouse */
-    width: 210px;
-    height: 210px;
-    cursor: pointer;
-    transition: 0.5s;
+
+.contenedor-botones {
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    gap: 20px; /* Espacio entre los botones */
+    position: relative;
+    margin-top: 50px; /* Ajusta según tu diseño */
 }
 
-#boton-NO {
+.boton-con-franja {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.boton {
+    position: relative;
     border-radius: 50%;
     background-color: #1F2232;
     width: 200px;
     height: 200px;
     color: white;
     border-width: 3px;
-    margin-left: 15px;
     border-color: white;
     border-style: solid;
-    /*font-family: sans-serif;
-    font-style: normal;
-    font-size: 3em;
-    font-weight: 800;font-style: normal;
-    font-size: 3em;
-    font-weight: 400;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que los botones estén encima de las franjas */
 }
-#boton-NO:hover {
-    background-color: #1F2232; /* Color de fondo al pasar el mouse */
-    width: 210px;
+
+.franja {
+    position: absolute;
+    z-index: 0;
+    background-color: #1F2232;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
+
+}
+
+.boton.grande {
+    width: 210px; /* Aumenta el tamaño del botón */
     height: 210px;
-    cursor: pointer;
-    transition: 0.5s;
 }
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+
+
+
 
 #boton-volver {
     border-radius: 96px;

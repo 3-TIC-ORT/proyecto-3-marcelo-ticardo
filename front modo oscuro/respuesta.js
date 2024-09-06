@@ -3,12 +3,13 @@ fetchData("preguntarHorario", (data) => {
         window.location.href = "ingles.html";
     } else {
         document.getElementById("aula").innerHTML = data;
-        
+
         if (data === "No tenés ninguna materia en este bloque") {
             document.getElementById("otropiso").style.display = "none";
             document.getElementById("guia").style.display = "none";
             document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
+            document.getElementById("boton-NO").style.display = "none";
+        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
             document.getElementById("otropiso").style.display = "none";
             document.getElementById("boton-volver").style.display = "none";
         } else {
@@ -20,13 +21,27 @@ fetchData("preguntarHorario", (data) => {
 });
 
 document.getElementById("boton-SI").addEventListener("click", function() {
+    console.log("Botón SI clickeado");
+    agrandarBoton("boton-con-franja-SI");
     window.location.href = "mapa.html";
 });
 
 document.getElementById("boton-NO").addEventListener("click", function() {
+    console.log("Botón NO clickeado");
+    agrandarBoton("boton-con-franja-NO");
     window.location.href = "proyecto.html";
 });
+function agrandarBoton(id) {
+    var botonConFranja = document.getElementById(id);
+    var boton = botonConFranja.querySelector(".boton");
+    var franja = botonConFranja.querySelector(".franja");
 
-document.getElementById("boton-volver").addEventListener("click", function() {
-    window.location.href = "proyecto.html";
-});
+    // Agrandar el botón
+    boton.classList.add("grande");
+
+    // Hacer desaparecer la franja
+    franja.classList.add("oculta");
+
+    console.log("Botón agrandado y franja oculta"); // Para depuración
+}
+

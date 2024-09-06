@@ -1,7 +1,8 @@
 #boton-inicio {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 1000px;
+    background: url('Group.png') no-repeat center center fixed
 }
 
 

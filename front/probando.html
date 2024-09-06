@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--FIXME: ES POR LA FUNCIIÓN DE BACKEND!! SI FUNCIONA-->
+<html lang="es">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,50 +9,114 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="boton-bloque">
-    1er Bloque<div class="franja" id="franja"></div>
-</button>
+    <div class="contenedor-botones">
+        <div class="boton-con-franja" id="boton-con-franja-SI">
+            <div id="boton-SI" class="boton">Si</div>
+            <div class="franja"></div>
+        </div>
+        <div class="boton-con-franja" id="boton-con-franja-NO">
+            <div id="boton-NO" class="boton">No</div>
+            <div class="franja"></div>
+        </div>
+    </div>
 
 <style>
-#boton-bloque {
-    background-color: white; /* Color de fondo del botón */
-    color: #1a1a1a; /* Color del texto */
-    border: 2px solid #1a1a1a; /* Borde principal (negro) */
-    border-radius: 30px; /* Bordes redondeados */
-    width: 100px;
-    height: 30px;
-    font-size: 16px; /* Tamaño del texto */
-    position: relative; /* Necesario para el pseudo-elemento */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    outline: none; /* Elimina el borde de enfoque */
-    font-family: Arial, sans-serif; /* Familia de la fuente */
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+.contenedor-botones {
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    gap: 20px; /* Espacio entre los botones */
+    position: relative;
+    margin-top: 50px; /* Ajusta según tu diseño */
 }
 
+.boton-con-franja {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.boton {
+    position: relative;
+    border-radius: 50%;
+    background-color: #1F2232;
+    width: 200px;
+    height: 200px;
+    color: white;
+    border-width: 3px;
+    border-color: white;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que los botones estén encima de las franjas */
+}
 
 .franja {
-    content: '';
     position: absolute;
-    top: 3px;
-    left: -2px;
-    width: 95.5px;
-    height: 28px;
-    background-color: #0F7173; /* Color verde */
-    border-radius: 30px; /* Bordes redondeados */
+    z-index: 0;
+    background-color: #1F2232;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-width: 3px;
     border-style: solid;
-    border-color: #1F2232;
-    border-width: 2px;
-    z-index: -1; /* Coloca el pseudo-elemento debajo del botón */
-    
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    border-color: white;
+    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
 }
 
+.boton.grande {
+    width: 210px; /* Aumenta el tamaño del botón */
+    height: 210px;
+}
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
 
 </style>
 <script>
-document.getElementById("boton-bloque").addEventListener("click", function() {
-    this.style.height = "39px"
+    fetchData("preguntarHorario", (data) => {
+    if (data === "Tenés Ingles en el Aula I") {
+        window.location.href = "ingles.html";
+    } else {
+        document.getElementById("aula").innerHTML = data;
+        
+        if (data === "No tenés ninguna materia en este bloque") {
+            document.getElementById("otropiso").style.display = "none";
+            document.getElementById("guia").style.display = "none";
+            document.getElementById("boton-SI").style.display = "none";
+            document.getElementById("boton-NO").style.display = "none";        
+        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
+            document.getElementById("otropiso").style.display = "none";
+            document.getElementById("boton-volver").style.display = "none";
+        } else {
+            document.getElementById("guia").style.display = "none";
+            document.getElementById("boton-SI").style.display = "none";
+            document.getElementById("boton-NO").style.display = "none";
+        }
+    }
 });
+    // Selecciona los botones y las franjas
+document.getElementById("boton-SI").addEventListener("click", function() {
+    agrandarBoton("boton-con-franja-SI");
+});
+
+document.getElementById("boton-NO").addEventListener("click", function() {
+    agrandarBoton("boton-con-franja-NO");
+});
+
+function agrandarBoton(id) {
+    var botonConFranja = document.getElementById(id);
+    var boton = botonConFranja.querySelector(".boton");
+    var franja = botonConFranja.querySelector(".franja");
+
+    // Agrandar el botón y ocultar la franja
+    boton.classList.toggle("grande");
+    franja.classList.toggle("oculta");
+}
+
 </script>
 </body>
 </html>

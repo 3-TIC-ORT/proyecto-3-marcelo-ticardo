@@ -4,9 +4,10 @@
     border-radius: 50px;
     border: 4px solid black;
     display: flex;
-    height: auto;
+    height: 7px;
     padding: 8px;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    position: relative
 }
 
 .themeMode-check-container-on {
@@ -14,9 +15,73 @@
 }
 
 .themeMode-check-container::after {
-    width: 20px;
-    height: 20px;
-    background-color: black;
+    width: 25px;
+    height: 25px;
+    background-color: black; /* Color del círculo por defecto */
     content: " ";
     border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left:0px;
+    transform: translateY(-50%);
 }
+
+.themeMode-check-container-on::after {
+    left: unset;
+    right: 0px;
+}
+
+/* Clase adicional para cambiar el color del círculo */
+.circle-color-light::after {
+    background-color: black; /* Círculo en modo claro */
+}
+
+.circle-color-dark::after {
+    background-color: white; /* Círculo en modo oscuro */
+}
+
+#body {
+    color: black;
+}
+#text {
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #f1f1f1; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+}
+#text::after {
+      content: "";
+      position: absolute; /* Posicionamiento absoluto relativo a la caja */
+      bottom: 0; /* Alineado en la parte inferior */
+      left: 20px; /* Posicionamiento hacia la izquierda */
+      width: 0; /* Ancho cero */
+      height: 0; /* Alto cero */
+      border: 10px solid transparent; /* Bordes transparentes */
+      border-top-color: #f1f1f1; /* Color de la "punta" del globo de chat */
+      border-bottom: 0; /* Sin borde en la parte inferior */
+      margin-left: -10px; /* Ajuste horizontal de la "punta" */
+      margin-bottom: -10px; /* Ajuste vertical de la "punta" */
+    }
+#text1 {
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #f1f1f1; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+}
+#text1::after {
+      content: "";
+      position: absolute; /* Posicionamiento absoluto relativo a la caja */
+      bottom: 0; /* Alineado en la parte inferior */
+      left: 20px; /* Posicionamiento hacia la izquierda */
+      width: 0; /* Ancho cero */
+      height: 0; /* Alto cero */
+      border: 10px solid transparent; /* Bordes transparentes */
+      border-top-color: #f1f1f1; /* Color de la "punta" del globo de chat */
+      border-bottom: 0; /* Sin borde en la parte inferior */
+      margin-left: -10px; /* Ajuste horizontal de la "punta" */
+      margin-bottom: -10px; /* Ajuste vertical de la "punta" */
+    }

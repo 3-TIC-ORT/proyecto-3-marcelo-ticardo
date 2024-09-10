@@ -8,7 +8,7 @@
 #define ENA 11
 #define ENB 12
 
-int speedMotor = 2;
+int speedMotor = 255;
 bool statusLeft;
 bool statusRight;
  void setup (){
@@ -26,3 +26,5 @@ bool statusRight;
  }
 
  void loop (){
+  
+ }

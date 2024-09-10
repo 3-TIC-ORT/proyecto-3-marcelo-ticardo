@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!--FIXME: ES POR LA FUNCIIÓN DE BACKEND!! SI FUNCIONA-->
-<html lang="es">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,115 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div class="contenedor-botones">
-        <div class="boton-con-franja" id="boton-con-franja-SI">
-            <div id="boton-SI" class="boton">Si</div>
-            <div class="franja"></div>
-        </div>
-        <div class="boton-con-franja" id="boton-con-franja-NO">
-            <div id="boton-NO" class="boton">No</div>
-            <div class="franja"></div>
-        </div>
-    </div>
+<label for="themeMode-check">
+    <div class="themeMode-check-container" id="themeMode-check-container"></div>
+</label>
+<input type="checkbox" name="themeMode-check" id="themeMode-check" style="display: none;" onchange="thememode()">
+<body id="body">
+    <p id="text">Este es un ejemplo de texto.</p>
+</body>
 
-<style>
-.contenedor-botones {
-    display: flex;
-    justify-content: center; /* Alinea horizontalmente */
-    align-items: center; /* Alinea verticalmente */
-    gap: 20px; /* Espacio entre los botones */
-    position: relative;
-    margin-top: 50px; /* Ajusta según tu diseño */
-}
-
-.boton-con-franja {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-}
-
-.boton {
-    position: relative;
-    border-radius: 50%;
-    background-color: #1F2232;
-    width: 200px;
-    height: 200px;
-    color: white;
-    border-width: 3px;
-    border-color: white;
-    border-style: solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; /* Asegura que los botones estén encima de las franjas */
-}
-
-.franja {
-    position: absolute;
-    z-index: 0;
-    background-color: #1F2232;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: white;
-    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
-}
-
-.boton.grande {
-    width: 210px; /* Aumenta el tamaño del botón */
-    height: 210px;
-}
-
-.franja.oculta {
-    opacity: 0; /* Hace que desaparezca */
-    transform: scale(0); /* Reduce su tamaño a 0 */
-}
-
-</style>
 <script>
-    fetchData("preguntarHorario", (data) => {
-    if (data === "Tenés Ingles en el Aula I") {
-        window.location.href = "ingles.html";
+    function thememode() {
+    let menu = document.getElementById("themeMode-check-container");
+    let body = document.getElementById("body");
+    let text = document.getElementById("text");
+    
+    if (menu.classList.contains("themeMode-check-container-on")) {
+        // Desactivar modo oscuro
+        menu.classList.remove("themeMode-check-container-on");
+        menu.classList.remove("circle-color-dark");
+        menu.classList.add("circle-color-light");
+
+        // Cambiar el color de fondo del cuerpo a blanco
+        body.style.backgroundColor = "white";
+
+        // Cambiar el color de texto a negro
+        text.style.color = "black";
+
+        // Cambiar el color de fondo del botón a blanco
+        menu.style.backgroundColor = "white";
+
+        // Cambiar el color del borde del botón a negro
+        menu.style.borderColor = "black";
     } else {
-        document.getElementById("aula").innerHTML = data;
-        
-        if (data === "No tenés ninguna materia en este bloque") {
-            document.getElementById("otropiso").style.display = "none";
-            document.getElementById("guia").style.display = "none";
-            document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";        
-        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
-            document.getElementById("otropiso").style.display = "none";
-            document.getElementById("boton-volver").style.display = "none";
-        } else {
-            document.getElementById("guia").style.display = "none";
-            document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";
-        }
+        // Activar modo oscuro
+        menu.classList.add("themeMode-check-container-on");
+        menu.classList.remove("circle-color-light");
+        menu.classList.add("circle-color-dark");
+
+        // Cambiar el color de fondo del cuerpo a negro
+        body.style.backgroundColor = "black";
+
+        // Cambiar el color de texto a blanco
+        text.style.color = "white";
+
+        // Cambiar el color de fondo del botón a negro
+        menu.style.backgroundColor = "black";
+
+        // Cambiar el color del borde del botón a blanco
+        menu.style.borderColor = "white";
     }
-});
-    // Selecciona los botones y las franjas
-document.getElementById("boton-SI").addEventListener("click", function() {
-    agrandarBoton("boton-con-franja-SI");
-});
-
-document.getElementById("boton-NO").addEventListener("click", function() {
-    agrandarBoton("boton-con-franja-NO");
-});
-
-function agrandarBoton(id) {
-    var botonConFranja = document.getElementById(id);
-    var boton = botonConFranja.querySelector(".boton");
-    var franja = botonConFranja.querySelector(".franja");
-
-    // Agrandar el botón y ocultar la franja
-    boton.classList.toggle("grande");
-    franja.classList.toggle("oculta");
 }
 
 </script>
-</body>
+
+<style>
+.themeMode-check-container {
+    width: 50px;
+    background-color: white;
+    border-radius: 50px;
+    border: 4px solid black;
+    display: flex;
+    height: 7px;
+    padding: 8px;
+    justify-content: flex-end;
+    position: relative
+}
+
+.themeMode-check-container-on {
+    justify-content: flex-end !important;
+}
+
+.themeMode-check-container::after {
+    width: 25px;
+    height: 25px;
+    background-color: black; /* Color del círculo por defecto */
+    content: " ";
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left:0px;
+    transform: translateY(-50%);
+}
+
+.themeMode-check-container-on::after {
+    left: unset;
+    right: 0px;
+}
+
+/* Clase adicional para cambiar el color del círculo */
+.circle-color-light::after {
+    background-color: black; /* Círculo en modo claro */
+}
+
+.circle-color-dark::after {
+    background-color: white; /* Círculo en modo oscuro */
+}
+
+#body {
+    color: black;
+}
+
+
+</style>
 </html>

@@ -1,0 +1,22 @@
+.themeMode-check-container {
+    width: 50px;
+    background-color: white;
+    border-radius: 50px;
+    border: 4px solid black;
+    display: flex;
+    height: auto;
+    padding: 8px;
+    justify-content: flex-start;
+}
+
+.themeMode-check-container-on {
+    justify-content: flex-end !important;
+}
+
+.themeMode-check-container::after {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    content: " ";
+    border-radius: 50%;
+}

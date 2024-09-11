@@ -1,3 +1,54 @@
+.boton-con-franja {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.boton {
+    position: relative;
+    border-radius: 96px;
+    background-color: #1F2232;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border-width: 2px;
+    border-color: white;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que los botones estén encima de las franjas */
+}
+
+.franja {
+    position: absolute;
+    z-index: 0;
+    background-color: #1F2232;
+    border-radius: 96px;
+    width: 200px;
+    height: 50px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
+
+}
+
+.boton.grande {
+    height: 60px;
+}
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+
+#boton-volver {
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+}
+
 .themeMode-check-container {
     width: 50px;
     background-color: white;
@@ -31,13 +82,13 @@
     right: 0px;
 }
 
-/* Clase adicional para cambiar el color del círculo */
+/* Clase para cambiar el color del círculo */
 .circle-color-light::after {
-    background-color: black; /* Círculo en modo claro */
+    background-color: black;
 }
 
 .circle-color-dark::after {
-    background-color: white; /* Círculo en modo oscuro */
+    background-color: white;
 }
 
 #body {

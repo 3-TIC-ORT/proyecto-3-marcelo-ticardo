@@ -14,33 +14,36 @@
 <body id="body">
     <h1 id="text">Hola, soy Marcelo Ticardo</h1>
     <h1 id="text1">Una vez qué respondas esta serie de preguntas, voy a poder ser tu guía.</h1>
-<button id="boton" class="boton">Comenzar</button>
+<div class="boton-con-franja" id="boton-con-franja-SI">
+    <div id="boton" class="boton">Comenzar</div>
+    <div class="franja"></div>
+</div>
 </body>
     
 
 <style> 
 
 body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
-      background-size: cover; /* Escala la imagen para cubrir el fondo */
-      position: relative; /* Para permitir la superposición de elementos */
-  }
-  body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('brujula-removebg-preview 1.png') no-repeat center center;
-            background-size: cover;
-            filter: brightness(0) invert(0);
-            z-index: -1; /* Asegura que los otros elementos se superpongan */
-            pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
-        }
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
+    background-size: cover; /* Escala la imagen para cubrir el fondo */
+    position: relative; /* Para permitir la superposición de elementos */
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('brujula-removebg-preview 1.png') no-repeat center center;
+    background-size: cover;
+    filter: brightness(0) invert(0);
+    z-index: -1; /* Asegura que los otros elementos se superpongan */
+    pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
+}
 </style>
 
 

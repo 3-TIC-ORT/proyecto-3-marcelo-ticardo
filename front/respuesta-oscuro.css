@@ -58,9 +58,6 @@ body{
     transform: scale(0); /* Reduce su tamaño a 0 */
 }
 
-
-
-
 #boton-volver {
     border-radius: 96px;
     width: 465px;

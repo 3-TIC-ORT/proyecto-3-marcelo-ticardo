@@ -7,12 +7,12 @@
 .boton {
     position: relative;
     border-radius: 96px;
-    background-color: #1F2232;
+    background-color: white;
     width: 200px;
     height: 50px;
-    color: white;
+    color: black;
     border-width: 2px;
-    border-color: white;
+    border-color: black;
     border-style: solid;
     display: flex;
     justify-content: center;
@@ -23,13 +23,13 @@
 .franja {
     position: absolute;
     z-index: 0;
-    background-color: #1F2232;
+    background-color: #0F7173;
     border-radius: 96px;
     width: 200px;
     height: 50px;
     border-width: 2px;
     border-style: solid;
-    border-color: white;
+    border-color: black;
     top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
 
 }

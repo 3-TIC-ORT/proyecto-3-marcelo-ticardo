@@ -1,89 +1,13 @@
-.franja{
-    content: '';
-    position: absolute;
-    width: 380px;
-    height: 65px;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    background-color: #0F7173; /* Color verde */
-    border-radius: 96px; /* Bordes redondeados */
-    border-style: solid;
-    border-color: #1F2232;
-    border-width: 2px;
-    z-index: -1; /* Coloca el pseudo-elemento debajo del botón */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-}
-
-.contenedor-bloques{
+.boton-con-franja {
+    position: relative;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    flex-direction: row;
     text-align: center;
-    gap: 20px;
-    margin-top: 100px;
-}
-    /*font-family: sans-serif;
-    font-style: normal;
-    font-size: 3em;
-    font-weight: 800;font-style: normal;
-    font-size: 3em;
-    font-weight: 400;*/
-
-#boton-bloque1:hover {
-    width: 405px;
-    height: 105px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-#boton-bloque1 {
-    color: black;
-    border-color: black;
-    border-width: 3px;
-    border-radius: 96px;
-    border-style: solid;
-    width: 400px;
-    height: 100px;
-    background-color: white;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-#boton-bloque2 {
-    color: black;
-    border-color: black;
-    border-width: 3px;
-    border-radius: 96px;
-    border-style: solid;
-    width: 400px;
-    height: 100px;
-    background-color: white;
-}
-#boton-bloque2:hover {
-    width: 405px;
-    height: 105px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-#boton-bloque3 {
-    color: black;
-    border-color: black;
-    border-width: 3px;
-    border-radius: 96px;
-    border-style: solid;
-    width: 400px;
-    height: 100px;
-    background-color: white;
-}
-#boton-bloque3:hover {
-    width: 405px;
-    height: 105px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-#boton-bloque4 {
+.boton {
     color: black;
     border-color:black;
     border-width: 3px;
@@ -92,49 +16,59 @@
     width: 400px;
     height: 100px;
     background-color: white;
-}
-#boton-bloque4:hover {
-    
-    width: 405px;
-    height: 105px;
-    cursor: pointer;
-    transition: 0.4s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que los botones estén encima de las franjas */
 }
 
-#boton-bloque5 {
-    color: black;
-    border-color: black;
-    border-width: 3px;
+.franja {
+    position: absolute;
+    z-index: 0;
+    background-color: #0F7173;
     border-radius: 96px;
-    border-style: solid;
     width: 400px;
     height: 100px;
-    background-color: white;
-}
-#boton-bloque5:hover {
-    width: 405px;
-    height: 105px;
-    cursor: pointer;
-    transition: 0.4s;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
+
 }
 
-#boton-bloque6 {
-    color: black;
-    border-color: black;
-    border-width: 3px;
+.boton.grande {
+    height: 110px;
+}
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+
+#boton-volver {
     border-radius: 96px;
-    border-style: solid;
-    width: 400px;
-    height: 100px;
-    background-color: white;
+    width: 465px;
+    height: 125px;
 }
-#boton-bloque6:hover {
+
+.contenedor-bloques{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    gap: 20px;
+    margin-top: 100px;
     
-    width: 405px;
-    height: 105px;
-    cursor: pointer;
-    transition: 0.4s;
 }
+    /*font-family: sans-serif;
+    font-style: normal;
+    font-size: 3em;
+    font-weight: 800;font-style: normal;
+    font-size: 3em;
+    font-weight: 400;*/
+
 
 .header{
     

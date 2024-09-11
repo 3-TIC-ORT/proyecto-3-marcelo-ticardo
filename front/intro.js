@@ -6,6 +6,8 @@ function thememode() {
     let body = document.getElementById("body");
     let text = document.getElementById("text");
     let text1 = document.getElementById("text1");
+    let boton = document.getElementById("boton");
+    let franja = document.getElementById("franjita");
     
     if (menu.classList.contains("themeMode-check-container-on")) {
         // Desactivar modo oscuro (modo claro activado)
@@ -19,6 +21,7 @@ function thememode() {
         // Cambiar el color de texto a negro
         text.style.color = "black";
         text1.style.color = "black";
+        
 
         // Cambiar el color de fondo del botón a blanco
         menu.style.backgroundColor = "white";
@@ -41,6 +44,11 @@ function thememode() {
         // Cambiar el color de texto a negro
         text.style.color = "black";
         text1.style.color = "black";
+        boton.style.backgroundColor = "#1F2232";
+        boton.style.color = "white";
+        boton.style.borderColor = "white";
+        franja.style.backgroundColor = "#1F2232";
+        franja.style.borderColor = "white";
 
         // Cambiar el color de fondo del botón a negro
         menu.style.backgroundColor ='#2C3148';

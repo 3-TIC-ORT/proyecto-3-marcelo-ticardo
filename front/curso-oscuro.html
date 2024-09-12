@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cursos.css">
+    <link rel="stylesheet" href="cursos-oscuro.css">
 
     <title>selecciones</title>
     <!--TODO: HACER WIREFRAME PERO MODO OSCURO Y AVERIGUAR COMO HACER ESO-->
@@ -18,11 +18,22 @@
 </div>
 </div>
   <div class="contenedor-botones">
-  <button id="boton-cursoA">3ro A</button> 
-  <button id="boton-cursoB">3ro B</button> 
-  <button id="boton-cursoC">3ro C</button> 
-  <button id="boton-cursoD">3ro D</button> 
-  <button id="boton-cursoE">3ro E</button> </div>
+    <div class="boton-con-franja" id="boton-con-franja1">
+      <div id="boton-cursoA" class="boton">3ro A</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja2">
+      <div id="boton-cursoB" class="boton">3ro B</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja3">
+      <div id="boton-cursoC" class="boton">3ro C</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja4">
+      <div id="boton-cursoD" class="boton">3ro D</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja5">
+      <div id="boton-cursoE" class="boton">3ro E</div><div class="franja" id="franja"></div>
+    </div>
+  </div>
   <style> 
     body {
       margin: 0;
@@ -49,6 +60,6 @@
   </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 <script src="socket.js"></script>
-<script src="cursos.js"></script>
+<script src="cursos-oscuro.js"></script>
 </body>
 </html>

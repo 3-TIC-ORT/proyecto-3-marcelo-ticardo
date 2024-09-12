@@ -98,7 +98,7 @@
     position: relative; /* Posicionamiento relativo para el pseudo-elemento */
     max-width: 300px; /* Ancho máximo de la caja */
     padding: 15px; /* Espacio interior de la caja */
-    background-color: #f1f1f1; /* Color de fondo */
+    background-color: #DEDEDE; /* Color de fondo */
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
 }
@@ -110,7 +110,7 @@
       width: 0; /* Ancho cero */
       height: 0; /* Alto cero */
       border: 10px solid transparent; /* Bordes transparentes */
-      border-top-color: #f1f1f1; /* Color de la "punta" del globo de chat */
+      border-top-color: #DEDEDE; /* Color de la "punta" del globo de chat */
       border-bottom: 0; /* Sin borde en la parte inferior */
       margin-left: -10px; /* Ajuste horizontal de la "punta" */
       margin-bottom: -10px; /* Ajuste vertical de la "punta" */
@@ -119,7 +119,7 @@
     position: relative; /* Posicionamiento relativo para el pseudo-elemento */
     max-width: 300px; /* Ancho máximo de la caja */
     padding: 15px; /* Espacio interior de la caja */
-    background-color: #f1f1f1; /* Color de fondo */
+    background-color: #DEDEDE; /* Color de fondo */
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
 }
@@ -131,7 +131,7 @@
       width: 0; /* Ancho cero */
       height: 0; /* Alto cero */
       border: 10px solid transparent; /* Bordes transparentes */
-      border-top-color: #f1f1f1; /* Color de la "punta" del globo de chat */
+      border-top-color: #DEDEDE; /* Color de la "punta" del globo de chat */
       border-bottom: 0; /* Sin borde en la parte inferior */
       margin-left: -10px; /* Ajuste horizontal de la "punta" */
       margin-bottom: -10px; /* Ajuste vertical de la "punta" */

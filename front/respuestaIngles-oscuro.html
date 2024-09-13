@@ -17,6 +17,30 @@
     <button id="boton-NO">No</button>
     <button id="boton-volver">volver al inicio (logo)</button>
 
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url('brujula oscura.svg') no-repeat center center fixed;
+          background-size: cover; /* Escala la imagen para cubrir el fondo */
+          position: relative; /* Para permitir la superposición de elementos */
+    }
+    body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('brujula-removebg-preview 1.png') no-repeat center center;
+                background-size: cover;
+                filter: brightness(0) invert(0);
+                z-index: -1; /* Asegura que los otros elementos se superpongan */
+                pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
+            }
+    </style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 <script src="socket.js"></script>
 <script src="respuestaIngles.js"></script>

@@ -10,13 +10,16 @@
     <title>Bloques</title>
 </head>
 <body>
+
+
   <div class="header">
     <div class="franja-negra"></div>
     <div class="franja-violeta"></div>
+    <div class="cuadro-verde"></div>
     <div class="franja-verde">¿Que bloque queres saber?</div>
-    
-</div>
-<body>
+
+  </div>
+
   <div class="contenedor-bloques">
     <div class="boton-con-franja" id="boton-con-franja1">
       <div id="boton-bloque1" class="boton">Bloque 1</div><div class="franja" id="franja"></div>
@@ -43,10 +46,11 @@
         margin: 0;
         padding: 0;
         height: 100vh;
-        background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
+        background: url('brujula oscura.svg') no-repeat center center fixed;
         background-size: cover; /* Escala la imagen para cubrir el fondo */
         position: relative; /* Para permitir la superposición de elementos */
-        background-color: #2C3148;
+        z-index: -1;
+        
     }
     body::before {
         content: '';

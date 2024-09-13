@@ -103,18 +103,18 @@
     margin: 20px;
 }
 #text::after {
-      content: "";
-      position: absolute; /* Posicionamiento absoluto relativo a la caja */
-      bottom: 0; /* Alineado en la parte inferior */
-      left: 20px; /* Posicionamiento hacia la izquierda */
-      width: 0; /* Ancho cero */
-      height: 0; /* Alto cero */
-      border: 10px solid transparent; /* Bordes transparentes */
-      border-top-color: #DEDEDE; /* Color de la "punta" del globo de chat */
-      border-bottom: 0; /* Sin borde en la parte inferior */
-      margin-left: -10px; /* Ajuste horizontal de la "punta" */
-      margin-bottom: -10px; /* Ajuste vertical de la "punta" */
-    }
+    content: "";
+    position: absolute; /* Posicionamiento absoluto relativo a la caja */
+    bottom: 0; /* Alineado en la parte inferior */
+    left: 20px; /* Posicionamiento hacia la izquierda */
+    width: 0; /* Ancho cero */
+    height: 0; /* Alto cero */
+    border: 10px solid transparent; /* Bordes transparentes */
+    border-top-color: #DEDEDE; /* Color de la "punta" del globo de chat */
+    border-bottom: 0; /* Sin borde en la parte inferior */
+    margin-left: -10px; /* Ajuste horizontal de la "punta" */
+    margin-bottom: -10px; /* Ajuste vertical de la "punta" */
+}
 #text1 {
     position: relative; /* Posicionamiento relativo para el pseudo-elemento */
     max-width: 300px; /* Ancho máximo de la caja */
@@ -124,15 +124,15 @@
     margin: 20px;
 }
 #text1::after {
-      content: "";
-      position: absolute; /* Posicionamiento absoluto relativo a la caja */
-      bottom: 0; /* Alineado en la parte inferior */
-      left: 20px; /* Posicionamiento hacia la izquierda */
-      width: 0; /* Ancho cero */
-      height: 0; /* Alto cero */
-      border: 10px solid transparent; /* Bordes transparentes */
-      border-top-color: #DEDEDE; /* Color de la "punta" del globo de chat */
-      border-bottom: 0; /* Sin borde en la parte inferior */
-      margin-left: -10px; /* Ajuste horizontal de la "punta" */
-      margin-bottom: -10px; /* Ajuste vertical de la "punta" */
-    }
+    content: "";
+    position: absolute; /* Posicionamiento absoluto relativo a la caja */
+    bottom: 0; /* Alineado en la parte inferior */
+    left: 20px; /* Posicionamiento hacia la izquierda */
+    width: 0; /* Ancho cero */
+    height: 0; /* Alto cero */
+    border: 10px solid transparent; /* Bordes transparentes */
+    border-top-color: #DEDEDE; /* Color de la "punta" del globo de chat */
+    border-bottom: 0; /* Sin borde en la parte inferior */
+    margin-left: -10px; /* Ajuste horizontal de la "punta" */
+    margin-bottom: -10px; /* Ajuste vertical de la "punta" */
+}

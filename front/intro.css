@@ -1,7 +1,8 @@
 .boton-con-franja {
     position: relative;
-    display: inline-block;
+    display: flex;
     text-align: center;
+    justify-content: center;
 }
 
 .boton {
@@ -93,6 +94,12 @@
 
 #body {
     color: black;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: flex-end;
+    top: 100px
 }
 #text {
     position: relative; /* Posicionamiento relativo para el pseudo-elemento */

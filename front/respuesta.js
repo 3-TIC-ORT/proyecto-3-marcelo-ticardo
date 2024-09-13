@@ -20,13 +20,29 @@ fetchData("preguntarHorario", (data) => {
 });
 
 document.getElementById("boton-SI").addEventListener("click", function() {
+    agrandarBoton("boton-con-franja1");
     window.location.href = "mapa.html";
 });
 
 document.getElementById("boton-NO").addEventListener("click", function() {
+    agrandarBoton("boton-con-franja2");
     window.location.href = "proyecto.html";
 });
 
 document.getElementById("boton-volver").addEventListener("click", function() {
     window.location.href = "proyecto.html";
 });
+
+function agrandarBoton(id) {
+    var botonConFranja = document.getElementById(id);
+    var boton = botonConFranja.querySelector(".boton");
+    var franja = botonConFranja.querySelector(".franja");
+
+    // Agrandar el botón
+    boton.classList.add("grande");
+
+    // Hacer desaparecer la franja
+    franja.classList.add("oculta");
+
+    console.log("Botón agrandado y franja oculta"); // Para depuración
+}

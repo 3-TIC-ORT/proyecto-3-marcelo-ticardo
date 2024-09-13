@@ -67,16 +67,21 @@ body{
 }
 
 .header{
-    
-            background-color: #2C3148; /* Color de la franja verde */
-            height: 60px;
-            width: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-    font-family: 'Arial', sans-serif;
-    
+    padding-top: 25px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    font-family: 'Arial', sans-serif;   
+}
+.cuadro-verde{
+    background-color: #0F7173;
+    height: 60px;
+    width: 80px;
+    z-index: 4;
+    margin-left: 1300px;
 }
 .franja-negra, .franja-violeta {
     position: absolute;
@@ -103,7 +108,7 @@ body{
     border-radius: 80px;
     margin: 10px;
     height: 60px;
-    width: 1050px;
+    width: 86%;
     background-color: #0F7173;
     left: 80px;
     z-index: 3;

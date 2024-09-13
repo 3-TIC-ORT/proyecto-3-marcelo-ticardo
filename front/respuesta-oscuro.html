@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="respuesta.css">
+    <link rel="stylesheet" href="respuesta-oscuro.css">
     <title>Numero de aula</title>
 </head>
 <div class="header">
     <div class="franja-negra"></div>
     <div class="franja-violeta"></div>
+    <div class="cuadro-verde"></div>
     <div class="franja-verde">
         <h1><span id="aula"></span></h1>
     </div>
@@ -18,19 +19,15 @@
 <body>
     <h1 id="guia">¿Querés guía?</h1>
     <h1 id="otropiso">Como el aula queda en otro piso, no te puedo llevar</h1>
-    <div class="contenedor-botones">
-        <div class="boton-con-franja" id="boton-con-franja-SI">
-            <div id="boton-SI" class="boton">Si</div>
-            <div class="franja"></div>
+    <div class="contenedor-bloques">
+        <div class="boton-con-franja" id="boton-con-franja1">
+            <div id="boton-SI" class="boton">Si</div><div class="franja" id="franja"></div>
         </div>
-        <div class="boton-con-franja" id="boton-con-franja-NO">
-            <div id="boton-NO" class="boton">No</div>
-            <div class="franja"></div>
+        <div class="boton-con-franja" id="boton-con-franja2">
+            <div id="boton-NO" class="boton">No</div><div class="franja" id="franja"></div>
         </div>
     </div>
-    
-    <button id="boton-volver">volver al inicio (logo)</button>
-    
+
     <style> 
         body {
         margin: 0;
@@ -39,7 +36,7 @@
         background: url('brujula oscura.svg') no-repeat center center fixed;
         background-size: cover; /* Escala la imagen para cubrir el fondo */
         position: relative; /* Para permitir la superposición de elementos */
-        background-color: #2C3148;
+        
     }
     body::before {
                 content: '';
@@ -59,6 +56,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 <script src="socket.js"></script>
+<script src="respuesta-oscuro.js"></script>
 
 </body>
 </html>

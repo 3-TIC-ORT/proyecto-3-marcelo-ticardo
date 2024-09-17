@@ -79,7 +79,9 @@
     justify-content: center;
     border-radius: 30px;
 font-family: 'Arial', sans-serif;
-
+}
+.img-logo{
+    bottom: 10px;
 }
 .franja-negra, .franja-violeta {
 position: absolute;

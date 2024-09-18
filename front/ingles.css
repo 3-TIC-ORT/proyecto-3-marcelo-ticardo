@@ -59,3 +59,10 @@ font-size: 24px;
 font-weight: bold;
 padding-left: 100px;
 }
+.img-logo{
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+    left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 150px
+}

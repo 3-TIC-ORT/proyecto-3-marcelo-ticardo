@@ -13,5 +13,13 @@
 #boton-volver {
     border-radius: 96px;
     width: 465px;
+    
     height: 125px;
+}
+.img-logo{
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+    left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 150px
 }

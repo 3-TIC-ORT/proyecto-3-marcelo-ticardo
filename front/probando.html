@@ -13,6 +13,9 @@
 <body id="body">
     <p id="text">Este es un ejemplo de texto.</p>
     <p id="text1">otro ejemplo de texto.</p>
+    <div class="speech-bubble">
+        <p>Este es el recorrido que vamos a hacer:</p>
+    </div>      
 </body>
 
 <script>
@@ -64,6 +67,38 @@
 </script>
 
 <style>
+.speech-bubble {
+  position: relative;
+  background-color: #e0e0e0; /* Color de fondo de la caja */
+  
+  border-radius: 15px; /* Redondear los bordes */
+  padding: 10px 15px;
+  max-width: 250px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 auto; /* Centrar horizontalmente */
+  text-align: center; /* Alinea el texto dentro de la caja al centro */
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 70%; /* Posiciona el triángulo a la mitad de la altura de la caja */
+  left: -10px; /* Mueve el triángulo hacia fuera del lado izquierdo */
+  transform: translateY(-50%); /* Centra el triángulo verticalmente */
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent; /* Borde superior transparente */
+  border-bottom: 10px solid transparent; /* Borde inferior transparente */
+  border-right: 10px solid #e0e0e0; /* Triángulo hacia la izquierda del mismo color que el fondo */
+}
+
+.speech-bubble p {
+  margin: 0;
+}
+
+
+
 .themeMode-check-container {
     width: 50px;
     background-color: white;

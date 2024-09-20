@@ -8,7 +8,8 @@ fetchData("preguntarHorario", (data) => {
             document.getElementById("otropiso").style.display = "none";
             document.getElementById("guia").style.display = "none";
             document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
+            document.getElementById("boton-NO").style.display = "none";
+        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
             document.getElementById("otropiso").style.display = "none";
             document.getElementById("boton-volver").style.display = "none";
         } else {

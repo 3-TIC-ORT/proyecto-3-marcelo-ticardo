@@ -1,3 +1,4 @@
+// Código hecho con ChatGPT a modo de base para tener en cuenta cuando se haga el código verdadero
 // Definición de pines del puente H
 #define IN1 3
 #define IN2 4

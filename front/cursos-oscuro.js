@@ -1,23 +1,22 @@
 document.getElementById("boton-cursoA").addEventListener("click", function() {
     agrandarBoton("boton-con-franja1");
-    postData("curso", {curso: "A"}), window.location.href = "bloques.html"});
+    postData("curso", {curso: "A"}), window.location.href = "bloques-oscuro.html"});
 
 document.getElementById("boton-cursoB").addEventListener("click", function() {
     agrandarBoton("boton-con-franja2");
-    postData("curso", {curso: "B"}), window.location.href = "bloques.html"});
+    postData("curso", {curso: "B"}), window.location.href = "bloques-oscuro.html"});
 
 document.getElementById("boton-cursoC").addEventListener("click", function() {
     agrandarBoton("boton-con-franja3");
-    postData("curso", {curso: "C"}), window.location.href = "bloques.html"});
+    postData("curso", {curso: "C"}), window.location.href = "bloques-oscuro.html"});
 
 document.getElementById("boton-cursoD").addEventListener("click", function() {
     agrandarBoton("boton-con-franja4");
-    postData("curso", {curso: "D"}), window.location.href = "bloques.html"});
+    postData("curso", {curso: "D"}), window.location.href = "bloques-oscuro.html"});
 
 document.getElementById("boton-cursoE").addEventListener("click", function() {
     agrandarBoton("boton-con-franja5");
-    postData("curso", {curso: "E"}), window.location.href = "bloques.html"});
-
+    postData("curso", {curso: "E"}), window.location.href = "bloques-oscuro.html"});
 
     function agrandarBoton(id) {
         var botonConFranja = document.getElementById(id);

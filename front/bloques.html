@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--TODO:PREGUNTARLE A SHULIAN COMO ACOMODAR LA FRANJA VERDE EN LOS BOTONES -->
-<!--TODO:CORRER LA FRANJA DEL HEADER Y CAMBIARLE LA FORMA-->
-<!--FIXME:CAMBIAR DE LUGAR LOS BOTONES-->
+<!--TODO:CORRER LA FRANJA DEL HEADER, PROBAR CON EL BODY Y CAMBIARLE LA FORMA-->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,24 +13,41 @@
   <div class="header">
     <div class="franja-negra"></div>
     <div class="franja-violeta"></div>
+    <div class="cuadro-verde"></div>
     <div class="franja-verde">¿Que bloque queres saber?</div>
     
 </div>
 <body>
-  <div class="contenedor-bloques">
-    <button id="boton-bloque1">Bloque 1<div class="franja" id="franja"></button>
-    <button id="boton-bloque2">Bloque 2<div class="franja" id="franja"></div></button>
-    <button id="boton-bloque3">Bloque 3<div class="franja" id="franja"></div></button>
-    <button id="boton-bloque4">Bloque 4<div class="franja" id="franja"></div></button>
-    <button id="boton-bloque5">Bloque 5<div class="franja" id="franja"></div></button>
-    <button id="boton-bloque6">Bloque 6<div class="franja" id="franja"></div></button>
+  <div class="contenedor-imagen">
+    <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
   </div>
+  <div class="contenedor-bloques">
+    <div class="boton-con-franja" id="boton-con-franja1">
+      <div id="boton-bloque1" class="boton">1er Bloque</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja2">
+      <div id="boton-bloque2" class="boton">2do Bloque</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja3">
+      <div id="boton-bloque3" class="boton">3er Bloque</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja4">
+      <div id="boton-bloque4" class="boton">4to Bloque</div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja5">
+      <div id="boton-bloque5" class="boton">5to Bloque </div><div class="franja" id="franja"></div>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja6">
+      <div id="boton-bloque6" class="boton">6to Bloque</div><div class="franja" id="franja"></div>
+    </div>
+  </div>
+</div>
 <style> 
     body {
       margin: 0;
       padding: 0;
       height: 100vh;
-      background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
+      background: url('brujula.svg') no-repeat center center fixed;
       background-size: cover; /* Escala la imagen para cubrir el fondo */
       position: relative; /* Para permitir la superposición de elementos */
   }

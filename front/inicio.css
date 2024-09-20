@@ -1,8 +1,18 @@
-#boton-inicio {
+.boton-inicio {
+    justify-content: center;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
     border-radius: 50%;
-    width: 100%;
+    width: 1000px;
     height: 1000px;
-    background: url('Group.png') no-repeat center center fixed
+    background: url('Group.png') no-repeat center
 }
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+}
+
 
 

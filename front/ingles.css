@@ -6,16 +6,21 @@
 
 
 .header{
-    
-    background-color: #1F2232; /* Color de la franja verde */
+    padding-top: 25px;
     height: 60px;
-    width: 500px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-font-family: 'Arial', sans-serif;
-
+    font-family: 'Arial', sans-serif;
+}
+.cuadro-verde{
+    background-color: #0F7173;
+    height: 60px;
+    width: 80px;
+    z-index: 4;
+    margin-left: 1300px;
 }
 .franja-negra, .franja-violeta {
 position: absolute;
@@ -42,7 +47,7 @@ position: absolute;
 border-radius: 80px;
 margin: 10px;
 height: 60px;
-width: 1050px;
+width: 86%;
 background-color: #0F7173;
 left: 80px;
 z-index: 3;
@@ -53,4 +58,11 @@ align-items: center;
 font-size: 24px;
 font-weight: bold;
 padding-left: 100px;
+}
+.img-logo{
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+    left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 150px
 }

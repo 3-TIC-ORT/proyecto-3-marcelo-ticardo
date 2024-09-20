@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!--FIXME: ES POR LA FUNCIIÓN DE BACKEND!! SI FUNCIONA-->
-<html lang="es">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,115 +6,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div class="contenedor-botones">
-        <div class="boton-con-franja" id="boton-con-franja-SI">
-            <div id="boton-SI" class="boton">Si</div>
-            <div class="franja"></div>
-        </div>
-        <div class="boton-con-franja" id="boton-con-franja-NO">
-            <div id="boton-NO" class="boton">No</div>
-            <div class="franja"></div>
-        </div>
-    </div>
+<label for="themeMode-check">
+    <div class="themeMode-check-container" id="themeMode-check-container"></div>
+</label>
+<input type="checkbox" name="themeMode-check" id="themeMode-check" style="display: none;" onchange="thememode()">
+<body id="body">
+    <p id="text">Este es un ejemplo de texto.</p>
+    <p id="text1">otro ejemplo de texto.</p>
+    <div class="speech-bubble">
+        <p>Este es el recorrido que vamos a hacer:</p>
+    </div>      
+</body>
 
-<style>
-.contenedor-botones {
-    display: flex;
-    justify-content: center; /* Alinea horizontalmente */
-    align-items: center; /* Alinea verticalmente */
-    gap: 20px; /* Espacio entre los botones */
-    position: relative;
-    margin-top: 50px; /* Ajusta según tu diseño */
-}
-
-.boton-con-franja {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-}
-
-.boton {
-    position: relative;
-    border-radius: 50%;
-    background-color: #1F2232;
-    width: 200px;
-    height: 200px;
-    color: white;
-    border-width: 3px;
-    border-color: white;
-    border-style: solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; /* Asegura que los botones estén encima de las franjas */
-}
-
-.franja {
-    position: absolute;
-    z-index: 0;
-    background-color: #1F2232;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: white;
-    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
-}
-
-.boton.grande {
-    width: 210px; /* Aumenta el tamaño del botón */
-    height: 210px;
-}
-
-.franja.oculta {
-    opacity: 0; /* Hace que desaparezca */
-    transform: scale(0); /* Reduce su tamaño a 0 */
-}
-
-</style>
 <script>
-    fetchData("preguntarHorario", (data) => {
-    if (data === "Tenés Ingles en el Aula I") {
-        window.location.href = "ingles.html";
+    function thememode() {
+    let menu = document.getElementById("themeMode-check-container");
+    let body = document.getElementById("body");
+    let text = document.getElementById("text");
+    let text1 = document.getElementById("text1");
+    
+    if (menu.classList.contains("themeMode-check-container-on")) {
+        // Desactivar modo oscuro
+        menu.classList.remove("themeMode-check-container-on");
+        menu.classList.remove("circle-color-dark");
+        menu.classList.add("circle-color-light");
+
+        // Cambiar el color de fondo del cuerpo a blanco
+        body.style.backgroundColor = "white";
+
+        // Cambiar el color de texto a negro
+        text.style.color = "black";
+        text1.style.color = "black";
+
+        // Cambiar el color de fondo del botón a blanco
+        menu.style.backgroundColor = "white";
+
+        // Cambiar el color del borde del botón a negro
+        menu.style.borderColor = "black";
     } else {
-        document.getElementById("aula").innerHTML = data;
-        
-        if (data === "No tenés ninguna materia en este bloque") {
-            document.getElementById("otropiso").style.display = "none";
-            document.getElementById("guia").style.display = "none";
-            document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";        
-        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
-            document.getElementById("otropiso").style.display = "none";
-            document.getElementById("boton-volver").style.display = "none";
-        } else {
-            document.getElementById("guia").style.display = "none";
-            document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";
-        }
+        // Activar modo oscuro
+        menu.classList.add("themeMode-check-container-on");
+        menu.classList.remove("circle-color-light");
+        menu.classList.add("circle-color-dark");
+
+        // Cambiar el color de fondo del cuerpo a negro
+        body.style.backgroundColor = "black";
+
+        // Cambiar el color de texto a blanco
+        text.style.color = "black";
+        text1.style.color = "black";
+
+        // Cambiar el color de fondo del botón a negro
+        menu.style.backgroundColor = "black";
+
+        // Cambiar el color del borde del botón a blanco
+        menu.style.borderColor = "white";
     }
-});
-    // Selecciona los botones y las franjas
-document.getElementById("boton-SI").addEventListener("click", function() {
-    agrandarBoton("boton-con-franja-SI");
-});
-
-document.getElementById("boton-NO").addEventListener("click", function() {
-    agrandarBoton("boton-con-franja-NO");
-});
-
-function agrandarBoton(id) {
-    var botonConFranja = document.getElementById(id);
-    var boton = botonConFranja.querySelector(".boton");
-    var franja = botonConFranja.querySelector(".franja");
-
-    // Agrandar el botón y ocultar la franja
-    boton.classList.toggle("grande");
-    franja.classList.toggle("oculta");
 }
 
 </script>
-</body>
+
+<style>
+.speech-bubble {
+  position: relative;
+  background-color: #e0e0e0; /* Color de fondo de la caja */
+  
+  border-radius: 15px; /* Redondear los bordes */
+  padding: 10px 15px;
+  max-width: 250px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 auto; /* Centrar horizontalmente */
+  text-align: center; /* Alinea el texto dentro de la caja al centro */
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 70%; /* Posiciona el triángulo a la mitad de la altura de la caja */
+  left: -10px; /* Mueve el triángulo hacia fuera del lado izquierdo */
+  transform: translateY(-50%); /* Centra el triángulo verticalmente */
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent; /* Borde superior transparente */
+  border-bottom: 10px solid transparent; /* Borde inferior transparente */
+  border-right: 10px solid #e0e0e0; /* Triángulo hacia la izquierda del mismo color que el fondo */
+}
+
+.speech-bubble p {
+  margin: 0;
+}
+
+
+
+.themeMode-check-container {
+    width: 50px;
+    background-color: white;
+    border-radius: 50px;
+    border: 4px solid black;
+    display: flex;
+    height: 7px;
+    padding: 8px;
+    justify-content: flex-end;
+    position: relative
+}
+
+.themeMode-check-container-on {
+    justify-content: flex-end !important;
+}
+
+.themeMode-check-container::after {
+    width: 25px;
+    height: 25px;
+    background-color: black; /* Color del círculo por defecto */
+    content: " ";
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left:0px;
+    transform: translateY(-50%);
+}
+
+.themeMode-check-container-on::after {
+    left: unset;
+    right: 0px;
+}
+
+/* Clase adicional para cambiar el color del círculo */
+.circle-color-light::after {
+    background-color: black; /* Círculo cuando esta en modo claro */
+}
+
+.circle-color-dark::after {
+    background-color: white; /* Círculo cuando esta en modo oscuro */
+}
+
+#body {
+    color: black;
+}
+#text {
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #f1f1f1; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+}
+#text::after {
+    content: "";
+    position: absolute; /* Posicionamiento absoluto relativo a la caja */
+    bottom: 0; /* Alineado en la parte inferior */
+    left: 20px; /* Posicionamiento hacia la izquierda */
+    width: 0; /* Ancho cero */
+    height: 0; /* Alto cero */
+    border: 10px solid transparent; /* Bordes transparentes */
+    border-top-color: #f1f1f1; /* Color de la "punta" del globo de chat */
+    border-bottom: 0; /* Sin borde en la parte inferior */
+    margin-left: -10px; /* Ajuste horizontal de la "punta" */
+    margin-bottom: -10px; /* Ajuste vertical de la "punta" */
+}
+#text1 {
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #f1f1f1; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+}
+#text1::after {
+    content: "";
+    position: absolute; /* Posicionamiento absoluto relativo a la caja */
+    bottom: 0; /* Alineado en la parte inferior */
+    left: 20px; /* Posicionamiento hacia la izquierda */
+    width: 0; /* Ancho cero */
+    height: 0; /* Alto cero */
+    border: 10px solid transparent; /* Bordes transparentes */
+    border-top-color: #f1f1f1; /* Color de la "punta" del globo de chat */
+    border-bottom: 0; /* Sin borde en la parte inferior */
+    margin-left: -10px; /* Ajuste horizontal de la "punta" */
+    margin-bottom: -10px; /* Ajuste vertical de la "punta" */
+}
+
+
+</style>
 </html>

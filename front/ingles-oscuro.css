@@ -1,28 +1,3 @@
-body{
-    
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
-    background-size: cover; /* Escala la imagen para cubrir el fondo */
-    position: relative;
-    background-color: #2C3148;
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('brujula-removebg-preview 1.png') no-repeat center center;
-    background-size: cover;
-    filter: brightness(0) invert(0);
-    z-index: -1; /* Asegura que los otros elementos se superpongan */
-    pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
-}
-
 .boton-nivel {
     background-color: #1F2232;
     color: #fff;
@@ -36,16 +11,20 @@ body::before {
 
 
 .header{
-    
-    background-color: #2C3148; /* Color de la franja verde */
     height: 60px;
-    width: 500px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-font-family: 'Arial', sans-serif;
-
+    font-family: 'Arial', sans-serif;
+}
+.cuadro-verde{
+    background-color: #0F7173;
+    height: 60px;
+    width: 80px;
+    z-index: 4;
+    margin-left: 1300px;
 }
 .franja-negra, .franja-violeta {
 position: absolute;
@@ -72,7 +51,7 @@ position: absolute;
 border-radius: 80px;
 margin: 10px;
 height: 60px;
-width: 1050px;
+width: 86%;
 background-color: #0F7173;
 left: 80px;
 z-index: 3;
@@ -83,4 +62,11 @@ align-items: center;
 font-size: 24px;
 font-weight: bold;
 padding-left: 100px;
+}
+.img-logo{
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+    left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 150px
 }

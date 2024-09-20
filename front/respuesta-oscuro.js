@@ -21,16 +21,19 @@ fetchData("preguntarHorario", (data) => {
 });
 
 document.getElementById("boton-SI").addEventListener("click", function() {
-    console.log("Botón SI clickeado");
-    agrandarBoton("boton-con-franja-SI");
+    agrandarBoton("boton-con-franja1");
     window.location.href = "mapa.html";
 });
 
 document.getElementById("boton-NO").addEventListener("click", function() {
-    console.log("Botón NO clickeado");
-    agrandarBoton("boton-con-franja-NO");
+    agrandarBoton("boton-con-franja2");
     window.location.href = "proyecto.html";
 });
+
+document.getElementById("boton-volver").addEventListener("click", function() {
+    window.location.href = "proyecto.html";
+});
+
 function agrandarBoton(id) {
     var botonConFranja = document.getElementById(id);
     var boton = botonConFranja.querySelector(".boton");

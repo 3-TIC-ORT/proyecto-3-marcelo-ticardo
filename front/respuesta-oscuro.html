@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="respuesta.css">
+    <link rel="stylesheet" href="respuesta-oscuro.css">
     <title>Numero de aula</title>
 </head>
 <div class="header">
@@ -15,7 +15,6 @@
     <div class="franja-verde">
         <h1><span id="aula"></span></h1>
     </div>
-    
 </div>
 <body>
     <h1 id="guia">¿Querés guía?</h1>
@@ -28,17 +27,16 @@
             <div id="boton-NO" class="boton">No</div><div class="franja" id="franja"></div>
         </div>
     </div>
-    <div class="contenedor-imagen">
-        <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
-      </div>
-<style> 
+
+    <style> 
         body {
         margin: 0;
         padding: 0;
         height: 100vh;
-        background: url('brujula.svg') no-repeat center center fixed;
-          background-size: cover; /* Escala la imagen para cubrir el fondo */
-          position: relative; /* Para permitir la superposición de elementos */
+        background: url('brujula oscura.svg') no-repeat center center fixed;
+        background-size: cover; /* Escala la imagen para cubrir el fondo */
+        position: relative; /* Para permitir la superposición de elementos */
+        
     }
     body::before {
                 content: '';
@@ -55,8 +53,10 @@
             }
     </style>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 <script src="socket.js"></script>
-<script src="respuesta.js"></script>
+<script src="respuesta-oscuro.js"></script>
+
 </body>
 </html>

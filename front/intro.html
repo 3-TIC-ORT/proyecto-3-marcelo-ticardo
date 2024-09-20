@@ -4,20 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="intro.css">
     <title>Document</title>
 </head>
 <body>
-<h1>Hola soy Marcelo Ticardo. Una vez que respondas esta serie de preguntas, voy a poder ser tu guía. Empecemos...</h1>
-<style> 
-.arrow-button {
-    width: 50px;
-    height: 50px;
-    cursor: pointer
-}
+<label for = "themeMode-check">
+    <div class = "themeMode-check-container"; id="themeMode-check-container"></div>
+</label>
+<input type="checkbox" name="themeMode-check" id="themeMode-check" style="display: none;" onchange = "thememode()">
+<body id="body">
+    
+    <h1 id="text">Hola, soy Marcelo Ticardo</h1>
+    <div class="contenedor">
+        <h1 id="text1">Una vez qué respondas esta serie de preguntas, voy a poder ser tu guía.</h1>
+    </div>
+<div class="boton-con-franja" id="boton-con-franja-SI">
+    <div id="boton" class="boton">Comenzar</div>
+    <div class="franja" id="franjita"></div>
+</div>
+<div class="contenedor-imagen">
+    <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
+  </div>
+</body>
+    
 
+<style> 
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('brujula.svg') no-repeat center center fixed;
+    background-size: cover; /* Escala la imagen para cubrir el fondo */
+    position: relative; /* Para permitir la superposición de elementos */
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('brujula-removebg-preview 1.png') no-repeat center center;
+    background-size: cover;
+    filter: brightness(0) invert(0);
+    z-index: -1; /* Asegura que los otros elementos se superpongan */
+    pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
+}
 </style>
 
-<img id="arrowButton" src="flecha.png" alt="Flecha" class="arrow-button">
+
 
 <script src="intro.js"></script>
 </body>

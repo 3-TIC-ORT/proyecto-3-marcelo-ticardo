@@ -134,6 +134,7 @@ padding-left: 100px;
     margin-top: 50px;
 
 }
+
 .img-logo{
     position: absolute;
     bottom: 20px; /* Ajusta la distancia desde el borde inferior */
@@ -141,3 +142,4 @@ padding-left: 100px;
     width: 150px; /* Ajusta el tamaño de la imagen */
     height: 150px
 }
+

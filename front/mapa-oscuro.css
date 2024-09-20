@@ -2,46 +2,77 @@
     color: white;
 }
 
-body{
-    background-color: #1F2232;
-}
-
-
-/* Primer elemento superpuesto */
-.elemento1 {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    width: 275px;
-    height: 275px;
-    background-color: #963484;
-    border-radius: 50%;
-    z-index: 1;
-    margin: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Segundo elemento superpuesto */
-.elemento2 {
+.img-logo {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 175px;
-    height: 175px;
-    background-color: #1F2232;
-    border-radius: 50%;
-    z-index: 2;
-    color: white;
-    font-family: 'Arial', sans-serif;
+    top: 25px; /* Ajusta esta distancia para mover la imagen más arriba o abajo */
+    left: 5%; /* Ajusta la distancia desde el borde izquierdo según necesites */
+    width: 150px; /* Tamaño de la imagen */
+    height: 150px;
+}
+
+.speech-bubble {
+    position: absolute;
+    top: 25px; /* Ajusta esta distancia para mover la imagen más arriba o abajo */
+    left: 25%;
+    background-color: #e0e0e0; /* Color de fondo de la caja */
+    border-radius: 15px; /* Redondear los bordes */
+    padding: 3px 8px;
+    max-width: 400px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto; /* Centrar horizontalmente */
+    text-align: center; /* Alinea el texto dentro de la caja al centro */
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: 70%; /* Posiciona el triángulo a la mitad de la altura de la caja */
+    left: -10px; /* Mueve el triángulo hacia fuera del lado izquierdo */
+    transform: translateY(-50%); /* Centra el triángulo verticalmente */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; /* Borde superior transparente */
+    border-bottom: 10px solid transparent; /* Borde inferior transparente */
+    border-right: 10px solid #e0e0e0; /* Triángulo hacia la izquierda del mismo color que el fondo */
+    }
+
+.speech-bubble p {
+    margin: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('brujula oscura.svg') no-repeat center center fixed;
+    background-size: cover; /* Escala la imagen para cubrir el fondo */
+    position: relative; /* Para permitir la superposición de elementos */
+    }
+body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('brujula-removebg-preview 1.png') no-repeat center center;
+        background-size: cover;
+        filter: brightness(0) invert(0);
+        z-index: -1; /* Asegura que los otros elementos se superpongan */
+        pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
+    }
+
+section{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px;
+    width: 100vw;
+    height: 100vh;
+}
+.contenedor-mapa{
+    position: relative;
+    top: 13%;
+    background-color: #d9d9d9;
+    width: 93%;
+    height: 68%;
 }

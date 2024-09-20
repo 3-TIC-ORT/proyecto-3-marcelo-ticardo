@@ -1,26 +1,26 @@
 document.getElementById("boton-bloque1").addEventListener("click", function() {
     agrandarBoton("boton-con-franja1");
-    postData("bloque", {bloque: "1"}), window.location.href = "respuesta.html"});
+    postData("bloque", 1), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});
 
 document.getElementById("boton-bloque2").addEventListener("click", function() {
     agrandarBoton("boton-con-franja2");
-    postData("bloque", {bloque: "2"}), window.location.href = "respuesta.html"});
+    postData("bloque", 2), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});
 
 document.getElementById("boton-bloque3").addEventListener("click", function() {
     agrandarBoton("boton-con-franja3");
-    postData("bloque", {bloque: "3"}), window.location.href = "respuesta.html"});
+    postData("bloque", 3), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});
 
 document.getElementById("boton-bloque4").addEventListener("click", function() {
     agrandarBoton("boton-con-franja4");
-    postData("bloque", {bloque: "4"}), window.location.href = "respuesta.html"});
+    postData("bloque", 4), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});
 
 document.getElementById("boton-bloque5").addEventListener("click", function() {
     agrandarBoton("boton-con-franja5");
-    postData("bloque", {bloque: "5"}), window.location.href = "respuesta.html"});
+    postData("bloque", 5), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});
 
 document.getElementById("boton-bloque6").addEventListener("click", function() {
     agrandarBoton("boton-con-franja6");
-    postData("bloque", {bloque: "6"}), window.location.href = "respuesta.html"});
+    postData("bloque", 6), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});
 
     function agrandarBoton(id) {
         var botonConFranja = document.getElementById(id);

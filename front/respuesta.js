@@ -1,23 +1,21 @@
 fetchData("preguntarHorario", (data) => {
-    if (data === "Tenés Ingles en el Aula I") {
-        window.location.href = "ingles.html";
-    } else {
-        document.getElementById("aula").innerHTML = data;
-        
-        if (data === "No tenés ninguna materia en este bloque") {
-            document.getElementById("otropiso").style.display = "none";
-            document.getElementById("guia").style.display = "none";
-            document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";
-        } else if (data.includes("L2") || data.endsWith("L1") || data.endsWith("L3") || data.endsWith("L4") || data.endsWith("L5")) {
-            document.getElementById("otropiso").style.display = "none";
-            document.getElementById("boton-volver").style.display = "none";
-        } else {
-            document.getElementById("guia").style.display = "none";
-            document.getElementById("boton-SI").style.display = "none";
-            document.getElementById("boton-NO").style.display = "none";
-        }
-    }
+    postData("objetivo", data.aula)
+if (data.aula === 'E'){
+    document.getElementById("aula").innerHTML = 'Tenés Ed. Física / Natacion';
+    document.getElementById("boton-volver").style.display = "";
+} else if (data.aula.includes("L2") || data.aula.endsWith("L1") || data.aula.endsWith("L3") || data.aula.endsWith("L4") || data.aula.endsWith("L5")) {
+    document.getElementById("aula").innerHTML = `Tenés ${data.materia} en ${data.aula}`;
+    document.getElementById("guia").style.display = "";
+    document.getElementById("contenedor-bloques").style.display = "";
+    document.getElementById("boton-volver").style.display = "none";
+    document.getElementById("otropiso").style.display = "none";    
+} else {
+    document.getElementById("aula").innerHTML = `Tenés ${data.materia} en ${data.aula}`;
+    document.getElementById("guia").style.display = "none";
+    document.getElementById("contenedor-bloques").style.display = "none";
+    document.getElementById("boton-volver").style.display = "";
+    document.getElementById("otropiso").style.display = "";    
+}
 });
 
 document.getElementById("boton-SI").addEventListener("click", function() {

@@ -10,37 +10,43 @@ let dia = diasSemana[date]
 let curso
 let bloque
 let cursosIngles
+let objetivo
 
 onEvent("bloque", (data) => {
-  bloque = Number(data.bloque)
+  bloque = data
 });
 
 onEvent("curso", (data) => {
-  curso = data.curso
+  curso = data
+});
+
+onEvent("objetivo", (data) => {
+  objetivo = data
 });
 
 onEvent("preguntarHorario", () => {
   for (const row of horario) {
     if (row.dia === dia && row.curso === curso && row.bloque === bloque) {
-      if (row.aula === 'E') {
-        return 'Tenés Ed. Física';
-      } else if (row.aula === 0) {
-        return 'No tenés ninguna materia en este bloque';
-      } else {
-        return `Tenés ${row.materia} en el Aula ${row.aula}`;
-      }
+        return {
+          materia: row.materia,
+          aula: row.aula
+    }
     }
   }
 });
 
 onEvent("preguntarIngles", () => {
-  cursosIngles = ""
+  cursosIngles = [];
   for (const row of ingles) { 
     if (row.dia === dia && row.bloque === bloque) {
-      cursosIngles = cursosIngles + `${row.nivel},${row.aula};`;
+      cursosIngles.push({ nivel: row.nivel, aula: row.aula });
     }
   }
-  return cursosIngles
+  return cursosIngles;
 });
+
+onEvent("aulaIngles", () =>{
+  return objetivo
+})
 
 startServer()

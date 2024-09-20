@@ -17,8 +17,8 @@ fetchData("preguntarIngles", (data) => {
 
     boton.addEventListener('click', () => {
       const parametro = aulas[index];
-      postData("objetivo", aula[index]);
-      window.location.href = 'respuestaingles.html'
+      postData("objetivo", aulas[index]);
+      window.location.href = 'respuestaIngles.html'
     });
 
     contenedor.appendChild(boton);

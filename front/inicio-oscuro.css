@@ -1,5 +1,6 @@
 body{
     background-color: #1F2232;
+    font-family: 'Arial', sans-serif;
 }
 #boton-inicio {
     background: url('Group.png') no-repeat center center fixed;

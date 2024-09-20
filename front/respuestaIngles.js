@@ -1,10 +1,5 @@
-function obtenerParametro(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-let aula
-document.addEventListener('DOMContentLoaded', () => {
-    aula = obtenerParametro('aula');
+fetchData("aulaIngles", (data) => {
+    aula = data
     document.getElementById('resultado').textContent = `Tenés Inglés en el Aula ${aula}`;
     if (aula.includes("L2")){
         document.getElementById("otropiso").style.display = "none";

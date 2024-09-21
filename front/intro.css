@@ -52,7 +52,10 @@
     width: 465px;
     height: 125px;
 }
-
+label{
+    display: flex;
+    justify-content: flex-end;
+}
 .themeMode-check-container {
     width: 50px;
     background-color: white;
@@ -61,12 +64,14 @@
     display: flex;
     height: 7px;
     padding: 8px;
-    justify-content: flex-end;
-    position: relative
+    position: relative;
+    top: 20px;
+    right: 10px
 }
 
 .themeMode-check-container-on {
     justify-content: flex-end !important;
+    
 }
 
 .themeMode-check-container::after {
@@ -105,14 +110,37 @@
     align-items: center;
 }
 #text {
+    top: 10px;
     position: relative; /* Posicionamiento relativo para el pseudo-elemento */
     max-width: 300px; /* Ancho máximo de la caja */
     padding: 15px; /* Espacio interior de la caja */
     background-color: #DEDEDE; /* Color de fondo */
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
+    left: 4%;
 }
 #text::after {
+    content: '';
+    position: absolute;
+    top: 78%; /* Posiciona el triángulo a la mitad de la altura de la caja */
+    left: -20px; /* Mueve el triángulo hacia fuera del lado izquierdo */
+    transform: translateY(-66%); /* Centra el triángulo verticalmente */
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent; /* Borde superior transparente */
+    border-bottom: 20px solid transparent; /* Borde inferior transparente */
+    border-right: 20px solid #e0e0e0;
+}
+#text1 {
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #DEDEDE; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+    right: 5%;
+}
+#text1::after {
     content: '';
     position: absolute;
     top: 78%; /* Posiciona el triángulo a la mitad de la altura de la caja */
@@ -123,26 +151,6 @@
     border-top: 20px solid transparent; /* Borde superior transparente */
     border-bottom: 20px solid transparent; /* Borde inferior transparente */
     border-left: 20px solid #e0e0e0;
-}
-#text1 {
-    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
-    max-width: 300px; /* Ancho máximo de la caja */
-    padding: 15px; /* Espacio interior de la caja */
-    background-color: #DEDEDE; /* Color de fondo */
-    border-radius: 15px; /* Bordes redondeados */
-    margin: 20px;
-}
-#text1::after {
-    content: '';
-    position: absolute;
-    top: 70%; /* Posiciona el triángulo a la mitad de la altura de la caja */
-    left: -20px; /* Mueve el triángulo hacia fuera del lado izquierdo */
-    transform: translateY(-66%); /* Centra el triángulo verticalmente */
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent; /* Borde superior transparente */
-    border-bottom: 20px solid transparent; /* Borde inferior transparente */
-    border-right: 20px solid #e0e0e0;
 }
 .img-logo{
     position: absolute;

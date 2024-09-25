@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="theme-stylesheet" rel="stylesheet" href="light-mode.css">
+    <title>Another Page</title>
+</head>
+<body>
+    <h1>Welcome to Another Page</h1>
+    <button id="change">Go to previous Page</button>
+
+
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const themeStylesheet = document.getElementById('theme-stylesheet');
+
+        if (savedTheme) {
+            themeStylesheet.setAttribute('href', savedTheme);
+        }
+
+        document.getElementById("change").addEventListener("click", () => location.href = "page 1.html")
+
+    </script>
+</body>
+</html>

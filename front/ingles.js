@@ -1,136 +1,52 @@
 fetchData("preguntarIngles", (data) => {
   const niveles = [];
   const aulas = [];
+
+  // Rellenar los arrays niveles y aulas
   data.forEach(grupo => {
-    if (grupo) {
-      niveles.push(grupo.nivel.trim());
-      aulas.push(grupo.aula.trim());
-    }
+      if (grupo) {
+          niveles.push(grupo.nivel.trim());
+          aulas.push(grupo.aula.trim());
+      }
   });
 
-const contenedor = document.getElementById('botones');
+  // Obtener el contenedor donde se añadirán los divs
+  const contenedorBotones = document.getElementById('contenedor-botones');
 
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
+  // Recorrer los niveles y crear los divs dinámicamente
+  niveles.forEach((nivel, index) => {
+      // Crear un nuevo div
+      const divElement = document.createElement('div');
+      divElement.id = `div-${index}`;
+      divElement.className = 'boton-con-franja'; // Añadir una clase para el contenedor
+      divElement.innerHTML = `
+          <div id="boton-nivel-${index}" class="boton">${nivel}</div>
+          <div class="franja"></div>
+      `;
 
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
+      // Añadir un listener para manejar el clic en cada div
+      divElement.addEventListener('click', () => {
+          agrandarBoton(divElement.id); // Llamar a la función de agrandar
+          postData("objetivo", aulas[index]); // Enviar el aula correspondiente
+          window.location.href = 'respuestaIngles.html'; // Redirigir a la siguiente página
+      });
+
+      // Añadir el div al contenedor de botones
+      contenedorBotones.appendChild(divElement);
   });
-
-  contenedor.appendChild(boton);
-});
-});
-const contenedor = document.getElementById('botones2');
-
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
-
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
-  contenedor.appendChild(boton);
 });
 
-const contenedor = document.getElementById('botones3');
+// Función para agrandar el botón y ocultar la franja
+function agrandarBoton(id) {
+  var botonConFranja = document.getElementById(id);
+  var boton = botonConFranja.querySelector(".boton");
+  var franja = botonConFranja.querySelector(".franja");
 
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
+  // Agrandar el botón
+  boton.classList.add("grande");
 
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
+  // Hacer desaparecer la franja
+  franja.classList.add("oculta");
 
-  contenedor.appendChild(boton);
-});
-
-const contenedor = document.getElementById('botones4');
-
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
-
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
-
-  contenedor.appendChild(boton);
-});
-
-const contenedor = document.getElementById('botones5');
-
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
-
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
-
-  contenedor.appendChild(boton);
-});
-
-const contenedor = document.getElementById('botones6');
-
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
-
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
-
-  contenedor.appendChild(boton);
-});
-
-const contenedor = document.getElementById('botones7');
-
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
-
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
-
-  contenedor.appendChild(boton);
-});
-
-const contenedor = document.getElementById('botones8');
-
-niveles.forEach((nivel, index) => {
-  const boton = document.createElement('button');
-  boton.innerText = nivel;
-  boton.className = "boton-nivel";
-
-  boton.addEventListener('click', () => {
-    const parametro = aulas[index];
-    postData("objetivo", aulas[index]);
-    window.location.href = 'respuestaingles.html'
-  });
-
-  contenedor.appendChild(boton);
-});
+  console.log("Botón agrandado y franja oculta"); // Para depuración
+}

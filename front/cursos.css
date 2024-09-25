@@ -20,7 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Asegura que los botones estén encima de las franjas */
+    z-index: 1;
 }
 
 .franja {
@@ -71,16 +71,14 @@
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    font-family: 'Arial', sans-serif;
-
 }
 
 .cuadro-verde{
     background-color: #0F7173;
     height: 60px;
-    width: 80px;
+    width: 165px;
     z-index: 4;
-    margin-left: 1300px;
+    margin-left: 1200px;
 }
 .franja-negra, .franja-violeta {
     position: absolute;
@@ -98,14 +96,13 @@
 
 .franja-violeta {
     background-color: #963484;
-    left: 40px;
+    left: 35px;
     z-index: 2;
 }
 
 .franja-verde {
     position: absolute;
     border-radius: 80px;
-    margin: 10px;
     height: 60px;
     width: 86%;
     background-color: #0F7173;
@@ -115,9 +112,10 @@
     justify-content: center;
     display: flex;
     align-items: center; 
-    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
     font-weight: bold;
-    padding-left: 100px;
+    padding-left: 35px;
 }
 .img-logo{
     position: absolute;

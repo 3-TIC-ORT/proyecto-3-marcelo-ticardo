@@ -5,8 +5,8 @@
 #define IN2 4
 #define IN3 2
 #define IN4 5
-#define ENA 11
-#define ENB 12
+#define ENA 10
+#define ENB 11
 
 int speedMotor = 255;
 bool statusLeft;

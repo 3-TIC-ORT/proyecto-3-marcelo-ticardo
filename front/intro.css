@@ -52,53 +52,7 @@
     width: 465px;
     height: 125px;
 }
-label{
-    display: flex;
-    justify-content: flex-end;
-}
-.themeMode-check-container {
-    width: 50px;
-    background-color: white;
-    border-radius: 50px;
-    border: 4px solid black;
-    display: flex;
-    height: 7px;
-    padding: 8px;
-    position: relative;
-    top: 20px;
-    right: 10px
-}
 
-.themeMode-check-container-on {
-    justify-content: flex-end !important;
-    
-}
-
-.themeMode-check-container::after {
-    width: 25px;
-    height: 25px;
-    background-color: black; /* Color del círculo por defecto */
-    content: " ";
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left:0px;
-    transform: translateY(-50%);
-}
-
-.themeMode-check-container-on::after {
-    left: unset;
-    right: 0px;
-}
-
-/* Clase para cambiar el color del círculo */
-.circle-color-light::after {
-    background-color: black;
-}
-
-.circle-color-dark::after {
-    background-color: white;
-}
 
 #body {
     color: black;

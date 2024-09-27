@@ -1,6 +1,4 @@
-
-
-let isDarkMode = false;
+localStorage.setItem('theme', '');
 
 function thememode() {
     let menu = document.getElementById("themeMode-check-container");
@@ -23,7 +21,7 @@ function thememode() {
         menu.style.borderColor = "black";
 
         // Estado del modo claro
-        isDarkMode = false;
+        localStorage.setItem('theme', '');
     } else {
         // Activar modo oscuro
         menu.classList.add("themeMode-check-container-on");
@@ -39,16 +37,10 @@ function thememode() {
         menu.style.borderColor = "white";
 
         // Estado del modo oscuro
-        isDarkMode = true;
+        localStorage.setItem('theme', '-oscuro');
     }
 }
 
 document.getElementById("boton-inicio").addEventListener("click", function() {
-    if (isDarkMode) {
-        // Si está en modo oscuro, redirigir al wireframe oscuro
-        window.location.href = "intro-oscuro.html";
-    } else {
-        // Si está en modo claro, redirigir al wireframe claro
         window.location.href = "intro.html";
-    }
 });

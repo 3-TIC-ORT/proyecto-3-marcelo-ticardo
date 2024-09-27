@@ -1,3 +1,5 @@
+document.getElementById('theme-stylesheet').setAttribute('href', `bloques${localStorage.getItem('theme')}.css`);
+
 document.getElementById("boton-bloque1").addEventListener("click", function() {
     agrandarBoton("boton-con-franja1");
     postData("bloque", 1), fetchData("preguntarHorario", (data) => {if (data.aula === "I") {window.location.href = "ingles.html";} else if (data.aula === 0) {window.location.href = "nada.html"} else {window.location.href = "respuesta.html"}});});

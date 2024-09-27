@@ -22,3 +22,11 @@
     width: 150px; /* Ajusta el tamaño de la imagen */
     height: 150px
 }
+
+body{
+    background-image: url('brujula.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 85%;
+}

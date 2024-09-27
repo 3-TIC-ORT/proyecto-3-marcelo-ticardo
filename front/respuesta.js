@@ -1,3 +1,5 @@
+document.getElementById('theme-stylesheet').setAttribute('href', `respuesta${localStorage.getItem('theme')}.css`);
+
 fetchData("preguntarHorario", (data) => {
     postData("objetivo", data.aula)
 if (data.aula === 'E'){
@@ -28,9 +30,6 @@ document.getElementById("boton-NO").addEventListener("click", function() {
     window.location.href = "proyecto.html";
 });
 
-document.getElementById("boton-volver").addEventListener("click", function() {
-    window.location.href = "proyecto.html";
-});
 
 function agrandarBoton(id) {
     var botonConFranja = document.getElementById(id);

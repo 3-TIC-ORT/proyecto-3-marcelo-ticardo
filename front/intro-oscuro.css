@@ -1,0 +1,116 @@
+.boton-con-franja {
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.boton {
+    position: relative;
+    top: 5vh;
+    border-radius: 100px;
+    background-color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 25px;
+    width: 400px;
+    height: 100px;
+    color: black;
+    border-width: 3px;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que los botones estén encima de las franjas */
+}
+
+.franja {
+    position: absolute;
+    z-index: 0;
+    background-color: #0F7173;
+    border-radius: 100px;
+    width: 400px;
+    height: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    top: 8vh; /* Ajusta esta propiedad para subir o bajar la franja */
+
+}
+
+.boton.grande {
+    height: 105px;
+}
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+
+#boton-volver {
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+}
+
+
+#body {
+    color: black;
+    background-color: #2C3148;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#text {
+    top: 10px;
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #DEDEDE; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+    left: 4%;
+}
+#text::after {
+    content: '';
+    position: absolute;
+    top: 78%; /* Posiciona el triángulo a la mitad de la altura de la caja */
+    left: -20px; /* Mueve el triángulo hacia fuera del lado izquierdo */
+    transform: translateY(-66%); /* Centra el triángulo verticalmente */
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent; /* Borde superior transparente */
+    border-bottom: 20px solid transparent; /* Borde inferior transparente */
+    border-right: 20px solid #e0e0e0;
+}
+#text1 {
+    position: relative; /* Posicionamiento relativo para el pseudo-elemento */
+    max-width: 300px; /* Ancho máximo de la caja */
+    padding: 15px; /* Espacio interior de la caja */
+    background-color: #DEDEDE; /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin: 20px;
+    right: 5%;
+}
+#text1::after {
+    content: '';
+    position: absolute;
+    top: 78%; /* Posiciona el triángulo a la mitad de la altura de la caja */
+    right: -20px; /* Mueve el triángulo hacia fuera del lado derecho */
+    transform: translateY(-66%); /* Centra el triángulo verticalmente */
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent; /* Borde superior transparente */
+    border-bottom: 20px solid transparent; /* Borde inferior transparente */
+    border-left: 20px solid #e0e0e0;
+}
+.img-logo{
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+    left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 150px
+}

@@ -1,5 +1,10 @@
 body{
-    color: white;
+    background-color: #2C3148;
+    background-image: url('brujula-oscura.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 85%;
 }
 
 .boton-con-franja {
@@ -25,6 +30,9 @@ body{
     justify-content: center;
     align-items: center;
     z-index: 1; /* Asegura que los botones estén encima de las franjas */
+}
+.boton.grande {
+    height: 260px;
 }
 
 .franja {

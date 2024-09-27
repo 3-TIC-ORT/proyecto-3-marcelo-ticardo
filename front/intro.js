@@ -1,5 +1,5 @@
 
-
+document.getElementById('theme-stylesheet').setAttribute('href', `intro${localStorage.getItem('theme')}.css`);
 // Escuchar el clic en el botón "Comenzar"
 document.getElementById("boton").addEventListener("click", function() {
     window.location.href = "cursos.html"

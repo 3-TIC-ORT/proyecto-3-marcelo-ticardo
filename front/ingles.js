@@ -1,4 +1,19 @@
-document.getElementById('theme-stylesheet').setAttribute('href', `bloques${localStorage.getItem('theme')}.css`);
+document.getElementById('theme-stylesheet').setAttribute('href', `ingles${localStorage.getItem('theme')}.css`);
+
+function agrandarBoton(id) {
+    var botonConFranja = document.getElementById(id);
+    var boton = botonConFranja.querySelector(".boton");
+    var franja = botonConFranja.querySelector(".franja");
+  
+    // Agrandar el botón
+    boton.classList.add("grande");
+  
+    // Hacer desaparecer la franja
+    franja.classList.add("oculta");
+  
+    console.log("Botón agrandado y franja oculta"); // Para depuración
+  }
+
 
 fetchData("preguntarIngles", (data) => {
   const niveles = [];
@@ -23,7 +38,7 @@ fetchData("preguntarIngles", (data) => {
       divElement.className = 'boton-con-franja'; // Añadir una clase para el contenedor
       divElement.innerHTML = `
           <div id="boton-nivel-${index}" class="boton">${nivel}</div>
-          <div class="franja"></div>
+          <div id="franja" class="franja"></div>
       `;
 
       // Añadir un listener para manejar el clic en cada div
@@ -39,16 +54,4 @@ fetchData("preguntarIngles", (data) => {
 });
 
 // Función para agrandar el botón y ocultar la franja
-function agrandarBoton(id) {
-  var botonConFranja = document.getElementById(id);
-  var boton = botonConFranja.querySelector(".boton");
-  var franja = botonConFranja.querySelector(".franja");
 
-  // Agrandar el botón
-  boton.classList.add("grande");
-
-  // Hacer desaparecer la franja
-  franja.classList.add("oculta");
-
-  console.log("Botón agrandado y franja oculta"); // Para depuración
-}

@@ -32,3 +32,57 @@ body{
     background-attachment: fixed;
     background-size: 85%;
 }
+
+.boton-con-franja {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.boton {
+    color: white;
+    border-color:white;
+    border-width: 3px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+    background-color: #1F2232;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que los botones estén encima de las franjas */
+}
+
+.franja {
+    position: absolute;
+    z-index: 0;
+    background-color: #1F2232;
+    border-radius: 96px;
+    width: 400px;
+    height: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
+
+}
+
+.boton.grande {
+    height: 110px;
+}
+
+.franja.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+
+#boton-volver {
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+}

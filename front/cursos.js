@@ -15,7 +15,8 @@ document.getElementById("boton-cursoD").addEventListener("click", function() {
 document.getElementById("boton-cursoE").addEventListener("click", function() {
     agrandarBoton("boton-con-franja5");
     postData("curso", "E"), window.location.href = "bloques.html"});
-    function agrandarBoton(id) {
+    
+function agrandarBoton(id) {
         var botonConFranja = document.getElementById(id);
         var boton = botonConFranja.querySelector(".boton");
         var franja = botonConFranja.querySelector(".franja");

@@ -1,4 +1,4 @@
-
+//Al sensar un objeto dice por puesto serie la dsitancia a la que  esta.
 #define TRIG_PIN 6    
 #define ECHO_PIN 9    
 #define INTERVAL 100  

@@ -1,3 +1,6 @@
+document.getElementById('theme-stylesheet').setAttribute('href', `respuestaingles${localStorage.getItem('theme')}.css`);
+
+
 fetchData("aulaIngles", (data) => {
     aula = data
     document.getElementById('resultado').textContent = `Tenés Inglés en el Aula ${aula}`;

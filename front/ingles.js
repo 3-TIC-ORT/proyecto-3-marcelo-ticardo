@@ -1,3 +1,5 @@
+document.getElementById('theme-stylesheet').setAttribute('href', `bloques${localStorage.getItem('theme')}.css`);
+
 fetchData("preguntarIngles", (data) => {
   const niveles = [];
   const aulas = [];

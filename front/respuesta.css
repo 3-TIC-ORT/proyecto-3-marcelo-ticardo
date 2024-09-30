@@ -15,6 +15,7 @@ body{
     gap: 40px;
 }
 
+
 .boton {
     color: black;
     border-color:black;
@@ -33,6 +34,9 @@ body{
 .boton.grande {
     height: 260px;
 }
+.boton-volver.grande-volver{
+    height: 130px;
+}
 
 .franja {
     position: absolute;
@@ -45,18 +49,42 @@ body{
     border-style: solid;
     border-color: black;
     top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
-
+}
+.franja1 {
+    position: absolute;
+    z-index: 0;
+    background-color: #0F7173;
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
 }
 
 .franja.oculta {
     opacity: 0; /* Hace que desaparezca */
     transform: scale(0); /* Reduce su tamaño a 0 */
 }
-
-#boton-volver {
+.franja1.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+.boton-volver {
     border-radius: 96px;
+    background-color: white;
     width: 465px;
     height: 125px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: black;
+    border-color:black;
+    border-width: 3px;
+    border-style: solid;
 }
 
 .contenedor-bloques{

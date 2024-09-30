@@ -5,7 +5,26 @@ body{
     background-attachment: fixed;
     background-size: 85%;
 }
-
+.contenedor-otropiso{
+    position: relative;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.otropiso{
+    background-color: white;
+    width: 40%;
+    height: 75px;
+    text-align: center;
+    border: black solid 3px;
+}
 .boton-con-franja {
     position: relative;
     display: flex;
@@ -14,7 +33,6 @@ body{
     justify-content: space-between;
     gap: 40px;
 }
-
 
 .boton {
     color: black;
@@ -60,7 +78,8 @@ body{
     border-width: 2px;
     border-style: solid;
     border-color: black;
-    top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
+    top: 285px; /* Ajusta esta propiedad para subir o bajar la franja */
+    left: 33%; /* Ajusta esta propiedad para subir o bajar la franja */
 }
 
 .franja.oculta {
@@ -85,6 +104,8 @@ body{
     border-color:black;
     border-width: 3px;
     border-style: solid;
+    left: 33%;
+    top: 270px;
 }
 
 .contenedor-bloques{

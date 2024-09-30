@@ -6,7 +6,27 @@ body{
     background-attachment: fixed;
     background-size: 85%;
 }
-
+.contenedor-otropiso{
+    position: relative;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.otropiso{
+    background-color: #1F2232;
+    width: 40%;
+    height: 75px;
+    text-align: center;
+    border: white solid 3px;
+}
 .boton-con-franja {
     position: relative;
     display: flex;
@@ -31,10 +51,29 @@ body{
     align-items: center;
     z-index: 1; /* Asegura que los botones estén encima de las franjas */
 }
+.boton-volver {
+    border-radius: 96px;
+    background-color: #1F2232;
+    width: 465px;
+    height: 125px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    border-color:white;
+    border-width: 3px;
+    border-style: solid;
+    left: 33%;
+    top: 270px;
+}
 .boton.grande {
     height: 260px;
 }
-
+.boton-volver.grande-volver{
+    height: 130px;
+}
 .franja {
     position: absolute;
     z-index: 0;
@@ -46,18 +85,27 @@ body{
     border-style: solid;
     border-color: white;
     top: 15px; /* Ajusta esta propiedad para subir o bajar la franja */
-
 }
-
+.franja1 {
+    position: absolute;
+    z-index: 0;
+    background-color: #1F2232;
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    top: 285px; /* Ajusta esta propiedad para subir o bajar la franja */
+    left: 33%;
+}
 .franja.oculta {
     opacity: 0; /* Hace que desaparezca */
     transform: scale(0); /* Reduce su tamaño a 0 */
 }
-
-#boton-volver {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
+.franja1.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
 }
 
 .contenedor-bloques{

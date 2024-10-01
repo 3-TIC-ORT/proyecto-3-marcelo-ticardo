@@ -1,3 +1,24 @@
+.contenedor-otropiso{
+    position: relative;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+h1{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.otropiso{
+    background-color: #1F2232;
+    width: 40%;
+    height: 75px;
+    text-align: center;
+    border: white solid 3px;
+}
 #boton-SI {
     border-radius: 96px;
     width: 465px;
@@ -7,13 +28,6 @@
 #boton-NO {
     border-radius: 96px;
     width: 465px;
-    height: 125px;
-}
-
-#boton-volver {
-    border-radius: 96px;
-    width: 465px;
-    
     height: 125px;
 }
 .img-logo{
@@ -85,4 +99,60 @@ body{
     border-radius: 96px;
     width: 465px;
     height: 125px;
+    left: 33%;
+    top: 270px;
+}
+
+.header{
+    padding-top: 25px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+.cuadro-verde{
+    background-color: #0F7173;
+    height: 60px;
+    width: 165px;
+    z-index: 4;
+    margin-left: 1200px;
+}
+.franja-negra, .franja-violeta {
+    position: absolute;
+    height: 60px;
+    width: 80px;
+    border-radius: 80px;
+    margin: 10px;
+}
+
+.franja-negra {
+    background-color: white;
+    left: 0;
+    z-index: 1;
+}
+
+.franja-violeta {
+    background-color: #963484;
+    left: 35px;
+    z-index: 2;
+}
+
+.franja-verde {
+    position: absolute;
+    border-radius: 80px;
+    height: 60px;
+    width: 86%;
+    background-color: #0F7173;
+    left: 80px;
+    z-index: 3;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center; 
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 100px;
 }

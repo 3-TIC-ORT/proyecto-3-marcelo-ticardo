@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorrido del Robot</title>
+    <style>
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #plano {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Asegúrate de que la imagen esté debajo del canvas */
+        }
+    </style>
+</head>
+<body>
+    <!-- Imagen de fondo del plano -->
+    <img id="plano" src="/mnt/data/Plano_marcado_comentarios.png" alt="Plano" width="800" height="800">
+
+    <!-- Canvas para dibujar el recorrido -->
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Función para actualizar el recorrido del robot
+        function actualizarRecorrido(aulaDestino, direccion) {
+            // Limpia el canvas antes de dibujar el nuevo recorrido
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Configura el estilo de la línea
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 2;
+
+            // Comienza el recorrido desde el punto inicial
+            ctx.beginPath();
+            ctx.moveTo(100, 700); // Coordenadas aproximadas del punto de inicio (ajustar según sea necesario)
+
+            // Dibujar dependiendo del aula y la dirección (se puede recibir desde el backend)
+            switch (aulaDestino) {
+                case 'L200':
+                    ctx.lineTo(150, 600);
+                    break;
+                case 'L201':
+                    ctx.lineTo(200, 500);
+                    break;
+                case 'L202':
+                    ctx.lineTo(250, 400);
+                    break;
+                // Agregar más casos para otras aulas
+            }
+
+            // Finaliza el recorrido
+            ctx.stroke();
+        }
+
+        // Ejemplo de recibir datos del backend
+        // Simulación: después de 2 segundos, se recibe que va al aula L200 hacia la derecha
+        setTimeout(() => {
+            actualizarRecorrido('L200', 'derecha');
+        }, 2000);
+    </script>
+</body>
+</html>

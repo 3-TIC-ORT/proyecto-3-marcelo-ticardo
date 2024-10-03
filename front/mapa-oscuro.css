@@ -48,7 +48,6 @@ body {
     background-attachment: fixed;
     background-size: 85%;
     position: relative; /* Para permitir la superposición de elementos */
-    font-family: 'Arial', sans-serif;
     }
 
 section{
@@ -66,3 +65,7 @@ section{
     height: 68%;
     left: 10px;
 }   
+
+/*font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;*/

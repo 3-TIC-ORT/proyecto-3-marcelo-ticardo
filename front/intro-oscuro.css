@@ -5,13 +5,15 @@ body{
     background-position: center center;
     background-attachment: fixed;
     background-size: 85%;
-    font-family: 'Arial', sans-serif;
 }
 .boton-con-franja {
     position: relative;
     display: flex;
     text-align: center;
     justify-content: center;
+    font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .boton {
@@ -81,6 +83,10 @@ body{
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
     left: 4%;
+    font-family: "Jacques Francois", serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
 }
 #text::after {
     content: '';
@@ -102,6 +108,10 @@ body{
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
     right: 5%;
+    font-family: "Jacques Francois", serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
 }
 #text1::after {
     content: '';

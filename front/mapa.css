@@ -22,6 +22,10 @@
     line-height: 1.5;
     margin: 0 auto; /* Centrar horizontalmente */
     text-align: center; /* Alinea el texto dentro de la caja al centro */
+    font-family: "Jacques Francois", serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
 }
 
 .speech-bubble::after {
@@ -65,3 +69,7 @@ section{
     width: 93%;
     height: 68%;
 }
+
+/*font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;*/

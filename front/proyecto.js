@@ -4,6 +4,8 @@ function thememode() {
     let menu = document.getElementById("themeMode-check-container");
     let body = document.getElementById("body");
     let boton = document.getElementById("boton-inicio");
+    let solIcon = document.getElementById("sol-icon");
+    let lunaIcon = document.getElementById("luna-icon");
 
 
     if (menu.classList.contains("themeMode-check-container-on")) {
@@ -20,6 +22,8 @@ function thememode() {
         // Cambiar el color del borde del botón a negro
         menu.style.borderColor = "black";
 
+        solIcon.src = "sol-claro.svg";
+        lunaIcon.src = "luna-claro.svg";
         // Estado del modo claro
         localStorage.setItem('theme', '');
     } else {
@@ -35,7 +39,9 @@ function thememode() {
 
         // Cambiar el color del borde del botón a blanco
         menu.style.borderColor = "white";
-
+        
+        solIcon.src = "sol-oscuro.svg";
+        lunaIcon.src = "luna-oscuro.svg";
         // Estado del modo oscuro
         localStorage.setItem('theme', '-oscuro');
     }

@@ -1,3 +1,12 @@
+body{
+    background-color: #2C3148;
+    background-image: url('brujula-oscura.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 85%;
+    font-family: 'Arial', sans-serif;
+}
 .boton-con-franja {
     position: relative;
     display: flex;
@@ -10,7 +19,6 @@
     top: 5vh;
     border-radius: 100px;
     background-color: #1F2232;
-    font-family: 'Arial', sans-serif;
     font-size: 25px;
     width: 400px;
     height: 100px;
@@ -113,4 +121,9 @@
     left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
     width: 150px; /* Ajusta el tamaño de la imagen */
     height: 150px
+}
+.contenedor-imagen{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }

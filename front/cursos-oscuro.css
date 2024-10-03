@@ -141,3 +141,8 @@ body{
     width: 150px; /* Ajusta el tamaño de la imagen */
     height: 150px
 }
+.contenedor-imagen{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}

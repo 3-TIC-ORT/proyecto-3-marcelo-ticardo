@@ -90,3 +90,7 @@ document.getElementById("boton-volver").addEventListener("click", function() {
     // Redirige inmediatamente
     window.location.href = "proyecto.html";
 });
+
+document.getElementById("contenedor-imagen").addEventListener("click", function() {
+    window.location.href = "ingles.html";
+});

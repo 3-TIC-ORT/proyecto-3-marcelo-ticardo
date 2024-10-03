@@ -84,3 +84,7 @@ function agrandarBoton(id) {
         console.log(`No se encontró el elemento con ID ${id}`);
     }
 }
+
+document.getElementById("contenedor-imagen").addEventListener("click", function() {
+    window.location.href = "bloques.html";
+});

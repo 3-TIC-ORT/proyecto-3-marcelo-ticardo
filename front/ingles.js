@@ -53,5 +53,7 @@ fetchData("preguntarIngles", (data) => {
   });
 });
 
-// Función para agrandar el botón y ocultar la franja
+document.getElementById("contenedor-imagen").addEventListener("click", function() {
+    window.location.href = "bloques.html"
+});
 

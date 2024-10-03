@@ -9,7 +9,7 @@
     <title>Mapa</title>
 </head>
 <body>
-    <div class="contenedor-imagen">
+    <div class="contenedor-imagen" id="contenedor-imagen">
         <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
     </div>
     <div class="speech-bubble">
@@ -22,6 +22,10 @@
 </section>
     <script>
         document.getElementById('theme-stylesheet').setAttribute('href', `mapa${localStorage.getItem('theme')}.css`);
+
+        document.getElementById("contenedor-imagen").addEventListener("click", function() {
+            window.location.href = "respuesta.html"
+        });
     </script>
 </body>
 </html>

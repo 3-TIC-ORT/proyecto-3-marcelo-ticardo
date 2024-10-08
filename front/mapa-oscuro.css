@@ -18,7 +18,9 @@
     border-radius: 15px; /* Redondear los bordes */
     padding: 3px 8px;
     max-width: 400px;
-    font-size: 16px;
+    font-family: "Jacques Francois", serif;
+    font-weight: 400;
+    font-style: normal;
     line-height: 1.5;
     margin: 0 auto; /* Centrar horizontalmente */
     text-align: center; /* Alinea el texto dentro de la caja al centro */
@@ -54,18 +56,63 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 99vw;
-    height: 97vh;
+    width: 98vw;
+    height: 75vh;
 }
 .contenedor-mapa{
     position: relative;
-    top: 16%;
+    top: 10vh;
     background-color: #d9d9d9;
     width: 93%;
-    height: 68%;
-    left: 10px;
+    height: 85%;
+    left: 5px;
 }   
 
-/*font-family: "Kite One", sans-serif;
+.boton-volver {
+    border-radius: 96px;
+    background-color: #1F2232;
+    width: 365px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    border-color:white;
+    border-width: 3px;
+    border-style: solid;
+    top: 25px;
+    font-family: "Kite One", sans-serif;
     font-weight: 400;
-    font-style: normal;*/
+    font-style: normal; 
+}
+.boton-volver.grande-volver{
+    height: 105px;
+}
+.franja1 {
+    position: absolute;
+    z-index: 0;
+    background-color: #1F2232;
+    border-radius: 96px;
+    width: 365px;
+    height: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    top: 40px;
+}
+
+.franja1.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+.boton-con-franja {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 25px;
+    right: 40px;
+}

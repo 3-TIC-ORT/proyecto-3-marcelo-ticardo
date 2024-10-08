@@ -15,6 +15,9 @@
     <title>Mapa</title>
 </head>
 <body>
+    <div class="boton-con-franja" id="boton-con-franja3">
+        <div id="boton-volver" class="boton-volver">Volver al Inicio</div><div class="franja1" id="franja1"></div>
+    </div>
     <div class="contenedor-imagen" id="contenedor-imagen">
         <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
     </div>
@@ -26,12 +29,6 @@
         
     </div>
 </section>
-    <script>
-        document.getElementById('theme-stylesheet').setAttribute('href', `mapa${localStorage.getItem('theme')}.css`);
-
-        document.getElementById("contenedor-imagen").addEventListener("click", function() {
-            window.location.href = "respuesta.html"
-        });
-    </script>
+<script src="mapa.js"></script>
 </body>
 </html>

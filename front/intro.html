@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
     <link id="theme-stylesheet" rel="stylesheet" href="intro.css">
     <title>Document</title>
 </head>
@@ -16,37 +22,10 @@
     <div id="boton" class="boton"><h1>Comenzar</h1></div>
     <div class="franja" id="franjita"></div>
 </div>
-<div class="contenedor-imagen">
+<div class="contenedor-imagen" id="contenedor-imagen">
     <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
-  </div>
+</div>
 </body>
-    
-
-<style> 
-
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: url('brujula.svg') no-repeat center center fixed;
-    background-size: cover; /* Escala la imagen para cubrir el fondo */
-    position: relative; /* Para permitir la superposición de elementos */
-    font-family: 'Arial', sans-serif;
-}
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('brujula-removebg-preview 1.png') no-repeat center center;
-    background-size: cover;
-    filter: brightness(0) invert(0);
-    z-index: -1; /* Asegura que los otros elementos se superpongan */
-    pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
-}
-</style>
 
 
 

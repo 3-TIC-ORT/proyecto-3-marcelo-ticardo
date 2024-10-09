@@ -1,8 +1,19 @@
+body{
+    background-image: url('brujula.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 85%;
+    font-family: 'Arial', sans-serif;
+}
 .boton-con-franja {
     position: relative;
     display: flex;
     text-align: center;
     justify-content: center;
+    font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .boton {
@@ -10,7 +21,6 @@
     top: 5vh;
     border-radius: 100px;
     background-color: white;
-    font-family: 'Arial', sans-serif;
     font-size: 25px;
     width: 400px;
     height: 100px;
@@ -62,6 +72,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    
 }
 #text {
     top: 10px;
@@ -72,6 +83,10 @@
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
     left: 4%;
+    font-family: "Jacques Francois", serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
 }
 #text::after {
     content: '';
@@ -93,6 +108,10 @@
     border-radius: 15px; /* Bordes redondeados */
     margin: 20px;
     right: 5%;
+    font-family: "Jacques Francois", serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
 }
 #text1::after {
     content: '';
@@ -112,4 +131,9 @@
     left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
     width: 150px; /* Ajusta el tamaño de la imagen */
     height: 150px
+}
+.contenedor-imagen{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }

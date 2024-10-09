@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--TODO: centrar el texto "queres guia" y hacerle el cuadrado de fondo, agregar el fondo de la brujula y preguntar como hacer las franjas a los botones-->
+<!--TODO:-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
     <link id="theme-stylesheet" rel="stylesheet" href="respuesta.css">
     <title>Numero de aula</title>
 </head>
@@ -13,13 +19,15 @@
     <div class="franja-violeta"></div>
     <div class="cuadro-verde"></div>
     <div class="franja-verde">
-        <h1><span id="aula"></span></h1>
+        <span id="aula"></span>
     </div>
     
 </div>
 <body>
     <h1 id="guia" style="display: none;">¿Querés guía?</h1>
-    <h1 id="otropiso" style="display: none;">Como el aula queda en otro piso, no te puedo llevar</h1>
+    <div class="contenedor-otropiso">
+        <h1 id="otropiso" class = "otropiso" style="display: none;">No es en este piso, no te puedo llevar</h1>
+    </div>
     <div id="contenedor-bloques" class="contenedor-bloques" style="display: none;">
         <div class="boton-con-franja" id="boton-con-franja1">
             <div id="boton-SI" class="boton">Si</div><div class="franja" id="franja"></div>
@@ -28,10 +36,12 @@
             <div id="boton-NO" class="boton">No</div><div class="franja" id="franja"></div>
         </div>
     </div>
-    <div id="boton-volver" class="boton" style="display: none;">Volver al Inicio</div>
-    <div class="contenedor-imagen">
+    <div class="boton-con-franja" id="boton-con-franja3">
+        <div id="boton-volver" class="boton-volver" style="display: none;">Volver al Inicio</div><div class="franja1" id="franja1"></div>
+    </div>
+    <div class="contenedor-imagen" id="contenedor-imagen">
         <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
-      </div>
+    </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 <script src="socket.js"></script>

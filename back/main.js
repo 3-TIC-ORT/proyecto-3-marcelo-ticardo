@@ -22,7 +22,6 @@ const port = new SerialPort({
   path: 'COM3',
   baudRate: 9600
 });
-const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 */
 
 onEvent("bloque", (data) => {
@@ -76,16 +75,17 @@ onEvent("mapa", ()=>{
   } else{
     distancia = [aulas[0], ...aulas.slice(-7).reverse()].indexOf(objetivo)
   }
+  arduino()
   return [objetivo, direccion]
 });
 
-
+// Hay que probar esto
 function arduino(){
   port.write(direccion)
   port.write(distancia)
   let veces = 0;
-  parser.on('data', (data) => {
-      if (data.trim() === "LINEA") {
+  port.on('data', (data) => {
+      if (data.toString().trim() === "LINEA") {
           veces++;
           console.log(`Va por la linea ${veces} de ${distancia}`);
           sendEvent("siguiente", null);
@@ -95,12 +95,6 @@ function arduino(){
           }
       }
       });
-      parser.on('data', function(data) {
-          data = data.trim();
-          if (data === 'OBSTACULO') {
-              console.log('Se paró porque hay un obstaculo');
-          }
-      });
-  }
+}
 
 startServer()

@@ -37,3 +37,7 @@ document.getElementById("boton-bloque6").addEventListener("click", function() {
     
         console.log("Botón agrandado y franja oculta"); // Para depuración
     }
+
+document.getElementById("contenedor-imagen").addEventListener("click", function() {
+    window.location.href = "cursos.html";
+});

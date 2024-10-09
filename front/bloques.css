@@ -66,9 +66,12 @@ body{
     flex-wrap: wrap;
     flex-direction: row;
     text-align: center;
-    gap: 20px;
+    gap: 40px;
     margin-top: 100px;
-    
+    font-family: "Kite One", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
 }
     /*font-family: sans-serif;
     font-style: normal;
@@ -135,11 +138,12 @@ background-color: #0F7173;
 left: 80px;
 z-index: 3;
 color: white;
+font-family: "Jacques Francois", serif;
+font-weight: 400;
+font-style: normal;
+font-size: 30px;
 justify-content: center;
 display: flex;
 align-items: center; 
-font-family: 'Arial', sans-serif;
-font-size: 30px;
-font-weight: bold;
 padding-left: 35px;
 }

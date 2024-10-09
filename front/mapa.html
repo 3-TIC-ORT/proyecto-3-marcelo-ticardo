@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--TODO: cambiar diseño del wireframe-->
+<!--TODO: agregar boton de "volver a la pagina de inicio"-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
     <link id="theme-stylesheet" rel="stylesheet" href="mapa.css">
     <title>Mapa</title>
 </head>
 <body>
-    <div class="contenedor-imagen">
+    <div class="boton-con-franja" id="boton-con-franja3">
+        <div id="boton-volver" class="boton-volver">Volver al Inicio</div><div class="franja1" id="franja1"></div>
+    </div>
+    <div class="contenedor-imagen" id="contenedor-imagen">
         <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
     </div>
     <div class="speech-bubble">
         <h1>Este es el recorrido que vamos a hacer:</h1>
-        </div> 
+    </div> 
 <section>
     <div class="contenedor-mapa">
         
     </div>
 </section>
-    <script>
-        document.getElementById('theme-stylesheet').setAttribute('href', `bloques${localStorage.getItem('theme')}.css`);
-    </script>
+<script src="mapa.js"></script>
 </body>
 </html>

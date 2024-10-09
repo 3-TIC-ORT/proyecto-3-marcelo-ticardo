@@ -29,3 +29,7 @@ function agrandarBoton(id) {
     
         console.log("Botón agrandado y franja oculta"); // Para depuración
     }
+
+    document.getElementById("contenedor-imagen").addEventListener("click", function() {
+        window.location.href = "intro.html"
+    });

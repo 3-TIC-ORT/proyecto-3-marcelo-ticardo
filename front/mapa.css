@@ -18,7 +18,9 @@
     border-radius: 15px; /* Redondear los bordes */
     padding: 3px 8px;
     max-width: 400px;
-    font-size: 16px;
+    font-family: "Jacques Francois", serif;
+    font-weight: 400;
+    font-style: normal;
     line-height: 1.5;
     margin: 0 auto; /* Centrar horizontalmente */
     text-align: center; /* Alinea el texto dentro de la caja al centro */
@@ -41,39 +43,75 @@
     margin: 0;
 }
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: url('brujula.svg') no-repeat center center fixed;
-    background-size: cover; /* Escala la imagen para cubrir el fondo */
+    background-image: url('brujula.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 85%;
     position: relative; /* Para permitir la superposición de elementos */
-    font-family: 'Arial', sans-serif;
-    }
-body::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('brujula-removebg-preview 1.png') no-repeat center center;
-        background-size: cover;
-        filter: brightness(0) invert(0);
-        z-index: -1; /* Asegura que los otros elementos se superpongan */
-        pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
     }
 
 section{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 98vw;
+    height: 75vh;
 }
 .contenedor-mapa{
     position: relative;
-    top: 13%;
+    top: 10vh;
     background-color: #d9d9d9;
     width: 93%;
-    height: 68%;
+    height: 85%;
+    left: 5px;
+}   
+
+.boton-volver {
+    border-radius: 96px;
+    background-color: white;
+    width: 365px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: black;
+    border-color:black;
+    border-width: 3px;
+    border-style: solid;
+    top: 25px;
+    font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal; 
+}
+.boton-volver.grande-volver{
+    height: 105px;
+}
+.franja1 {
+    position: absolute;
+    z-index: 0;
+    background-color: #0F7173;
+    border-radius: 96px;
+    width: 365px;
+    height: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    top: 40px;
+}
+
+.franja1.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+.boton-con-franja {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 25px;
+    right: 40px;
 }

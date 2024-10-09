@@ -1,4 +1,3 @@
-//uAl  sensar una distancia menor o igual  a 75 cm que frenen los motores
 #define TRIG1 7 
 #define ECHO1 A1
 #define TRIG2 8
@@ -16,6 +15,7 @@
 int velocidadmax = 255; 
 int velocidadmin = 0;
 unsigned long UltimaMedicion = 0;
+bool direccion;  // Definir la variable fuera del loop
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -29,47 +29,51 @@ void setup() {
   pinMode(TRIG2, OUTPUT);
   pinMode(ECHO2, INPUT); 
   Serial.begin(9600);
-}
-
-void loop() {
+  
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
+}
+
+void loop() {
   analogWrite(ENA, velocidadmax); 
   analogWrite(ENB, velocidadmax);
-  if(millis() - UltimaMedicion >= INTERVALO) {
+
+  // Verificar la dirección del robot
+  if (digitalRead(IN1) == HIGH && digitalRead(IN2) == LOW && digitalRead(IN3) == HIGH && digitalRead(IN4) == LOW) {
+    direccion = true;  // Movimiento hacia adelante
+  } else if (digitalRead(IN1) == LOW && digitalRead(IN2) == HIGH && digitalRead(IN3) == LOW && digitalRead(IN4) == HIGH) {
+    direccion = false;  // Movimiento hacia atrás
+  }
+
+  if (millis() - UltimaMedicion >= INTERVALO) {
     UltimaMedicion = millis();
     
-   
-    float distancia1 = medirDistancia(TRIG1, ECHO1);
-    float distancia2 = medirDistancia(TRIG2, ECHO2);
-
+    float distancia;
     
-    Serial.print("Distancia Sensor 1: ");
-    Serial.print(distancia1);
+    // Verificar la dirección del robot y medir la distancia con el sensor adecuado
+    if (direccion == true) {
+      distancia = medirDistancia(TRIG1, ECHO1);  // Sensor frontal
+      Serial.print("Distancia Sensor Frontal: ");
+    } else {
+      distancia = medirDistancia(TRIG2, ECHO2);  // Sensor trasero
+      Serial.print("Distancia Sensor Trasero: ");
+    }
+    
+    Serial.print(distancia);
     Serial.println(" cm");
 
-    Serial.print("Distancia Sensor 2: ");
-    Serial.print(distancia2);
-    Serial.println(" cm");
-
-   
-    if (distancia1 <= DISTANCIA_MINIMA || distancia2 <= DISTANCIA_MINIMA) {
+    // Si la distancia es menor que la mínima, detener el robot
+    if (distancia <= DISTANCIA_MINIMA) {
       Serial.println("Advertencia: Distancia demasiado corta. ¡Frenar!");
-       digitalWrite(IN1, LOW);
-       digitalWrite(IN2, LOW);
-       digitalWrite(IN3, LOW);
-       digitalWrite(IN4, LOW);
-       analogWrite(ENA, velocidadmin); 
-       analogWrite(ENB, velocidadmin);
-      
+      detenerRobot();
     }
   }
 }
 
+// Función para medir la distancia con el sensor ultrasónico
 float medirDistancia(int trigPin, int echoPin) {
- 
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -77,7 +81,16 @@ float medirDistancia(int trigPin, int echoPin) {
   digitalWrite(trigPin, LOW);
 
   long duracion = pulseIn(echoPin, HIGH);
-
   float distancia = duracion * SOUND_SPEED / 2;
   return distancia;
+}
+
+// Función para detener el robot
+void detenerRobot() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadmin); 
+  analogWrite(ENB, velocidadmin);
 }

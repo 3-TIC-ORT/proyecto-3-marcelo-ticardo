@@ -61,20 +61,24 @@ label{
     top: 50%;
     left:0px;
     transform: translateY(-50%);
+    transition: 0.3s ease;
 }
 
 .themeMode-check-container-on::after {
     left: unset;
     right: 0px;
+    transition: 0.3s ease;
 }
 
 /* Clase para cambiar el color del círculo */
 .circle-color-light::after {
     background-color: black;
+    transition: 0.3s ease;
 }
 
 .circle-color-dark::after {
     background-color: white;
+    transition: 0.3s ease;
 }
 
 .contenedor-simbolos {

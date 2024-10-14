@@ -3,6 +3,8 @@
 
 #define IR 3
 #define LED 13
+unsigned long tiempoAnterior = 0; 
+const long intervalo = 200;
 void setup() {
   pinMode(IR,INPUT);
   pinMode(LED,OUTPUT);
@@ -10,13 +12,14 @@ void setup() {
   Serial.begin(9600);
 }
 
+
 void loop() {
-  int estado = digitalRead(IR); 
- if(estado == HIGH){
-  digitalWrite(LED,HIGH);
-  Serial.println("Led apagado");
-  } else {
-     digitalWrite(LED,LOW);
-     Serial.println("Led prendido");
+  unsigned long tiempoActual = millis();
+
+   if(tiempoActual - tiempoAnterior >= intervalo){
+    tiempoAnterior = tiempoActual
+
+    int valorIR = analogRead(IR);
+    Serial.printIn(valorIR);
     }
 }

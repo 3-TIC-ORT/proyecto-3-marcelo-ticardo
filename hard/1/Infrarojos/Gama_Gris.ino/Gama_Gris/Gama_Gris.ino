@@ -1,5 +1,5 @@
 #define IR A3
-unsigned long tiempoAnterior = 0;
+unsigned long medicionAnterior = 0;
 const long intervalo = 200;
 
 void setup() {
@@ -8,10 +8,10 @@ void setup() {
 }
 
 void loop() {
-  unsigned long tiempoActual = millis();  
+  unsigned long medicionActual = millis();  
 
-  if (tiempoActual - tiempoAnterior >= intervalo) {
-    tiempoAnterior = tiempoActual;  
+  if (medicionActual - medicionAnterior >= intervalo) {
+    medicionAnterior = medicionActual;  
     int valorIR = analogRead(IR);  
     Serial.println(valorIR);
   }

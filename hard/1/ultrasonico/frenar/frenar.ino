@@ -14,8 +14,8 @@
 
 int velocidadmax = 255; 
 int velocidadmin = 0;
-unsigned long UltimaMedicion = 0;
-bool direccion;  // Definir la variable fuera del loop
+unsigned long medicionAnterior = 0;
+bool direccion;  
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -29,7 +29,6 @@ void setup() {
   pinMode(TRIG2, OUTPUT);
   pinMode(ECHO2, INPUT); 
   Serial.begin(9600);
-  
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);

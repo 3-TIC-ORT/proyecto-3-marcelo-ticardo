@@ -1,3 +1,6 @@
+//ESTE ES EL CODIGO DEFINITIVO
+
+
 #define ENA 10  
 #define ENB 11  
 #define IN1 3   
@@ -15,7 +18,8 @@
 #define IR2 A3
 #define IR3 A4
 #define IR4 A5
-int velocidad = 255; // Velocidad máxima
+
+int velocidadmax = 255;
 int velocidadmin = 0;
 unsigned long medicionAnterior = 0;
 const long intervalo = 200;
@@ -36,15 +40,68 @@ void setup() {
   pinMode(IR2, INPUT);
   pinMode(IR3, INPUT);
   pinMode(IR4, INPUT);
+  
   Serial.begin(9600);
-  pinMode(IN1, LOW);
-  pinMode(IN2, LOW);
-  pinMode(IN3, LOW);
-  pinMode(IN4, LOW);  
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
   analogWrite(ENA, velocidadmin); 
   analogWrite(ENB, velocidadmin); 
 }
 
-
-void loop(){
+void loop() {
+  // Verificar la dirección del robot
+  if (digitalRead(IN1) == HIGH && digitalRead(IN2) == LOW && digitalRead(IN3) == HIGH && digitalRead(IN4) == LOW) {
+    direccion = true;  // Movimiento hacia adelante
+  } else if (digitalRead(IN1) == LOW && digitalRead(IN2) == HIGH && digitalRead(IN3) == LOW && digitalRead(IN4) == HIGH) {
+    direccion = false;  // Movimiento hacia atrás
   }
+
+  if (millis() - medicionAnterior >= intervalo) {
+    medicionAnterior = millis();
+    float distancia = 0;
+
+    
+    if (direccion) {
+      distancia = medirDistancia(TRIG1, ECHO1);  // Sensor frontal
+      Serial.print("Distancia Sensor Frontal: ");
+    } else {
+      distancia = medirDistancia(TRIG2, ECHO2);  // Sensor trasero
+      Serial.print("Distancia Sensor Trasero: ");
+    }
+
+    Serial.print(distancia);
+    Serial.println(" cm");
+
+   
+    if (distancia <= DISTANCIA_MINIMA) {
+      Serial.println("Advertencia: Distancia demasiado corta. ¡Frenar!");
+      detenerRobot();
+    }
+  }
+}
+
+
+float medirDistancia(int trigPin, int echoPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  long duracion = pulseIn(echoPin, HIGH);
+  float distancia = duracion * SOUND_SPEED / 2;
+  return distancia;
+}
+
+
+void detenerRobot() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadmin); 
+  analogWrite(ENB, velocidadmin);
+}

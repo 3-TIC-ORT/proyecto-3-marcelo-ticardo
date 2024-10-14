@@ -1,6 +1,4 @@
-//ESTE ES EL CODIGO DEFINITIVO
-
-
+//ESTE ES EL CODIGO DEFINITIVO y NO LO TERMINE 
 #define ENA 10  
 #define ENB 11  
 #define IN1 3   
@@ -104,4 +102,27 @@ void detenerRobot() {
   digitalWrite(IN4, LOW);
   analogWrite(ENA, velocidadmin); 
   analogWrite(ENB, velocidadmin);
+}
+
+void IR(){
+unsigned long tiempoActual = millis();
+if(tiempoActual - tiempoAnterior >= intervalo){
+    tiempoAnterior = tiempoActual;
+      
+    
+  }
+  
+int valorIR1 =  analogRead(IR1);
+Serial.printIn ("IR1 = ");
+Serial.printIn (valorIR1);
+int valorIR2 = analogRead(IR2);
+Serial.printIn ("IR2 = ");
+Serial.printIn (valorIR2);
+int valorIR3 = analogRead(IR3);
+Serial.printIn ("IR3 = ");
+Serial.printIn (valorIR3);
+int valorIR4 = analogRead (IR4);
+Serial.printIn ("IR4 = ");
+Serial.printIn ("valorIR4);
+  
 }

@@ -13,6 +13,6 @@ void loop() {
   if (tiempoActual - tiempoAnterior >= intervalo) {
     tiempoAnterior = tiempoActual;  
     int valorIR = analogRead(IR);  
-    Serial.println(valorIR);  S
+    Serial.println(valorIR);
   }
 }

@@ -1,4 +1,6 @@
 //ESTE ES EL CODIGO DEFINITIVO y NO LO TERMINE 
+//EL color de las baldosas gris es entre 300 y 320
+//Las baldosas negras es entre
 #define ENA 10  
 #define ENB 11  
 #define IN1 3   
@@ -113,16 +115,16 @@ if(tiempoActual - tiempoAnterior >= intervalo){
   }
   
 int valorIR1 =  analogRead(IR1);
-Serial.printIn ("IR1 = ");
-Serial.printIn (valorIR1);
+Serial.println ("IR1 = ");
+Serial.println (valorIR1);
 int valorIR2 = analogRead(IR2);
-Serial.printIn ("IR2 = ");
-Serial.printIn (valorIR2);
+Serial.println ("IR2 = ");
+Serial.println (valorIR2);
 int valorIR3 = analogRead(IR3);
-Serial.printIn ("IR3 = ");
-Serial.printIn (valorIR3);
+Serial.println ("IR3 = ");
+Serial.println (valorIR3);
 int valorIR4 = analogRead (IR4);
-Serial.printIn ("IR4 = ");
-Serial.printIn ("valorIR4);
+Serial.println ("IR4 = ");
+Serial.println ("valorIR4);
   
 }

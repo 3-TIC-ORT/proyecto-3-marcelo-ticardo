@@ -17,9 +17,9 @@ void loop() {
   unsigned long tiempoActual = millis();
 
    if(tiempoActual - tiempoAnterior >= intervalo){
-    tiempoAnterior = tiempoActual
+    tiempoAnterior = tiempoActual;
 
     int valorIR = analogRead(IR);
-    Serial.printIn(valorIR);
+    Serial.println(valorIR);
     }
 }

@@ -9,7 +9,7 @@ const ingles = JSON.parse(readFileSync('ingles.json'));
 let date = new Date().getDay() - 1;
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217', 'L218', 'L216', 'L207', 'L205', 'L203', 'L201', 'L200'];
-const aluas_inv = [aulas[0], ...aulas.slice(-7).reverse()]
+const aluas_inv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218']
 let dia = diasSemana[date]
 let curso
 let bloque
@@ -18,12 +18,10 @@ let objetivo
 let direccion
 let distancia
 
-/*
 const port = new SerialPort({
-  path: 'COM3',
+  path: 'COM12',
   baudRate: 9600
 });
-*/
 
 onEvent("bloque", (data) => {
   bloque = data
@@ -63,6 +61,7 @@ onEvent("aulaIngles", () =>{
 });
 
 onEvent("mapa", ()=>{
+  objetivo = "L5" // SACARLO
   if (objetivo === 'L5'){
     objetivo = 'L200'
   }
@@ -71,19 +70,18 @@ onEvent("mapa", ()=>{
   } else{
     direccion = 'ATRAS'
   }
-  if (direccion = 'ADELANTE'){
+  if (direccion === 'ADELANTE'){
     distancia = aulas.indexOf(objetivo)
   } else{
     distancia = aluas_inv.indexOf(objetivo)
   }
   arduino()
-  return [objetivo, direccion]
+  return [distancia, direccion]
 });
 
 // Hay que probar esto
-function arduino(){
+async function arduino(){
   port.write(direccion)
-  port.write(distancia)
   let veces = 0;
   port.on('data', (data) => {
       if (data.toString().trim() === "LINEA") {
@@ -97,5 +95,6 @@ function arduino(){
       }
       });
 }
+
 
 startServer()

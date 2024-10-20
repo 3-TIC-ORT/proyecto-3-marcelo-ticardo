@@ -23,6 +23,10 @@ unsigned long medicionAnterior = 0;
 const long intervalo = 200;
 unsigned long tiempoAnterior = 0;
 bool direccion;
+unsigned long tiempoInicioGiro = 0;
+bool girandoDerecha = false;
+bool girandoIzquierda = false;
+const unsigned long duracionGiro90 = 400;
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -51,24 +55,25 @@ void setup() {
 }
 
 void loop() {
-  IR();
-  
-  // Verificar la dirección del robot
-  if (digitalRead(IN1) == HIGH && digitalRead(IN2) == LOW && digitalRead(IN3) == HIGH && digitalRead(IN4) == LOW) {
-    direccion = true;  // Movimiento hacia adelante
-  } else if (digitalRead(IN1) == LOW && digitalRead(IN2) == HIGH && digitalRead(IN3) == LOW && digitalRead(IN4) == HIGH) {
-    direccion = false;  // Movimiento hacia atrás
+  IR();  
+
+  if (!girandoDerecha && !girandoIzquierda) {
+    if (digitalRead(IN1) == HIGH && digitalRead(IN2) == LOW && digitalRead(IN3) == HIGH && digitalRead(IN4) == LOW) {
+      direccion = true;  
+    } else if (digitalRead(IN1) == LOW && digitalRead(IN2) == HIGH && digitalRead(IN3) == LOW && digitalRead(IN4) == HIGH) {
+      direccion = false;  
+    }
   }
 
-  if (millis() - medicionAnterior >= intervalo) {
+  if (millis() - medicionAnterior >= intervalo && !girandoDerecha && !girandoIzquierda) {
     medicionAnterior = millis();
     float distancia = 0;
 
     if (direccion) {
-      distancia = medirDistancia(TRIG1, ECHO1);  // Sensor frontal
+      distancia = medirDistancia(TRIG1, ECHO1);  
       Serial.print("Distancia Sensor Frontal: ");
     } else {
-      distancia = medirDistancia(TRIG2, ECHO2);  // Sensor trasero
+      distancia = medirDistancia(TRIG2, ECHO2);  
       Serial.print("Distancia Sensor Trasero: ");
     }
 
@@ -79,6 +84,12 @@ void loop() {
       Serial.println("Advertencia: Distancia demasiado corta. ¡Frenar!");
       detenerRobot();
     }
+  }
+
+  if (girandoDerecha) {
+    moverDerecha();
+  } else if (girandoIzquierda) {
+    moverIzquierda();
   }
 }
 
@@ -119,19 +130,14 @@ void IR() {
   Serial.print("IR3: "); Serial.println(valorIR3);
   Serial.print("IR4: "); Serial.println(valorIR4);
 
-  // Verificar los valores de los sensores y mover el robot
-  if (valorIR1 >= 300 && valorIR1 <= 320 && valorIR2 >= 300 && valorIR2 <= 320 && 
-      valorIR3 < 300 && valorIR4 < 300) {
-    // Todo está alineado, sigue recto
+  if (valorIR1 >= 300 && valorIR1 <= 320 && valorIR3 >= 300 && valorIR3 <= 320 && 
+      valorIR2 < 300 && valorIR4 < 300) {
     moverAdelante();
   } else if (valorIR2 >= 300 && valorIR2 <= 320 && valorIR4 >= 300 && valorIR4 <= 320) {
-    // IR2 e IR4 ven el gris (girar a la derecha)
-    moverDerecha();
+    girarDerecha90();
   } else if (valorIR1 >= 300 && valorIR1 <= 320 && valorIR3 >= 300 && valorIR3 <= 320) {
-    // IR1 e IR3 ven el gris (girar a la izquierda)
-    moverIzquierda();
+    girarIzquierda90();
   } else {
-    // No detecta correctamente, detener
     detenerRobot();
     Serial.println("Los sensores infrarrojos no funcionan bien");
   }
@@ -146,20 +152,52 @@ void moverAdelante() {
   analogWrite(ENB, velocidadmax);
 }
 
-void moverDerecha() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
-  analogWrite(ENA, velocidadmax);
-  analogWrite(ENB, velocidadmed); 
+void moverAtras(){
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,HIGH);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,HIGH);
+  analogWrite(ENA,velocidadmax);
+  analogWrite(ENB,velocidadmax);
 }
 
-void moverIzquierda() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadmed); 
-  analogWrite(ENB, velocidadmax);
+void girarDerecha90() {
+  if (!girandoDerecha) {
+    digitalWrite(IN1, HIGH); 
+    digitalWrite(IN2, LOW);  
+    digitalWrite(IN3, LOW);  
+    digitalWrite(IN4, HIGH); 
+
+    analogWrite(ENA, velocidadmax);  
+    analogWrite(ENB, velocidadmax);  
+
+    tiempoInicioGiro = millis(); 
+    girandoDerecha = true; 
+  } else {
+    
+    if (millis() - tiempoInicioGiro >= duracionGiro90) {
+      detenerRobot(); 
+      girandoDerecha = false; 
+    }
+  }
+}
+
+void girarIzquierda90() {
+  if (!girandoIzquierda) {
+    digitalWrite(IN1, LOW);  
+    digitalWrite(IN2, HIGH); 
+    digitalWrite(IN3, HIGH); 
+    digitalWrite(IN4, LOW);
+
+    analogWrite(ENA, velocidadmax);  
+    analogWrite(ENB, velocidadmax);  
+    tiempoInicioGiro = millis(); 
+    girandoIzquierda = true; 
+  } else {
+   
+    if (millis() - tiempoInicioGiro >= duracionGiro90) {
+      detenerRobot(); 
+      girandoIzquierda = false; 
+    }
+  }
 }

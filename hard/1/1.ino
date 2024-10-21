@@ -22,7 +22,7 @@ int velocidadmin = 0;
 unsigned long medicionAnterior = 0;
 const long intervalo = 200;
 unsigned long tiempoAnterior = 0;
-bool direccion;
+bool direccion; // variable para dirección
 unsigned long tiempoInicioGiro = 0;
 bool girandoDerecha = false;
 bool girandoIzquierda = false;
@@ -57,6 +57,31 @@ void setup() {
 void loop() {
   IR();  
 
+  // Escuchar comandos desde el puerto serie
+  if (Serial.available() > 0) {
+    String command = Serial.readStringUntil('\n'); // Leer hasta un salto de línea
+    if (command == "VOLVER") {
+      Serial.println("Volviendo al inicio...");
+      volverAlInicio(); 
+    } else if (command == "ADELANTE") {
+      moverAdelante();
+      Serial.println("Moviendo hacia adelante.");
+    } else if (command == "ATRAS") {
+      moverAtras();
+      Serial.println("Moviendo hacia atrás.");
+    } else if (command == "DERECHA") {
+      girarDerecha90();
+      Serial.println("Girando a la derecha.");
+    } else if (command == "IZQUIERDA") {
+      girarIzquierda90();
+      Serial.println("Girando a la izquierda.");
+    } else if (command === "PARAR"){
+      detenerRobot();
+      Serial.println("Frene");
+      }
+  }
+
+  // Resto del código para controlar el movimiento del robot
   if (!girandoDerecha && !girandoIzquierda) {
     if (digitalRead(IN1) == HIGH && digitalRead(IN2) == LOW && digitalRead(IN3) == HIGH && digitalRead(IN4) == LOW) {
       direccion = true;  
@@ -152,13 +177,13 @@ void moverAdelante() {
   analogWrite(ENB, velocidadmax);
 }
 
-void moverAtras(){
-  digitalWrite(IN1,LOW);
-  digitalWrite(IN2,HIGH);
-  digitalWrite(IN3,LOW);
-  digitalWrite(IN4,HIGH);
-  analogWrite(ENA,velocidadmax);
-  analogWrite(ENB,velocidadmax);
+void moverAtras() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  analogWrite(ENA, velocidadmax);
+  analogWrite(ENB, velocidadmax);
 }
 
 void girarDerecha90() {
@@ -174,7 +199,6 @@ void girarDerecha90() {
     tiempoInicioGiro = millis(); 
     girandoDerecha = true; 
   } else {
-    
     if (millis() - tiempoInicioGiro >= duracionGiro90) {
       detenerRobot(); 
       girandoDerecha = false; 
@@ -194,10 +218,16 @@ void girarIzquierda90() {
     tiempoInicioGiro = millis(); 
     girandoIzquierda = true; 
   } else {
-   
     if (millis() - tiempoInicioGiro >= duracionGiro90) {
       detenerRobot(); 
       girandoIzquierda = false; 
     }
   }
+}
+
+void volverAlInicio() {
+  moverAtras();
+  delay(1000); 
+  detenerRobot();
+  Serial.println("Regreso completado.");
 }

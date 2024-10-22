@@ -22,31 +22,42 @@ fetchData("mapa", (data) => {
     }
     });
 
+    let i = 0
 
 
 receive("linea", (data) =>{
-    let i = 0
+    console.log(data)
+    if (data === "anterior"){
+        if (direccion === "ADELANTE"){
+            direccion = "ATRAS"
+        }
+        else{
+            direccion = "ADELANTE"
+        }
+    }
+    console.log(direccion)
     if (data === "siguiente"){
         if(direccion === "ADELANTE"){
             document.getElementById(`${aulas[i]}_u`).setAttribute("visibility", "hidden")
             i++
             document.getElementById(`${aulas[i]}_u`).setAttribute("visibility", "visible")
         }
-        else if (direccion === "ATRAS"){
+        if (direccion === "ATRAS"){
             document.getElementById(`${aulas_inv[i]}_u`).setAttribute("visibility", "hidden")
             i++
             document.getElementById(`${aulas_inv[i]}_u`).setAttribute("visibility", "visible")
         }
-    else if (data === "anterior"){
+    if (data === "anterior"){
         if (direccion === "ADELANTE"){
-            document.getElementById(`${aulas[i]}_u`).setAttribute("visibility", "hidden")
-            i--
-            document.getElementById(`${aulas[i]}_u`).setAttribute("visibility", "visible")
-        }
-        else if (direccion === "ATRAS"){
             document.getElementById(`${aulas_inv[i]}_u`).setAttribute("visibility", "hidden")
             i--
             document.getElementById(`${aulas_inv[i]}_u`).setAttribute("visibility", "visible")
+        }
+        if (direccion === "ATRAS"){
+            console.log("hola??")
+            document.getElementById(`${aulas[i]}_u`).setAttribute("visibility", "hidden")
+            i--
+            document.getElementById(`${aulas[i]}_u`).setAttribute("visibility", "visible")
         }
     }
     }

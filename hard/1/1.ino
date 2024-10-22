@@ -61,43 +61,26 @@ void loop() {
   if (Serial.available() > 0) {
     String command = Serial.readStringUntil('\n'); // Leer hasta un salto de línea
     if (command == "VOLVER") {
-      Serial.println("Volviendo al inicio...");
       volverAlInicio(); 
     } else if (command == "ADELANTE") {
       moverAdelante();
-      Serial.println("Moviendo hacia adelante.");
     } else if (command == "ATRAS") {
       moverAtras();
-      Serial.println("Moviendo hacia atrás.");
-    } else if (command == "DERECHA") {
-      girarDerecha90();
-      Serial.println("Girando a la derecha.");
-    } else if (command == "IZQUIERDA") {
-      girarIzquierda90();
-      Serial.println("Girando a la izquierda.");
-    } else if (command === "PARAR"){
+    } else if (command == "PARAR"){
       detenerRobot();
-      Serial.println("Frene");
       }
   }
 
   // Resto del código para controlar el movimiento del robot
-  if (!girandoDerecha && !girandoIzquierda) {
-    if (digitalRead(IN1) == HIGH && digitalRead(IN2) == LOW && digitalRead(IN3) == HIGH && digitalRead(IN4) == LOW) {
-      direccion = true;  
-    } else if (digitalRead(IN1) == LOW && digitalRead(IN2) == HIGH && digitalRead(IN3) == LOW && digitalRead(IN4) == HIGH) {
-      direccion = false;  
-    }
-  }
 
   if (millis() - medicionAnterior >= intervalo && !girandoDerecha && !girandoIzquierda) {
     medicionAnterior = millis();
     float distancia = 0;
 
-    if (direccion) {
+    if (command == "ADELANTE") {
       distancia = medirDistancia(TRIG1, ECHO1);  
       Serial.print("Distancia Sensor Frontal: ");
-    } else {
+    } else if (command == "ATRAS") {
       distancia = medirDistancia(TRIG2, ECHO2);  
       Serial.print("Distancia Sensor Trasero: ");
     }
@@ -155,17 +138,25 @@ void IR() {
   Serial.print("IR3: "); Serial.println(valorIR3);
   Serial.print("IR4: "); Serial.println(valorIR4);
 
-  if (valorIR1 >= 300 && valorIR1 <= 320 && valorIR3 >= 300 && valorIR3 <= 320 && 
-      valorIR2 < 300 && valorIR4 < 300) {
-    moverAdelante();
-  } else if (valorIR2 >= 300 && valorIR2 <= 320 && valorIR4 >= 300 && valorIR4 <= 320) {
-    girarDerecha90();
-  } else if (valorIR1 >= 300 && valorIR1 <= 320 && valorIR3 >= 300 && valorIR3 <= 320) {
+  if (valorIR1 >= XXX && valorIR1 <= XXX && valorIR3 >= XXX && valorIR3 <= XXX && 
+      valorIR2 < XXX && valorIR4 < XXX) {
+     if(command == "ADELANTE"){
+      moverAdelante();
+      } else if (command == "ATRAS"){
+         moverAtras();
+        }
+  } else if (valorIR2 >= XXX && valorIR2 <= XXX && valorIR4 >= XXX && valorIR4 <= XXX) {   //SEGUIR DESDE ACA
+    
+  } else if (valorIR1 >= XXX && valorIR1 <= XXX && valorIR3 >= XXX && valorIR3 <= XXX) {
     girarIzquierda90();
   } else {
     detenerRobot();
     Serial.println("Los sensores infrarrojos no funcionan bien");
   }
+
+  if((valor IR1 >= XXX && valor IR1 <= XXX && valor IR3>= XXX && valorIR3 <= XXX)||(valor IR2 >= XXX && valor IR2 <= XXX && valor IR4 >= XXX && valor IR4<= XXX)){
+      Serial.println("LINEA");
+    }
 }
 
 void moverAdelante() {
@@ -225,9 +216,4 @@ void girarIzquierda90() {
   }
 }
 
-void volverAlInicio() {
-  moverAtras();
-  delay(1000); 
-  detenerRobot();
-  Serial.println("Regreso completado.");
 }

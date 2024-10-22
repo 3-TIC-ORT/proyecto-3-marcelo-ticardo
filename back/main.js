@@ -63,19 +63,19 @@ onEvent("aulaIngles", () =>{
 onEvent("mapa", ()=>{
   objetivo = "L5" // SACARLO
   if (objetivo === 'L5'){
-    objetivo = 'L200'
+    objetivo = 'L200';
   }
   if (aulas.indexOf(objetivo) <= 11){
-    direccion = 'ADELANTE'
+    direccion = 'ADELANTE';
   } else{
-    direccion = 'ATRAS'
+    direccion = 'ATRAS';
   }
   if (direccion === 'ADELANTE'){
-    distancia = aulas.indexOf(objetivo)
+    distancia = aulas.indexOf(objetivo);
   } else{
-    distancia = aluas_inv.indexOf(objetivo)
+    distancia = aluas_inv.indexOf(objetivo);
   }
-  arduino()
+  arduino();
   return [distancia, direccion]
 });
 
@@ -89,12 +89,20 @@ async function arduino(){
           console.log(`Va por la linea ${veces} de ${distancia}`);
           sendEvent("siguiente", null);
           if (veces === distancia){
-            console.log('LLegaste a tu destino. Volviendo al inicio.')
-            port.write('VOLVER')
+            console.log('LLegaste a tu destino. Volviendo al inicio.');
+            port.write('VOLVER'); 
+            veces = 0;
+            if (direccion === 'ADELANTE'){ // invertir la dirección
+              direccion = 'ATRAS';
+            }
+            else{
+              direccion = 'ADELANTE';
+            }
+            port.write(direccion);
           }
       }
       });
 }
 
 
-startServer()
+startServer();

@@ -9,7 +9,9 @@ const ingles = JSON.parse(readFileSync('ingles.json'));
 let date = new Date().getDay() - 1;
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
 const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217', 'L218', 'L216', 'L207', 'L205', 'L203', 'L201', 'L200'];
-const aluas_inv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218']
+// const aulas_inv = [aulas[0], ...aulas.slice(-7).reverse()] devuelve lo mismo que el aulas_inv actualx
+const aulas_inv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218']
+
 let dia = diasSemana[date]
 let curso
 let bloque
@@ -61,7 +63,6 @@ onEvent("aulaIngles", () =>{
 });
 
 onEvent("mapa", ()=>{
-  objetivo = "L5" // SACARLO
   if (objetivo === 'L5'){
     objetivo = 'L200';
   }
@@ -73,33 +74,43 @@ onEvent("mapa", ()=>{
   if (direccion === 'ADELANTE'){
     distancia = aulas.indexOf(objetivo);
   } else{
-    distancia = aluas_inv.indexOf(objetivo);
+    distancia = aulas_inv.indexOf(objetivo);
   }
   arduino();
-  return [distancia, direccion]
+  return [objetivo, direccion]
 });
 
 // Hay que probar esto
 async function arduino(){
   port.write(direccion)
   let veces = 0;
+  let motion = "yendo"
   port.on('data', (data) => {
       if (data.toString().trim() === "LINEA") {
+        if (motion === "yendo"){
           veces++;
           console.log(`Va por la linea ${veces} de ${distancia}`);
-          sendEvent("siguiente", null);
+          sendEvent("linea", "siguiente");
           if (veces === distancia){
             console.log('LLegaste a tu destino. Volviendo al inicio.');
             port.write('VOLVER'); 
-            veces = 0;
+            motion = "volviendo";
             if (direccion === 'ADELANTE'){ // invertir la dirección
               direccion = 'ATRAS';
             }
-            else{
+            else if (direccion === "ATRAS"){
               direccion = 'ADELANTE';
             }
             port.write(direccion);
-          }
+        } else if (motion==="volviendo"){
+          veces--
+          console.log(`Va por la linea ${veces} de ${distancia}`);
+          sendEvent("linea", "anterior")
+          if (veces === 0){
+            console.log('Llegaste al inicio de vuelta.');
+            port.write('LLEGASTE'); 
+          }}
+        }
       }
       });
 }

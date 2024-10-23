@@ -42,9 +42,6 @@ function thememode() {
 
 
 
-document.getElementById("boton-inicio").addEventListener("click", function() {
+document.getElementById("logo-gif").addEventListener("click", function() {
         window.location.href = "intro.html";
-});
-document.getElementById("contenedor1").addEventListener("click", function() {
-    window.location.href = "intro.html";
 });

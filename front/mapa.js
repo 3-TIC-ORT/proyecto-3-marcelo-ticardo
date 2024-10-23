@@ -98,6 +98,11 @@ receive("linea", (data) => {
 
 // Al llegar al inicio, volver a la página de inicio
 receive("llegada", () => {
-    alert("llegaste")
-    window.location.href = "proyecto.html";
+    alert("Llegaste a tu destino")
+});
+
+
+receive("llegadaInicio", () => {
+    document.getElementById('llegaste').setAttribute("visibility", "visible");
+    document.getElementById('llegastee').setAttribute("visibility", "visible");
 });

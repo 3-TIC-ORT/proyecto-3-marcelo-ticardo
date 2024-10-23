@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--TODO: HACER WIREFRAME PERO MODO OSCURO Y AVERIGUAR COMO HACER ESO-->
+<!--TODO: centrar el texto "queres guia" y hacerle el cuadrado de fondo, agregar el fondo de la brujula y preguntar como hacer las franjas a los botones-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="respuesta.css">
+    <title>Numero de aula</title>
+</head>
+<div class="header">
+    <div class="franja-negra"></div>
+    <div class="franja-violeta"></div>
+    <div class="franja-verde">
+        <h1><span id="aula"></span>Tu aula es</h1>
+    </div>
+    
+</div>
+<body>
+    <h1><span id="aula"></span></h1>
+    <h1 id="guia">¿Querés guía?</h1>
+    <h1 id="otropiso">Como el aula queda en otro piso, no te puedo llevar</h1>
+    <button id="boton-SI">Si</button> 
+    <button id="boton-NO">No</button>
+    <button id="boton-volver">volver al inicio (logo)</button>
+    
+<style> 
+        body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+          position: relative; /* Para permitir la superposición de elementos */
+    }
+    #boton-SI {
+    border-radius: 50%;
+    background-color: #0F7173;
+    width: 200px;
+    height: 200px;
+    color: white;
+    border: 0px;
+
+
+
+}
+    #boton-SI:hover {
+    background-color: #094d4e; /* Color de fondo al pasar el mouse */
+    width: 210px;
+    height: 210px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#boton-NO {
+    border-radius: 50%;
+    background-color: #963484;
+    width: 200px;
+    height: 200px;
+    color: white;
+    border: 0px;
+    margin-left: 15px;
+    /*font-family: sans-serif;
+    font-style: normal;
+    font-size: 3em;
+    font-weight: 800;font-style: normal;
+    font-size: 3em;
+    font-weight: 400;*/
+}
+#boton-NO:hover {
+    background-color: #6e2661; /* Color de fondo al pasar el mouse */
+    width: 210px;
+    height: 210px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#boton-volver {
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+}
+.header{
+    background-color: #1F2232; /* Color de la franja verde */
+    height: 60px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+font-family: 'Arial', sans-serif;
+}
+.franja-negra, .franja-violeta {
+position: absolute;
+height: 60px;
+width: 80px;
+border-radius: 80px;
+margin: 10px;
+}
+.franja-negra {
+background-color: #1F2232;
+left: 0;
+z-index: 1;
+}
+.franja-violeta {
+background-color: #963484;
+left: 40px;
+z-index: 2;
+}
+.franja-verde {
+position: absolute;
+border-radius: 80px;
+margin: 10px;
+height: 60px;
+width: 1050px;
+background-color: #0F7173;
+left: 80px;
+z-index: 3;
+color: white;
+justify-content: center;
+display: flex;
+align-items: center; 
+font-size: 24px;
+font-weight: bold;
+padding-left: 100px;
+}
+#guia {
+    color: black;
+    background-color: white;
+    width: 300px; 
+    height: 50px; 
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+    </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+<script src="socket.js"></script>
+<script src="respuesta.js"></script>
+</body>

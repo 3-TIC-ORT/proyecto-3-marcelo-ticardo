@@ -18,7 +18,7 @@ body{
 
 .boton {
     position: relative;
-    top: 5vh;
+    top: 77vh;
     border-radius: 100px;
     background-color: white;
     font-size: 25px;
@@ -44,7 +44,7 @@ body{
     border-width: 2px;
     border-style: solid;
     border-color: black;
-    top: 8vh; /* Ajusta esta propiedad para subir o bajar la franja */
+    top: 80vh; /* Ajusta esta propiedad para subir o bajar la franja */
 
 }
 

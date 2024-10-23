@@ -8,22 +8,25 @@ const ingles = JSON.parse(readFileSync('ingles.json'));
 
 let date = new Date().getDay() - 1;
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
-const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217', 'L218', 'L216', 'L207', 'L205', 'L203', 'L201', 'L200'];
-// const aulas_inv = [aulas[0], ...aulas.slice(-7).reverse()] devuelve lo mismo que el aulas_inv actualx
-const aulas_inv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218']
+const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217'];
+const aulas_inv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218'];
 
 let dia = diasSemana[date]
 let curso
 let bloque
 let cursosIngles
 let objetivo
-let direccion
-let distancia
+let direccion;
+let distancia;
+let veces
+let motion
+let running
 
 const port = new SerialPort({
-  path: 'COM12',
+  path: 'COM14',
   baudRate: 9600
 });
+
 
 onEvent("bloque", (data) => {
   bloque = data
@@ -62,58 +65,74 @@ onEvent("aulaIngles", () =>{
   return objetivo
 });
 
-onEvent("mapa", ()=>{
+
+// Evento que maneja el mapa y establece la dirección y distancia hacia el objetivo
+onEvent("mapa", () => {
   if (objetivo === 'L5'){
     objetivo = 'L200';
   }
-  if (aulas.indexOf(objetivo) <= 11){
+// Determinar la dirección dependiendo del aula
+if (aulas.includes(objetivo)) {
     direccion = 'ADELANTE';
-  } else{
-    direccion = 'ATRAS';
-  }
-  if (direccion === 'ADELANTE'){
     distancia = aulas.indexOf(objetivo);
-  } else{
+} else if (aulas_inv.includes(objetivo)) {
+    direccion = 'ATRAS';
     distancia = aulas_inv.indexOf(objetivo);
-  }
-  arduino();
-  return [objetivo, direccion]
+}
+veces = 0;
+motion = "yendo";
+running = true;
+
+arduino();
+return [objetivo, direccion];
 });
 
-// Hay que probar esto
-async function arduino(){
-  port.write(direccion)
-  let veces = 0;
-  let motion = "yendo"
-  port.on('data', (data) => {
-      if (data.toString().trim() === "LINEA") {
-        if (motion === "yendo"){
-          veces++;
-          console.log(`Va por la linea ${veces} de ${distancia}`);
-          sendEvent("linea", "siguiente");
-          if (veces === distancia){
-            console.log('LLegaste a tu destino. Volviendo al inicio.');
-            port.write('VOLVER'); 
-            motion = "volviendo";
-            if (direccion === 'ADELANTE'){ // invertir la dirección
-              direccion = 'ATRAS';
-            }
-            else if (direccion === "ATRAS"){
-              direccion = 'ADELANTE';
-            }
-            port.write(direccion);
-        } else if (motion==="volviendo"){
-          veces--
-          console.log(`Va por la linea ${veces} de ${distancia}`);
-          sendEvent("linea", "anterior")
-          if (veces === 0){
-            console.log('Llegaste al inicio de vuelta.');
-            port.write('LLEGASTE'); 
-          }}
-        }
-      }
-      });
-}
 
+async function arduino() {
+// Verificamos si el proceso ya fue finalizado
+if (!running) return;
+
+port.write(`${direccion}\n`);  // Enviar la dirección al Arduino
+
+const handleData = (data) => {
+    if (!running) return;  // Verificar si se debe detener la ejecución
+
+    const message = data.toString().trim();
+
+    if (message === "LINEA") {
+        console.log(`Va por la linea ${veces} de ${distancia}`);
+
+        if (motion === "yendo") {
+            veces++;
+            sendEvent("linea", "siguiente");  // Enviar al frontend que avance
+
+            // Si llegó al objetivo, cambiar a "volviendo"
+            if (veces === distancia) {
+                motion = "volviendo";
+                direccion = direccion === 'ADELANTE' ? 'ATRAS' : 'ADELANTE';
+                sendEvent("llegada", null);  // Notificar al frontend que llegó al aula
+                port.write(`${direccion}\n`);
+            }
+        } else if (motion === "volviendo") {
+            veces--;
+            sendEvent("linea", "anterior");  // Enviar al frontend que retroceda
+
+            // Si volvió al inicio, finalizar
+            if (veces === 0) {
+                port.write('LLEGASTE\n');  // Enviar señal de finalización al Arduino
+                sendEvent("llegadaInicio", null);  // Notificar al frontend que llegó al inicio
+
+                // Detener la función arduino y eliminar el listener
+                running = false;
+                port.off('data', handleData);  // Eliminar el listener de datos
+                return;  // Finalizar ejecución de la función arduino()
+            }
+        }
+    }
+};
+
+// Añadir el listener para manejar los datos del puerto
+port.on('data', handleData);
+}
 
 startServer();

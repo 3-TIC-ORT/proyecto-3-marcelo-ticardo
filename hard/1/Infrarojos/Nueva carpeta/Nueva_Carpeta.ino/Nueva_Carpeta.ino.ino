@@ -1,21 +1,29 @@
 //Este codigo e para saber los valores del piso
-
+#define ENA 10  
+#define ENB 11  
+#define IN1 3   
+#define IN2 4  
+#define IN3 2   
+#define IN4 5  
 #define IR1 A2 // gris
 #define IR2 A3 // negro
 #define IR3 A4 // gris
 #define IR4 A5 // negro
 unsigned long tiempoAnterior = 0;
 const long intervalo = 200;
-
 void setup() {
   pinMode(IR1, INPUT);
   pinMode(IR2, INPUT);
   pinMode(IR3, INPUT);
   pinMode(IR4, INPUT);
+
  Serial.begin(9600); 
+
+   
 }
 
 void loop() {
+   
    unsigned long tiempoActual = millis();
   if (tiempoActual - tiempoAnterior >= intervalo) {
     tiempoAnterior = tiempoActual;

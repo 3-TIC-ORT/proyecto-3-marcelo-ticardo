@@ -51,8 +51,10 @@ label{
 
 .themeMode-check-container-on {
     justify-content: flex-end !important;
-    
+    border: 4px solid white !important; /* Cambiar a borde blanco en modo oscuro */
 }
+    
+
 
 .themeMode-check-container::after {
     width: 25px;

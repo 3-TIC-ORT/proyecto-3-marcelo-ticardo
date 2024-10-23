@@ -1,9 +1,20 @@
-localStorage.setItem('theme', '');
+// Cargar el tema almacenado
+if (localStorage.getItem('theme') === '-oscuro') {
+    // Si el tema almacenado es oscuro, ajusta los estilos y el GIF desde el inicio
+    document.getElementById('body').style.backgroundColor = '#2C3148';
+    document.getElementById('themeMode-check-container').classList.add('themeMode-check-container-on');
+    document.getElementById('logo-gif').src = "Logo-1-[remix]-oscuro.gif";
+    document.getElementById("sol-icon").src = "sol-oscuro.svg";
+    document.getElementById("luna-icon").src = "luna-oscuro.svg";
+} else {
+    // Modo claro por defecto
+    document.getElementById('logo-gif').src = "Logo-1-[remix].gif";
+}
 
 function thememode() {
     let menu = document.getElementById("themeMode-check-container");
     let body = document.getElementById("body");
-    let boton = document.getElementById("logo-gif");   // Contenedor del GIF claro
+    let boton = document.getElementById("logo-gif");   // Contenedor del GIF
     let solIcon = document.getElementById("sol-icon");
     let lunaIcon = document.getElementById("luna-icon");
 
@@ -17,10 +28,14 @@ function thememode() {
         body.style.backgroundColor = "white";
         menu.style.backgroundColor = "white";
 
+        // Cambiar el GIF a la versión clara
+        boton.src = "Logo-1-[remix].gif";  // Cambiar a GIF claro
+
         // Cambiar los íconos
         solIcon.src = "sol-claro.svg";
         lunaIcon.src = "luna-claro.svg";
 
+        // Almacenar el estado en localStorage
         localStorage.setItem('theme', '');
     } else {
         // Modo oscuro activado
@@ -31,17 +46,20 @@ function thememode() {
         // Cambiar el fondo a oscuro
         body.style.backgroundColor = '#2C3148';
         menu.style.backgroundColor = '#2C3148';
-        boton.src = "Logo-1-[remix]-oscuro.gif"
+
+        // Cambiar el GIF a la versión oscura
+        boton.src = "Logo-1-[remix]-oscuro.gif";  // Cambiar a GIF oscuro
+
         // Cambiar los íconos
         solIcon.src = "sol-oscuro.svg";
         lunaIcon.src = "luna-oscuro.svg";
 
+        // Almacenar el estado en localStorage
         localStorage.setItem('theme', '-oscuro');
     }
 }
 
-
-
+// Evento para redirigir a la otra página al hacer clic en el GIF
 document.getElementById("logo-gif").addEventListener("click", function() {
-        window.location.href = "intro.html";
+    window.location.href = "intro.html";
 });

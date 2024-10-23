@@ -13,8 +13,6 @@ void setup() {
   pinMode(IR3, INPUT);
   pinMode(IR4, INPUT);
  Serial.begin(9600); 
-
-   
 }
 
 void loop() {

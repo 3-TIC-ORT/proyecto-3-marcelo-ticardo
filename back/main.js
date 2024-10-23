@@ -20,9 +20,10 @@ let direccion;
 let distancia;
 let veces
 let motion
+let running
 
 const port = new SerialPort({
-  path: 'COM4',
+  path: 'COM14',
   baudRate: 9600
 });
 
@@ -80,12 +81,12 @@ if (aulas.includes(objetivo)) {
 }
 veces = 0;
 motion = "yendo";
+running = true;
+
 arduino();
 return [objetivo, direccion];
 });
 
-// Variable para controlar si la función arduino sigue activa
-let running = true;
 
 async function arduino() {
 // Verificamos si el proceso ya fue finalizado
@@ -109,6 +110,7 @@ const handleData = (data) => {
             if (veces === distancia) {
                 motion = "volviendo";
                 direccion = direccion === 'ADELANTE' ? 'ATRAS' : 'ADELANTE';
+                sendEvent("llegada", null);  // Notificar al frontend que llegó al aula
                 port.write(`${direccion}\n`);
             }
         } else if (motion === "volviendo") {
@@ -118,7 +120,7 @@ const handleData = (data) => {
             // Si volvió al inicio, finalizar
             if (veces === 0) {
                 port.write('LLEGASTE\n');  // Enviar señal de finalización al Arduino
-                sendEvent("llegada", null);  // Notificar al frontend que llegó al inicio
+                sendEvent("llegadaInicio", null);  // Notificar al frontend que llegó al inicio
 
                 // Detener la función arduino y eliminar el listener
                 running = false;

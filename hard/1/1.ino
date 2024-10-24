@@ -17,7 +17,8 @@
 #define IR4 A5 // negro
 
 int velocidadmax = 255;
-int velocidadCorreccion = 5;
+int velocidadCorreccion = 10;
+int velocidadmed = 125;  // corregido aquí
 int velocidadmin = 0;
 unsigned long medicionAnterior = 0;
 const long intervalo = 200;
@@ -60,9 +61,7 @@ void loop() {
   // Escuchar comandos desde el puerto serie
   if (Serial.available() > 0) {
     String command = Serial.readStringUntil('\n'); // Leer hasta un salto de línea
-    if (command == "VOLVER") {
-      volverAlInicio(); 
-    } else if (command == "ADELANTE") {
+    if (command == "ADELANTE") {
       moverAdelante();
     } else if (command == "ATRAS") {
       moverAtras();
@@ -92,12 +91,6 @@ void loop() {
       Serial.println("Advertencia: Distancia demasiado corta. ¡Frenar!");
       detenerRobot();
     }
-  }
-
-  if (girandoDerecha) {
-    moverDerecha();
-  } else if (girandoIzquierda) {
-    moverIzquierda();
   }
 }
 
@@ -138,82 +131,70 @@ void IR() {
   Serial.print("IR3: "); Serial.println(valorIR3);
   Serial.print("IR4: "); Serial.println(valorIR4);
 
-  if (valorIR1 >= XXX && valorIR1 <= XXX && valorIR3 >= XXX && valorIR3 <= XXX && 
-      valorIR2 < XXX && valorIR4 < XXX) {
+ if (valorIR1 >= 900 && valorIR1 <= 1000 && valorIR3 >= 900 && valorIR3 <= 1000 && 
+     valorIR2 >= 50 && valorIR4 <= 90) {
      if(command == "ADELANTE"){
       moverAdelante();
       } else if (command == "ATRAS"){
          moverAtras();
         }
-  } else if (valorIR2 >= XXX && valorIR2 <= XXX && valorIR4 >= XXX && valorIR4 <= XXX) {   //SEGUIR DESDE ACA
-          digitalWrite(ñ)
-  } else if (valorIR1 >= XXX && valorIR1 <= XXX && valorIR3 >= XXX && valorIR3 <= XXX) {
+  } else if (valorIR2 >= 100 && valorIR2 <= 1000 && valorIR4 >= 100 && valorIR4 <= 1000) {  
+          if(command == "ADELANTE"){
+            digitalWrite(IN1,HIGH);
+            digitalWrite(IN2,LOW);
+            digitalWrite(IN3,HIGH);
+            digitalWrite(IN4,LOW);
+            analogWrite(ENA, velocidadmed);
+            analogWrite(ENB, velocidadCorreccion);
+          } else if (command == "ATRAS"){
+            digitalWrite(IN1,LOW);
+            digitalWrite(IN2,HIGH);
+            digitalWrite(IN3,LOW);
+            digitalWrite(IN4,HIGH);
+            analogWrite(ENA, velocidadmed);
+            analogWrite(ENB, velocidadCorreccion);
+          }
+          
+  } else if (valorIR1 <= 900 && valorIR3 <= 900) {
+       if(command == "ADELANTE"){
+            digitalWrite(IN1,HIGH);
+            digitalWrite(IN2,LOW);
+            digitalWrite(IN3,HIGH);
+            digitalWrite(IN4,LOW);
+            analogWrite(ENA, velocidadCorreccion);
+            analogWrite(ENB, velocidadmed);
+       } else if (command == "ATRAS"){
+            digitalWrite(IN1,LOW);
+            digitalWrite(IN2,HIGH);
+            digitalWrite(IN3,LOW);
+            digitalWrite(IN4,HIGH);
+            analogWrite(ENA, velocidadCorreccion);
+            analogWrite(ENB, velocidadmed);
+       }
     
   } else {
     detenerRobot();
     Serial.println("Los sensores infrarrojos no funcionan bien");
   }
-
-  if((valor IR1 >= XXX && valor IR1 <= XXX && valor IR3>= XXX && valorIR3 <= XXX && valor IR2 >= XXX && valor IR2 <= XXX && valor IR4 >= XXX && valor IR4<= XXX)){
-      Serial.println("LINEA");
-    }
 }
 
-void moverAdelante() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadmax);
-  analogWrite(ENB, velocidadmax);
+void moverAdelante(){
+   digitalWrite(IN1,HIGH);
+   digitalWrite(IN2,LOW);  
+   digitalWrite(IN3,HIGH);
+   digitalWrite(IN4,LOW);
+   analogWrite(ENA,velocidadmed);  
+   analogWrite(ENB,velocidadmed);  
 }
 
-void moverAtras() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
-  analogWrite(ENA, velocidadmax);
-  analogWrite(ENB, velocidadmax);
+void moverAtras(){
+   digitalWrite(IN1,LOW);
+   digitalWrite(IN2,HIGH);  
+   digitalWrite(IN3,LOW);
+   digitalWrite(IN4,HIGH);
+   analogWrite(ENA,velocidadmed);  
+   analogWrite(ENB,velocidadmed);  
 }
 
-void girarDerecha90() {
-  if (!girandoDerecha) {
-    digitalWrite(IN1, HIGH); 
-    digitalWrite(IN2, LOW);  
-    digitalWrite(IN3, LOW);  
-    digitalWrite(IN4, HIGH); 
 
-    analogWrite(ENA, velocidadmax);  
-    analogWrite(ENB, velocidadmax);  
 
-    tiempoInicioGiro = millis(); 
-    girandoDerecha = true; 
-  } else {
-    if (millis() - tiempoInicioGiro >= duracionGiro90) {
-      detenerRobot(); 
-      girandoDerecha = false; 
-    }
-  }
-}
-
-void girarIzquierda90() {
-  if (!girandoIzquierda) {
-    digitalWrite(IN1, LOW);  
-    digitalWrite(IN2, HIGH); 
-    digitalWrite(IN3, HIGH); 
-    digitalWrite(IN4, LOW);
-
-    analogWrite(ENA, velocidadmax);  
-    analogWrite(ENB, velocidadmax);  
-    tiempoInicioGiro = millis(); 
-    girandoIzquierda = true; 
-  } else {
-    if (millis() - tiempoInicioGiro >= duracionGiro90) {
-      detenerRobot(); 
-      girandoIzquierda = false; 
-    }
-  }
-}
-
-}

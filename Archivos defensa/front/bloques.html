@@ -1,65 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bloques.css">
-    <title>Bloques</title>
-</head>
-<body>
-    <h1>Bloques</h1>
-    <div class="contenedor">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bloques.css">
+    
+        <title>Bloques</title>
+    </head>
+    <body>
+      <div class="header">
+        <div class="franja-negra"></div>
+        <div class="franja-violeta"></div>
+        <div class="franja-verde">¿Que bloque queres saber?</div>
+    
+    </div>
+    <body>
+        <div class="contenedor-bloques">
         <button id="boton-bloque1">Bloque 1</button>
         <button id="boton-bloque2">Bloque 2</button>
         <button id="boton-bloque3">Bloque 3</button>
         <button id="boton-bloque4">Bloque 4</button>
         <button id="boton-bloque5">Bloque 5</button>
-        <button id="boton-bloque6">Bloque 6</button>
-    </div>
+        <button id="boton-bloque6">Bloque 6</button> </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+      <script src="socket.js"></script>
+      <script src="bloques.js"></script> 
+    </body>
+    
 
     <style>
-    .contenedor {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        flex-direction: row;
-        text-align: center;
-        gap: 40px;
+        body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('brujula-removebg-preview 1.png') no-repeat center center fixed;
+      background-size: cover; /* Escala la imagen para cubrir el fondo */
+      position: relative; /* Para permitir la superposición de elementos */
+  }
+  body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('brujula-removebg-preview 1.png') no-repeat center center;
+            background-size: cover;
+            filter: brightness(0) invert(0);
+            z-index: -1; /* Asegura que los otros elementos se superpongan */
+            pointer-events: none; /* Evita que la imagen interfiera con la interacción del usuario */
+        }
+    .contenedor-bloques{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    gap: 20px;
+    margin-top: 100px;
 }
-        #boton-bloque1 {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
-}
-#boton-bloque2 {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
-}
-#boton-bloque3 {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
-}
-#boton-bloque4 {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
-}
-#boton-bloque5 {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
-}
-#boton-bloque6 {
-    border-radius: 96px;
-    width: 465px;
-    height: 125px;
-}
-    </style>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
-  <script src="socket.js"></script>
-  <script src="bloques.js"></script> 
-</body>
+#boton-bloque1:hover {
+    width: 405px;
+    height: 105px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+#boton-bloque1 {
+    color: #0F7173;
+    border-color: #0F7173;
+    border-width: 8px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
+
+#boton-bloque2 {
+    color: #0F7173;
+    border-color: #0F7173;
+    border-width: 8px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
+#boton-bloque2:hover {
+    width: 405px;
+    height: 105px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#boton-bloque3 {
+    color: #0F7173;
+    border-color: #0F7173;
+    border-width: 8px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
+#boton-bloque3:hover {
+    width: 405px;
+    height: 105px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#boton-bloque4 {
+    color: #0F7173;
+    border-color: #0F7173;
+    border-width: 8px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
+#boton-bloque4:hover {
+
+    width: 405px;
+    height: 105px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#boton-bloque5 {
+    color: #0F7173;
+    border-color: #0F7173;
+    border-width: 8px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
+#boton-bloque5:hover {
+    width: 405px;
+    height: 105px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#boton-bloque6 {
+    color: #0F7173;
+    border-color: #0F7173;
+    border-width: 8px;
+    border-radius: 96px;
+    border-style: solid;
+    width: 400px;
+    height: 100px;
+}
+#boton-bloque6:hover {
+
+    width: 405px;
+    height: 105px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.header{
+
+    background-color: #1F2232; /* Color de la franja verde */
+    height: 60px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+font-family: 'Arial', sans-serif;
+
+}
+.franja-negra, .franja-violeta {
+position: absolute;
+height: 60px;
+width: 80px;
+border-radius: 80px;
+margin: 10px;
+}
+
+.franja-negra {
+background-color: #1F2232;
+left: 0;
+z-index: 1;
+}
+
+.franja-violeta {
+background-color: #963484;
+left: 40px;
+z-index: 2;
+}
+
+.franja-verde {
+position: absolute;
+border-radius: 80px;
+margin: 10px;
+height: 60px;
+width: 1050px;
+background-color: #0F7173;
+left: 80px;
+z-index: 3;
+color: white;
+justify-content: center;
+display: flex;
+align-items: center; 
+font-size: 24px;
+font-weight: bold;
+padding-left: 100px;
+}
+</style>

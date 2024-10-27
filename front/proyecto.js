@@ -3,6 +3,7 @@ if (localStorage.getItem('theme') === '-oscuro') {
     // Si el tema almacenado es oscuro, ajusta los estilos y el GIF desde el inicio
     document.getElementById('body').style.backgroundColor = '#2C3148';
     document.getElementById('themeMode-check-container').classList.add('themeMode-check-container-on');
+    document.getElementById('themeMode-check-container').style.backgroundColor = '#2C3148';
     document.getElementById('logo-gif').src = "Logo-1-[remix]-oscuro.gif";
     document.getElementById("sol-icon").src = "sol-oscuro.svg";
     document.getElementById("luna-icon").src = "luna-oscuro.svg";

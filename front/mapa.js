@@ -1,16 +1,8 @@
 document.getElementById('theme-stylesheet').setAttribute('href', `mapa${localStorage.getItem('theme')}.css`);
 
-        document.getElementById("contenedor-imagen").addEventListener("click", function() {
-            window.location.href = "respuesta.html"
-        });
 
-document.getElementById("boton-volver").addEventListener("click", function() {
-    // Llama a la función para agrandar el botón
-    agrandarBoton("boton-con-franja3");
 
-    // Redirige inmediatamente
-    window.location.href = "proyecto.html";
-});
+
 
 function agrandarBoton(id) {
     var botonConFranja = document.getElementById(id);
@@ -94,11 +86,11 @@ receive("linea", (data) => {
 
 // Al llegar al inicio, volver a la página de inicio
 receive("llegada", () => {
-    alert("Llegaste a tu destino")
+    document.getElementById('llegaste').setAttribute("visibility", "visible");
+    document.getElementById('llegastee').setAttribute("visibility", "visible");
 });
 
 
 receive("llegadaInicio", () => {
-    document.getElementById('llegaste').setAttribute("visibility", "visible");
-    document.getElementById('llegastee').setAttribute("visibility", "visible");
+    window.location.href = "proyecto.html"
 });

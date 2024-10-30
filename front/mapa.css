@@ -114,4 +114,5 @@ section{
     justify-content: flex-end;
     font-size: 25px;
     right: 40px;
+    opacity: 0;
 }

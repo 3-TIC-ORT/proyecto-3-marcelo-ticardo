@@ -4,8 +4,8 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "start": "node handler.js",
-    "dev": "npx nodemon handler.js"
+    "start": "node main.js",
+    "dev": "npx nodemon main.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -18,7 +18,5 @@
   },
   "bugs": {
     "url": "https://github.com/3-TIC-ORT/proyecto-3-marcelo-ticardo/issues"
-  },
-  "homepage": "https://github.com/3-TIC-ORT/proyecto-3-marcelo-ticardo#readme",
-  "description": ""
+  }
 }

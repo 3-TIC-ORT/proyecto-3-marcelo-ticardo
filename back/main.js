@@ -1,138 +1,129 @@
-import { onEvent, startServer, sendEvent } from "soquetic";
-import { readFileSync } from 'fs';
-import { SerialPort } from 'serialport';
-import { ReadlineParser } from '@serialport/parser-readline';
+import { onEvent, startServer, sendEvent } from 'soquetic'
+import { readFileSync } from 'fs'
+import { SerialPort } from 'serialport'
 
-const horario = JSON.parse(readFileSync('horario.json'));
-const ingles = JSON.parse(readFileSync('ingles.json'));
+const horario = JSON.parse(readFileSync('horario.json'))
+const ingles = JSON.parse(readFileSync('ingles.json'))
 
-let date = new Date().getDay() - 1;
-const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
-const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217'];
-const aulas_inv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218'];
+let date = new Date().getDay() - 1
+const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
+const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217']
+const aulasInv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218']
 
 let dia = diasSemana[date]
-let curso
-let bloque
-let cursosIngles
-let objetivo
-let direccion;
-let distancia;
-let veces
-let motion
-let running
+let curso, bloque, cursosIngles, objetivo, direccion, distancia, veces, motion, running
 
+
+let puerto;
+const ports = await SerialPort.list();
+if (ports.length > 0) {
+    puerto = ports[0].path;
+} else {
+    console.error("No serial ports found.");
+}
 const port = new SerialPort({
-  path: 'COM14',
-  baudRate: 9600
+    path: puerto,
+    baudRate: 9600,
+});
+port.on('open', () => {
+    console.log(`Port ${puerto} is open`);
+});
+port.on('error', (err) => {
+    console.error("Error: ", err.message);
 });
 
 
-onEvent("bloque", (data) => {
+onEvent('bloque', data => {
   bloque = data
-});
+})
 
-onEvent("curso", (data) => {
+onEvent('curso', data => {
   curso = data
-});
+})
 
-onEvent("objetivo", (data) => {
+onEvent('objetivo', data => {
   objetivo = data
-});
+})
 
-onEvent("preguntarHorario", () => {
+onEvent('preguntarHorario', () => {
   for (const row of horario) {
     if (row.dia === dia && row.curso === curso && row.bloque === bloque) {
-        return {
-          materia: row.materia,
-          aula: row.aula
-    }
+      return {
+        materia: row.materia,
+        aula: row.aula
+      }
     }
   }
-});
+})
 
-onEvent("preguntarIngles", () => {
-  cursosIngles = [];
-  for (const row of ingles) { 
+onEvent('preguntarIngles', () => {
+  cursosIngles = []
+  for (const row of ingles) {
     if (row.dia === dia && row.bloque === bloque) {
-      cursosIngles.push({ nivel: row.nivel, aula: row.aula });
+      cursosIngles.push({ nivel: row.nivel, aula: row.aula })
     }
   }
-  return cursosIngles;
-});
+  return cursosIngles
+})
 
-onEvent("aulaIngles", () =>{
+onEvent('aulaIngles', () => {
   return objetivo
-});
+})
 
-
-// Evento que maneja el mapa y establece la dirección y distancia hacia el objetivo
-onEvent("mapa", () => {
-  if (objetivo === 'L5'){
-    objetivo = 'L200';
+onEvent('mapa', () => {
+  if (objetivo === 'L5') {
+    objetivo = 'L200'
   }
-// Determinar la dirección dependiendo del aula
-if (aulas.includes(objetivo)) {
-    direccion = 'ADELANTE';
-    distancia = aulas.indexOf(objetivo);
-} else if (aulas_inv.includes(objetivo)) {
-    direccion = 'ATRAS';
-    distancia = aulas_inv.indexOf(objetivo);
-}
-veces = 0;
-motion = "yendo";
-running = true;
+  if (aulas.includes(objetivo)) {
+    direccion = 'ADELANTE'
+    distancia = aulas.indexOf(objetivo)
+  } else if (aulasInv.includes(objetivo)) {
+    direccion = 'ATRAS'
+    distancia = aulasInv.indexOf(objetivo)
+  }
+  veces = 0
+  motion = 'yendo'
+  running = true
 
-arduino();
-return [objetivo, direccion];
-});
-
+  arduino()
+  return [objetivo, direccion]
+})
 
 async function arduino() {
-// Verificamos si el proceso ya fue finalizado
-if (!running) return;
-
-port.write(`${direccion}\n`);  // Enviar la dirección al Arduino
-
-const handleData = (data) => {
-    if (!running) return;  // Verificar si se debe detener la ejecución
-
+  if (!running) return;
+  port.write(`${direccion}\n`);
+  
+  const onDataHandler = (data) => {
+    if (!running) return;
     const message = data.toString().trim();
-
-    if (message === "LINEA") {
-        console.log(`Va por la linea ${veces} de ${distancia}`);
-
-        if (motion === "yendo") {
-            veces++;
-            sendEvent("linea", "siguiente");  // Enviar al frontend que avance
-
-            // Si llegó al objetivo, cambiar a "volviendo"
-            if (veces === distancia) {
-                motion = "volviendo";
-                direccion = direccion === 'ADELANTE' ? 'ATRAS' : 'ADELANTE';
-                sendEvent("llegada", null);  // Notificar al frontend que llegó al aula
-                port.write(`${direccion}\n`);
-            }
-        } else if (motion === "volviendo") {
-            veces--;
-            sendEvent("linea", "anterior");  // Enviar al frontend que retroceda
-
-            // Si volvió al inicio, finalizar
-            if (veces === 0) {
-                port.write('LLEGASTE\n');  // Enviar señal de finalización al Arduino
-                sendEvent("llegadaInicio", null);  // Notificar al frontend que llegó al inicio
-
-                // Detener la función arduino y eliminar el listener
-                running = false;
-                port.off('data', handleData);  // Eliminar el listener de datos
-                return;  // Finalizar ejecución de la función arduino()
-            }
+    if (message === 'LINEA') {
+      console.log(`Va por la linea ${veces} de ${distancia}`);
+      if (motion === 'yendo') {
+        veces++;
+        sendEvent('linea', 'siguiente');
+        if (veces === distancia) {
+          motion = 'volviendo';
+          direccion = direccion === 'ADELANTE' ? 'ATRAS' : 'ADELANTE';
+          sendEvent('llegada', null);
+          port.write(`${direccion}\n`);
         }
+      } else if (motion === 'volviendo') {
+        veces--;
+        sendEvent('linea', 'anterior');
+        if (veces === 0) {
+          port.write('LLEGASTE\n');
+          sendEvent('llegadaInicio', null);
+          port.removeListener('data', onDataHandler);
+          running = false;
+          return;
+        }
+      }
     }
-};
+  };
 
-// Añadir el listener para manejar los datos del puerto
-port.on('data', handleData);
+  // Set up the listener
+  port.on('data', onDataHandler);
 }
 
-startServer();
+
+startServer()

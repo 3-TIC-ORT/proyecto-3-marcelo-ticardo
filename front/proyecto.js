@@ -1,10 +1,10 @@
 
+let menu = document.getElementById("themeMode-check-container");
+let body = document.getElementById("body");
+let boton = document.getElementById("logo-gif");   // Contenedor del GIF
+let solIcon = document.getElementById("sol-icon");
+let lunaIcon = document.getElementById("luna-icon");
 function thememode() {
-    let menu = document.getElementById("themeMode-check-container");
-    let body = document.getElementById("body");
-    let boton = document.getElementById("logo-gif");   // Contenedor del GIF
-    let solIcon = document.getElementById("sol-icon");
-    let lunaIcon = document.getElementById("luna-icon");
 
     if (menu.classList.contains("themeMode-check-container-on")) {
         // Modo claro activado

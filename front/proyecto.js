@@ -56,7 +56,7 @@ if (localStorage.getItem('theme') === '-oscuro') {
     document.getElementById("sol-icon").src = "sol-oscuro.svg";
     document.getElementById("luna-icon").src = "luna-oscuro.svg";
     //let menu = document.getElementById("themeMode-check-container");
-    menu.classList.add("circle-color-light");
+    menu.classList.add("circle-color-dark");
 } else {
     // Modo claro por defecto
     document.getElementById('logo-gif').src = "Logo-1-[remix].gif";

@@ -8,7 +8,7 @@ const ingles = JSON.parse(readFileSync('ingles.json'))
 let date = new Date().getDay() - 1
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
 const aulas = ['inicio', 'L202', 'L204', 'L206', 'L208', 'L4', 'L3', 'L2', 'L1', 'L213', 'L215', 'L217']
-const aulasInv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L216', 'L218']
+const aulasInv = ['inicio', 'L200', 'L201', 'L203', 'L205', 'L207', 'L214', 'L216']
 
 let dia = diasSemana[date]
 let curso, bloque, cursosIngles, objetivo, direccion, distancia, veces, motion, running

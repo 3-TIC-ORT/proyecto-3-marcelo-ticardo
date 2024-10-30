@@ -7,6 +7,7 @@ if (localStorage.getItem('theme') === '-oscuro') {
     document.getElementById('logo-gif').src = "Logo-1-[remix]-oscuro.gif";
     document.getElementById("sol-icon").src = "sol-oscuro.svg";
     document.getElementById("luna-icon").src = "luna-oscuro.svg";
+    menu.classList.add("circle-color-light");
 } else {
     // Modo claro por defecto
     document.getElementById('logo-gif').src = "Logo-1-[remix].gif";

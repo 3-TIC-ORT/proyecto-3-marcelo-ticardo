@@ -3,7 +3,6 @@ document.getElementById('theme-stylesheet').setAttribute('href', `mapa${localSto
 
 
 
-
 function agrandarBoton(id) {
     var botonConFranja = document.getElementById(id);
     
@@ -37,7 +36,7 @@ let i = 0;  // Control del índice actual
 // Obtener el mapa inicial y mostrar las líneas
 fetchData("mapa", (data) => {
     objetivo = data[0];
-    document.getElementById("yendoalaula").textContent =`Estamos yendo al aula ${objetivo}`
+    document.getElementById("yendoalaula").textContent =`El aula a la que estamos yendo es ${objetivo}`
     direccion = data[1];
     document.getElementById(`inicio_u`).setAttribute("visibility", "visible");
     // Mostrar las líneas hasta el objetivo

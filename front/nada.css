@@ -1,0 +1,86 @@
+body{
+    background-image: url('brujula.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 85%;
+}
+.contenedor-otropiso{
+    position: relative;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.otropiso{
+    background-color: white;
+    width: 40%;
+    height: 75px;
+    text-align: center;
+    border: black solid 4px;
+    font-family: "Jacques Francois", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+.boton-con-franja {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    font-family: "Kite One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+}
+.franja1 {
+    position: absolute;
+    z-index: 0;
+    background-color: #0F7173;
+    border-radius: 96px;
+    width: 465px;
+    height: 125px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    top: 285px; /* Ajusta esta propiedad para subir o bajar la franja */
+    left: 33%; /* Ajusta esta propiedad para subir o bajar la franja */
+}
+.franja1.oculta {
+    opacity: 0; /* Hace que desaparezca */
+    transform: scale(0); /* Reduce su tamaño a 0 */
+}
+.boton-volver {
+    border-radius: 96px;
+    background-color: white;
+    width: 465px;
+    height: 125px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: black;
+    border-color:black;
+    border-width: 3px;
+    border-style: solid;
+    left: 33%;
+    top: 270px;
+}
+.boton-volver.grande-volver{
+    height: 130px;
+}
+.img-logo{
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el borde inferior */
+    left: 20px;   /* Ajusta la distancia desde el borde izquierdo */
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: 150px
+}

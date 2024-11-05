@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+    <link id="theme-stylesheet" rel="stylesheet" href="nada.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>No tenes ninguna materia en este bloque</h1>
-    <button id="volver">Volver al inicio</button>
-    <script>
-    document.getElementById("volver").addEventListener("click", function() {
-    window.location.href = "proyecto.html";
-});
-    </script>
+    <div class="contenedor-otropiso">
+        <h1 id="otropiso" class = "otropiso">No tenes ninguna materia en este bloque</h1>
+    </div>
+    <div class="boton-con-franja" id="boton-con-franja3">
+        <div id="boton-volver" class="boton-volver">Volver al Inicio</div><div class="franja1" id="franja1"></div>
+    </div>
+    <div class="contenedor-imagen" id="contenedor-imagen">
+        <img src="Marcelito.svg" alt="Imagen circular" class="img-logo">
+    </div>
+    <script src="nada.js"></script>
 </body>
 </html>

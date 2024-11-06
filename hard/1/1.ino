@@ -12,10 +12,10 @@
 #define SOUND_SPEED 0.034 
 #define DISTANCIA_MINIMA 75
 #define IR1 A2 // gris
-#define IR2 A3 // negro
-#define IR3 A4 // gris
 #define IR4 A5 // negro
 
+#define IR2 A3 // negro
+#define IR3 A4 // gris
 int velocidadmax = 255;
 int velocidadCorreccion = 10;
 int velocidadmed = 125;  // corregido aquí

@@ -195,6 +195,3 @@ void moverAtras(){
    analogWrite(ENA,velocidadmed);  
    analogWrite(ENB,velocidadmed);  
 }
-
-
-

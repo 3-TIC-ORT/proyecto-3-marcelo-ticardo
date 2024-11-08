@@ -5,7 +5,7 @@
 #define IN3 2  
 #define IN4 5  
 
-int velocidad = 125; // Velocidad máxima
+int velocidad = 255;   // Velocidad máxima
 
 void setup() {
   pinMode(IN1, OUTPUT);

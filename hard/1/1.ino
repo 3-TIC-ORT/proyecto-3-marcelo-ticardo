@@ -13,21 +13,17 @@
 #define DISTANCIA_MINIMA 75
 #define IR1 A2 // gris
 #define IR4 A5 // negro
-
 #define IR2 A3 // negro
 #define IR3 A4 // gris
+
 int velocidadmax = 255;
 int velocidadCorreccion = 10;
-int velocidadmed = 125;  // corregido aquí
+int velocidadmed = 125;
 int velocidadmin = 0;
 unsigned long medicionAnterior = 0;
 const long intervalo = 200;
 unsigned long tiempoAnterior = 0;
-bool direccion; // variable para dirección
-unsigned long tiempoInicioGiro = 0;
-bool girandoDerecha = false;
-bool girandoIzquierda = false;
-const unsigned long duracionGiro90 = 400;
+bool direccion = true; // true = adelante, false = atrás
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -47,20 +43,14 @@ void setup() {
   
   Serial.begin(9600);
 
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadmin); 
-  analogWrite(ENB, velocidadmin); 
+  detenerRobot();
 }
 
 void loop() {
-  IR();  
-
+ 
   // Escuchar comandos desde el puerto serie
   if (Serial.available() > 0) {
-    String command = Serial.readStringUntil('\n'); // Leer hasta un salto de línea
+    String command = Serial.readStringUntil('\n');
     if (command == "ADELANTE") {
       moverAdelante();
     } else if (command == "ATRAS") {
@@ -70,25 +60,19 @@ void loop() {
       }
   }
 
-  // Resto del código para controlar el movimiento del robot
+  IR();  
 
-  if (millis() - medicionAnterior >= intervalo && !girandoDerecha && !girandoIzquierda) {
+  if (millis() - medicionAnterior >= intervalo) {
     medicionAnterior = millis();
-    float distancia = 0;
+    float distancia = medirDistancia(direccion ? TRIG1 : TRIG2, direccion ? ECHO1 : ECHO2);
 
-    if (command == "ADELANTE") {
-      distancia = medirDistancia(TRIG1, ECHO1);  
-      Serial.print("Distancia Sensor Frontal: ");
-    } else if (command == "ATRAS") {
-      distancia = medirDistancia(TRIG2, ECHO2);  
-      Serial.print("Distancia Sensor Trasero: ");
-    }
-
+    Serial.print("Distancia ");
+    Serial.print(direccion ? "Frontal: " : "Trasera: ");
     Serial.print(distancia);
     Serial.println(" cm");
 
     if (distancia <= DISTANCIA_MINIMA) {
-      Serial.println("Advertencia: Distancia demasiado corta. ¡Frenar!");
+      Serial.println("Obstáculo detectado. Deteniendo robot.");
       detenerRobot();
     }
   }
@@ -116,82 +100,56 @@ void detenerRobot() {
 }
 
 void IR() {
-  unsigned long tiempoActual = millis();
-  if (tiempoActual - tiempoAnterior >= intervalo) {
-    tiempoAnterior = tiempoActual;
-  }
-
-  int valorIR1 = analogRead(IR1);  
-  int valorIR2 = analogRead(IR2);  
-  int valorIR3 = analogRead(IR3);  
-  int valorIR4 = analogRead(IR4);  
-
-  Serial.print("IR1: "); Serial.println(valorIR1);
-  Serial.print("IR2: "); Serial.println(valorIR2);
-  Serial.print("IR3: "); Serial.println(valorIR3);
-  Serial.print("IR4: "); Serial.println(valorIR4);
-
- if (valorIR1 >= 900 && valorIR1 <= 1000 && valorIR3 >= 900 && valorIR3 <= 1000 && 
-     valorIR2 >= 50 && valorIR4 <= 90) {
-     if(command == "ADELANTE"){
-      moverAdelante();
-      } else if (command == "ATRAS"){
-         moverAtras();
-        }
-  } else if (valorIR2 >= 100 && valorIR2 <= 1000 && valorIR4 >= 100 && valorIR4 <= 1000) {  
-          if(command == "ADELANTE"){
-            digitalWrite(IN1,HIGH);
-            digitalWrite(IN2,LOW);
-            digitalWrite(IN3,HIGH);
-            digitalWrite(IN4,LOW);
-            analogWrite(ENA, velocidadmed);
-            analogWrite(ENB, velocidadCorreccion);
-          } else if (command == "ATRAS"){
-            digitalWrite(IN1,LOW);
-            digitalWrite(IN2,HIGH);
-            digitalWrite(IN3,LOW);
-            digitalWrite(IN4,HIGH);
-            analogWrite(ENA, velocidadmed);
-            analogWrite(ENB, velocidadCorreccion);
-          }
-          
-  } else if (valorIR1 <= 900 && valorIR3 <= 900) {
-       if(command == "ADELANTE"){
-            digitalWrite(IN1,HIGH);
-            digitalWrite(IN2,LOW);
-            digitalWrite(IN3,HIGH);
-            digitalWrite(IN4,LOW);
-            analogWrite(ENA, velocidadCorreccion);
-            analogWrite(ENB, velocidadmed);
-       } else if (command == "ATRAS"){
-            digitalWrite(IN1,LOW);
-            digitalWrite(IN2,HIGH);
-            digitalWrite(IN3,LOW);
-            digitalWrite(IN4,HIGH);
-            analogWrite(ENA, velocidadCorreccion);
-            analogWrite(ENB, velocidadmed);
-       }
-    
+  int valoresIR[4] = {analogRead(IR1), analogRead(IR2), analogRead(IR3), analogRead(IR4)};
+  bool derechaClara = valoresIR[0] >= 900 && valoresIR[2] >= 900;  
+  bool izquierdaOscura = valoresIR[1] > 100 && valoresIR[3] > 100; 
+  
+  if (derechaClara && !izquierdaOscura) { // Ambos sensores derechos detectan línea
+    direccion ? moverAdelante() : moverAtras();
+  } else if (izquierdaOscura) { // Ambos sensores izquierdos detectan fuera de línea
+    direccion ? correccionIzquierda() : correccionDerecha();
+  } else if (!derechaClara) { // Ambos sensores derechos detectan fuera de línea
+    direccion ? correccionDerecha() : correccionIzquierda();
   } else {
     detenerRobot();
-    Serial.println("Los sensores infrarrojos no funcionan bien");
+    Serial.println("Los sensores infrarrojos funcionan mal");
   }
 }
 
-void moverAdelante(){
-   digitalWrite(IN1,HIGH);
-   digitalWrite(IN2,LOW);  
-   digitalWrite(IN3,HIGH);
-   digitalWrite(IN4,LOW);
-   analogWrite(ENA,velocidadmed);  
-   analogWrite(ENB,velocidadmed);  
+void moverAdelante() {
+  direccion = true;
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadmed);
+  analogWrite(ENB, velocidadmed);
 }
 
-void moverAtras(){
-   digitalWrite(IN1,LOW);
-   digitalWrite(IN2,HIGH);  
-   digitalWrite(IN3,LOW);
-   digitalWrite(IN4,HIGH);
-   analogWrite(ENA,velocidadmed);  
-   analogWrite(ENB,velocidadmed);  
+void moverAtras() {
+  direccion = false;
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  analogWrite(ENA, velocidadmed);
+  analogWrite(ENB, velocidadmed);
+}
+
+void correccionIzquierda() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadCorreccion);
+  analogWrite(ENB, velocidadmed);
+}
+
+void correccionDerecha() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadmed);
+  analogWrite(ENB, velocidadCorreccion);
 }

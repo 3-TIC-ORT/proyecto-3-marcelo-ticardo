@@ -39,9 +39,8 @@ void loop() {
       moverAdelante();
     } else if (command == "ATRAS") {
       moverAtras();
-    } else if (command == "PARAR") {
-      detenerRobot();
-    }
+    } 
+    
   }
   
   if (millis() - UltimaMedicion >= INTERVALO) {

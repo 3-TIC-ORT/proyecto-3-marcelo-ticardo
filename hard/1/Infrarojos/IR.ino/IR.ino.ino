@@ -13,7 +13,7 @@ int velocidadmax = 255;
 int velocidadCorreccion = 10;
 int velocidadmed = 125;
 int velocidadmin = 0;
-bool direcccion;
+bool direccion;
 
 void setup(){
   pinMode(IN1, OUTPUT);
@@ -39,9 +39,7 @@ void loop(){
       moverAdelante();
     } else if (command == "ATRAS") {
       moverAtras();
-    } else if (command == "PARAR"){
-      detenerRobot();
-      }
+    } 
   }
 
   int valoresIR[4] = {analogRead(IR1), analogRead(IR2), analogRead(IR3), analogRead(IR4)};
@@ -60,7 +58,14 @@ void loop(){
   }
   }
 
-
+void detenerRobot(){
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadmin);
+  analogWrite(ENB, velocidadmin);
+  }
 void moverAdelante() {
   direccion = true;
   digitalWrite(IN1, HIGH);

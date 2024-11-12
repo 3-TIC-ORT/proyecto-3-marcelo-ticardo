@@ -39,7 +39,9 @@ void loop() {
       moverAdelante();
     } else if (command == "ATRAS") {
       moverAtras();
-    } 
+    } else if (command == "LLEGASTE"){
+      detenerRobot();
+      }
     
   }
   

@@ -39,7 +39,9 @@ void loop(){
       moverAdelante();
     } else if (command == "ATRAS") {
       moverAtras();
-    } 
+    } else if (command == "LLEGASTE"){
+      detenerRobot();
+      }
   }
 
   int valoresIR[4] = {analogRead(IR1), analogRead(IR2), analogRead(IR3), analogRead(IR4)};

@@ -16,9 +16,9 @@
 #define IR2 A3 // negro
 #define IR3 A4 // gris
 
-int velocidadmax = 255;
+int velocidadena = 255;
 int velocidadCorreccion = 10;
-int velocidadmed = 125;
+int velocidadenb = 65;
 int velocidadmin = 0;
 unsigned long medicionAnterior = 0;
 const long intervalo = 200;
@@ -122,8 +122,8 @@ void moverAdelante() {
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadmed);
-  analogWrite(ENB, velocidadmed);
+  analogWrite(ENA, velocidadena);
+  analogWrite(ENB, velocidadenb);
 }
 
 void moverAtras() {
@@ -132,8 +132,8 @@ void moverAtras() {
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
-  analogWrite(ENA, velocidadmed);
-  analogWrite(ENB, velocidadmed);
+  analogWrite(ENA, velocidadena);
+  analogWrite(ENB, velocidadenb);
 }
 
 void correccionIzquierda() {
@@ -142,7 +142,7 @@ void correccionIzquierda() {
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
   analogWrite(ENA, velocidadCorreccion);
-  analogWrite(ENB, velocidadmed);
+  analogWrite(ENB, velocidadenb);
 }
 
 void correccionDerecha() {
@@ -150,6 +150,6 @@ void correccionDerecha() {
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadmed);
+  analogWrite(ENA, velocidadena);
   analogWrite(ENB, velocidadCorreccion);
 }

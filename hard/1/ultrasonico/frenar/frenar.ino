@@ -1,21 +1,20 @@
-#define TRIG1 7 
+#define TRIG1 7
 #define ECHO1 A0
 #define TRIG2 8
-#define ECHO2 A1  
-#define INTERVALO 100  
-#define SOUND_SPEED 0.034 
+#define ECHO2 A1
+#define INTERVALO 100
+#define SOUND_SPEED 0.034
 #define DISTANCIA_MINIMA 30
-#define ENA 10  
-#define ENB 11  
-#define IN1 3 
-#define IN2 4   
-#define IN3 2   
-#define IN4 5   
-
-int velocidadmax = 255; 
+#define ENA 10
+#define ENB 11
+#define IN1 3
+#define IN2 4
+#define IN3 2
+#define IN4 5
+int velocidadmax = 255;
 int velocidadmin = 0;
 unsigned long UltimaMedicion = 0;
-bool direccion = true;  
+bool direccion = true;
 bool obstaculoDetectado = false;
 
 void setup() {
@@ -33,27 +32,23 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    String command = Serial.readStringUntil('\n');
-    if (command == "ADELANTE") {
-      moverAdelante();
-    } else if (command == "ATRAS") {
-      moverAtras();
-    } else if (command == "LLEGASTE"){
-      detenerRobot();
-      }
-    
+  if (!obstaculoDetectado) {
+    direccion ? moverAdelante() : moverAtras();
   }
-  
+
   if (millis() - UltimaMedicion >= INTERVALO) {
     UltimaMedicion = millis();
     float distancia = medirDistancia(direccion ? TRIG1 : TRIG2, direccion ? ECHO1 : ECHO2);
+
+    Serial.print(direccion ? "Distancia Sensor Frontal: " : "Distancia Sensor Trasero: ");
+    Serial.print(distancia);
+    Serial.println(" cm");
+
     if (distancia <= DISTANCIA_MINIMA) {
       detenerRobot();
       obstaculoDetectado = true;
     } else if (obstaculoDetectado) {
       obstaculoDetectado = false;
-      direccion ? moverAdelante() : moverAtras();
     }
   }
 }
@@ -73,7 +68,7 @@ void detenerRobot() {
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadmin); 
+  analogWrite(ENA, velocidadmin);
   analogWrite(ENB, velocidadmin);
 }
 

@@ -6,7 +6,7 @@
 #define IN4 5  
 
 int velocidad = 255;   
-int velocidadena = 100;
+int velocidadenb = 65;
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -22,14 +22,14 @@ void loop() {
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadena); 
-  analogWrite(ENB, velocidad); 
+  analogWrite(ENA, velocidad); 
+  analogWrite(ENB, velocidadenb);
   delay(3000);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
-  analogWrite(ENA, velocidadena); 
-  analogWrite(ENB, velocidad); 
+  analogWrite(ENA, velocidad);
+  analogWrite(ENB, velocidadenb);
   delay(3000);
 }

@@ -1,6 +1,14 @@
 //Este codigo e para saber los valores del piso
 
 
+int velocidadmax = 255;  
+#define ENA 10  
+#define ENB 11  
+#define IN1 3   
+#define IN2 4  
+#define IN3 2  
+#define IN4 5  
+ 
 #define IR1 A2 // gris
 #define IR2 A3 // negro
 #define IR3 A4 // gris
@@ -34,5 +42,12 @@ void loop() {
   Serial.print("IR2: "); Serial.println(valorIR2);
   Serial.print("IR3: "); Serial.println(valorIR3);
   Serial.print("IR4: "); Serial.println(valorIR4);
+
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, velocidadmax);
+  analogWrite(ENB, velocidadmax);
 
 }

@@ -5,10 +5,10 @@
 #define IN3 2   
 #define IN4 5   
 #define IR1 A2 
-#define IR4 A5
-
 #define IR2 A3 
 #define IR3 A4 
+#define IR4 A5
+
 
 unsigned long tiempoAnterior = 0;
 const long intervalo = 200;

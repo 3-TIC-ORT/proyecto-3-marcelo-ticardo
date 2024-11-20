@@ -14,7 +14,7 @@
 int velocidadmax = 255;
 int velocidadmin = 0;
 unsigned long UltimaMedicion = 0;
-bool direccion = true;
+ bool direccion = true;
 bool obstaculoDetectado = false;
 
 void setup() {

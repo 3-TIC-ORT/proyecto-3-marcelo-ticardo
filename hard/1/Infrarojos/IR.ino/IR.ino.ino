@@ -42,9 +42,13 @@ void loop() {
   int valorIR2 = analogRead(IR2);  
   int valorIR3 = analogRead(IR3);  
   int valorIR4 = analogRead(IR4);  
+  Serial.print("IR1: "); Serial.println(valorIR1);
+  Serial.print("IR2: "); Serial.println(valorIR2);
+  Serial.print("IR3: "); Serial.println(valorIR3);
+  Serial.print("IR4: "); Serial.println(valorIR4);
 
-  // Caso 1: IR1 e IR3 > 500
-  if (valorIR1 > 500 && valorIR3 > 500) {
+  // Caso 1: IR1 e IR3 > 800
+  if (valorIR1 > 800 && valorIR3 > 800) {
     detenerMotor(EN2);
     retrocederMotor1();
 
@@ -53,8 +57,9 @@ void loop() {
     }
 
     tiempoRetroceso = millis() - tiempoAnterior;
+    Serial.println(tiempoAvance);
+    Serial.println(tiempoRetroceso);
     tiempoAvance = tiempoRetroceso / 2;
-    
     avanzarMotor1(tiempoAvance);
   }
 
@@ -64,15 +69,18 @@ void loop() {
     retrocederMotor2();
 
 
-    while (analogRead(IR2) < 500 || analogRead(IR4) < 500) {
+    while (analogRead(IR2) < 800 || analogRead(IR4) < 800) {
       delay(10); 
     }
 
 
     tiempoRetroceso = millis() - tiempoAnterior;
+    Serial.println(tiempoAvance);
+    Serial.println(tiempoRetroceso);
     tiempoAvance = tiempoRetroceso / 2;
 
     avanzarMotor2(tiempoAvance);
+
   } else {
     moverAdelante();
   }

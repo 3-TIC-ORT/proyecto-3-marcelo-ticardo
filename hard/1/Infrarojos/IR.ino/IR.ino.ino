@@ -42,6 +42,7 @@ void loop() {
   int valorIR2 = analogRead(IR2);  
   int valorIR3 = analogRead(IR3);  
   int valorIR4 = analogRead(IR4);  
+
   Serial.print("IR1: "); Serial.println(valorIR1);
   Serial.print("IR2: "); Serial.println(valorIR2);
   Serial.print("IR3: "); Serial.println(valorIR3);
@@ -50,79 +51,67 @@ void loop() {
   // Caso 1: IR1 e IR3 > 800
   if (valorIR1 > 800 && valorIR3 > 800) {
     detenerMotor(EN2);
-    retrocederMotor1();
+    retrocederMotor1(velocidadCorreccion);
 
     while (analogRead(IR1) > 100 || analogRead(IR3) > 100) {
-      delay(10); 
+      delay(10); // Espera hasta que ambos sensores detecten valores < 100
     }
 
+    detenerMotor(EN1);
     tiempoRetroceso = millis() - tiempoAnterior;
-    Serial.println(tiempoAvance);
-    Serial.println(tiempoRetroceso);
     tiempoAvance = tiempoRetroceso / 2;
-    avanzarMotor1(tiempoAvance);
+    avanzarMotor1(tiempoAvance, velocidadCorreccion);
   }
 
   // Caso 2: IR2 e IR4 < 100
   else if (valorIR2 < 100 && valorIR4 < 100) {
     detenerMotor(EN1);
-    retrocederMotor2();
-
+    retrocederMotor2(velocidadCorreccion);
 
     while (analogRead(IR2) < 800 || analogRead(IR4) < 800) {
-      delay(10); 
+      delay(10); // Espera hasta que ambos sensores detecten valores > 800
     }
 
-
+    detenerMotor(EN2);
     tiempoRetroceso = millis() - tiempoAnterior;
-    Serial.println(tiempoAvance);
-    Serial.println(tiempoRetroceso);
     tiempoAvance = tiempoRetroceso / 2;
+    avanzarMotor2(tiempoAvance, velocidadCorreccion);
+  }
 
-    avanzarMotor2(tiempoAvance);
-
-  } else {
+  // Movimiento por defecto: avanzar
+  else {
     moverAdelante();
   }
-}
-
-void detenerRobot() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, LOW);
-  analogWrite(EN1, velocidadmin);
-  analogWrite(EN2, velocidadmin);
 }
 
 void detenerMotor(int motor) {
   analogWrite(motor, velocidadmin);
 }
 
-void retrocederMotor1() {
+void retrocederMotor1(int velocidad) {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
-  analogWrite(EN1, velocidadmax);
+  analogWrite(EN1, velocidad);
 }
 
-void retrocederMotor2() {
+void retrocederMotor2(int velocidad) {
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
-  analogWrite(EN2, velocidadmax);
+  analogWrite(EN2, velocidad);
 }
 
-void avanzarMotor1(unsigned long tiempo) {
+void avanzarMotor1(unsigned long tiempo, int velocidad) {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
-  analogWrite(EN1, velocidadmax);
+  analogWrite(EN1, velocidad);
   delay(tiempo);
   detenerMotor(EN1);
 }
 
-void avanzarMotor2(unsigned long tiempo) {
+void avanzarMotor2(unsigned long tiempo, int velocidad) {
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
-  analogWrite(EN2, velocidadmax);
+  analogWrite(EN2, velocidad);
   delay(tiempo);
   detenerMotor(EN2);
 }

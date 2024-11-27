@@ -4,7 +4,7 @@
 #define ECHO2 A1
 #define INTERVALO 100
 #define SOUND_SPEED 0.034
-#define DISTANCIA_MINIMA 30
+#define DISTANCIA_MINIMA 75
 #define ENA 10
 #define ENB 11
 #define IN1 3

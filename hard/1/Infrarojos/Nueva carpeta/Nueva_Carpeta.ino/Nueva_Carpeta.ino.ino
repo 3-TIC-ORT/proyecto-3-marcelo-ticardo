@@ -1,4 +1,4 @@
-//Este codigo e para saber los valores del piso
+ //Este codigo e para saber los valores del piso
 
 
 int velocidadmax = 255;  

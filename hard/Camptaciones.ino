@@ -1,6 +1,7 @@
 //Este codigo fue escrito por Chat, lo que le corregi fue que ahora no se comunica por puerto serie,
 // y ahora la pista va a ser una franja negra en un fondo balco, los 4 sensores tienen q sensar negro
 // Si alguno sensa blanco arranca a buscar la linea.
+// LINK A CHAT: https://chatgpt.com/c/6840d294-f654-800c-b4aa-df2b874bc869
 #define ENA 10  
 #define ENB 11  
 #define IN1 3   

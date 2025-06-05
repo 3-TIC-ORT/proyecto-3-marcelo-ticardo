@@ -1,9 +1,9 @@
 #define EN1 10  
 #define EN2 11  
-#define IN1 3  //mor izq 
-#define IN2 4  //mor izq
+#define IN1 3  //motor izq
+#define IN2 4  //motor
 #define IN3 2  //mot der
-#define IN4 5  //mot der
+#define IN4 5  //mot 
 #define IR1 A2 //der
 #define IR2 A3 //izq
 #define IR3 A4 //der

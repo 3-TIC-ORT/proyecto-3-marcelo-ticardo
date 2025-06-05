@@ -2,12 +2,12 @@
 // y ahora la pista va a ser una franja negra en un fondo balco, los 4 sensores tienen q sensar negro
 // Si alguno sensa blanco arranca a buscar la linea.
 // LINK A CHAT: https://chatgpt.com/c/6840d294-f654-800c-b4aa-df2b874bc869
-#define ENA 10  //motor
-#define ENB 11  //motor
-#define IN1 3   
-#define IN2 4  
-#define IN3 2   
-#define IN4 5   
+#define ENA 10  // velocidad mot izq
+#define ENB 11  // velocidad mot der
+#define IN1 3   // motor izq
+#define IN2 4  //motor
+#define IN3 2   //motor der
+#define IN4 5   //motor
 #define TRIG1 7 
 #define ECHO1 A1
 #define TRIG2 8

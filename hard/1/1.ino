@@ -1,8 +1,8 @@
-#define ENA 10  
-#define ENB 11  
-#define IN1 3   
-#define IN2 4  
-#define IN3 2   
+#define ENA 10 //velocidad mot izq 
+#define ENB 11  // velocidad mot der
+#define IN1 2   //direccion motor izq
+#define IN2 3  
+#define IN3 4   //direccion motor der
 #define IN4 5   
 #define TRIG1 7 
 #define ECHO1 A1

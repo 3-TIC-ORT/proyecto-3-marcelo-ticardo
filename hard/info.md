@@ -9,11 +9,11 @@ COMPONENTES DEFINITIVOS
 2 sensores ultrasonico de 4 pines: https://microlab.ec/blog/sensor-ultrasonico-srf05-con-arduino/
 
 Arduino:https://forum.arduino.cc/
-2 ruedas:
+
+2 ruedas:https://drive.google.com/drive/folders/1bSuq2uhLjLCmMQJ7raipW7LbI2nMTSzQ
 
 1 puente h L298N:https://www.prometec.net/l298n/
 
 soportes impresos 3D para los motores, la batería, los sensores
 
 
-    

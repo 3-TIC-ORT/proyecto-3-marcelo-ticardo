@@ -18,16 +18,11 @@ unsigned long UltimaMedicion = 0;
 bool obstaculoDetectado = false;
 
 void setup() {
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  pinMode(ENA, OUTPUT);
-  pinMode(ENB, OUTPUT);
-  pinMode(TRIG1, OUTPUT);
-  pinMode(ECHO1, INPUT);
-  pinMode(TRIG2, OUTPUT);
-  pinMode(ECHO2, INPUT);
+  pinMode(IN1, OUTPUT); pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT); pinMode(IN4, OUTPUT);
+  pinMode(ENA, OUTPUT); pinMode(ENB, OUTPUT);
+  pinMode(TRIG1, OUTPUT); pinMode(ECHO1, INPUT);
+  pinMode(TRIG2, OUTPUT); pinMode(ECHO2, INPUT);
   Serial.begin(9600);
 }
 

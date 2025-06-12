@@ -9,16 +9,11 @@
 #define IR3 A4 
 #define IR4 A5
 void setup() {
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  pinMode(EN1, OUTPUT);
-  pinMode(EN2, OUTPUT);
-  pinMode(IR1, INPUT);
-  pinMode(IR2, INPUT);
-  pinMode(IR3, INPUT);
-  pinMode(IR4, INPUT);
+  pinMode(IN1, OUTPUT); pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT); pinMode(IN4, OUTPUT);
+  pinMode(EN1, OUTPUT); pinMode(EN2, OUTPUT);
+  pinMode(IR1, INPUT); pinMode(IR2, INPUT);
+  pinMode(IR3, INPUT); pinMode(IR4, INPUT);
   Serial.begin(9600);
 }
 
@@ -29,7 +24,7 @@ void loop() {
   int valorIR2 = analogRead(IR2);  
   int valorIR3 = analogRead(IR3);  
   int valorIR4 = analogRead(IR4);  
-  if(IR1 <100 && IR3 < 100 && IR2 > 800 && IR4 > 800){
+  if(IR1 <100 && IR3 < 100 && IR2 < 100 && IR4 < 100){
       moverAadelante();
   } else if ( IR1 > 100 && IR3 >100){
     detenerRobot(); 

@@ -12,10 +12,58 @@
 #define IR3 A4 // sensor derecha trasera
 #define IR4 A5 // sensor izquierda trasera
 
-int velocidadIzquierda = 255;   //Corregir con las velocidades de los motores
-int velocidadDerecha = 65;      
+int velocidadIzquierda = 255;
+int velocidadDerecha = 65;
 int velocidadCorreccion = 90;
 int velocidadMinima = 0;
+
+
+class PID {
+  public:
+    PID(float kp, float ki, float kd, float initialIntegral = 0.0, float outputMin = -1.0, float outputMax = 1.0) {
+      Kp = kp;
+      Ki = ki;
+      Kd = kd;
+      integral = initialIntegral;
+      previousError = 0;
+      minOutput = outputMin;
+      maxOutput = outputMax;
+    }
+
+    void setSetpoint(float sp) {
+      setpoint = sp;
+    }
+
+    void setOutputLimits(float minOut, float maxOut) {
+      minOutput = minOut;
+      maxOutput = maxOut;
+    }
+
+    void resetIntegral(float newIntegral = 0.0) {
+      integral = newIntegral;
+    }
+
+    float compute(float measurement) {
+      float error = setpoint - measurement;
+      integral += error;
+      float derivative = error - previousError;
+      previousError = error;
+
+      float output = Kp * error + Ki * integral + Kd * derivative;
+      output = constrain(output, minOutput, maxOutput);
+      return output;
+    }
+
+  private:
+    float Kp, Ki, Kd;
+    float integral;
+    float previousError;
+    float setpoint = 0;
+    float minOutput, maxOutput;
+};
+
+// PID object (you had a trailing comma error!)
+PID pid(0.5, 0.1, 0.1, 0.0, -1.0, 1.0);
 
 void setup() {
   pinMode(IN1, OUTPUT); pinMode(IN2, OUTPUT);
@@ -24,73 +72,64 @@ void setup() {
   pinMode(IR1, INPUT); pinMode(IR2, INPUT);
   pinMode(IR3, INPUT); pinMode(IR4, INPUT);
 
-
-  Serial.begin(9600);  
+  Serial.begin(9600);
   detenerRobot();
 }
 
 void loop() {
-
-  seguirLinea();
+  follow_line();
 }
 
-void seguirLinea() {
-  int sensor1 = analogRead(IR1); // derecha delantera
-  int sensor2 = analogRead(IR2); // izquierda delantera
-  int sensor3 = analogRead(IR3); // derecha trasera
-  int sensor4 = analogRead(IR4); // izquierda trasera
+int get_error(int cutoff) {
+  int raw[4] = {
+    analogRead(IR1),
+    analogRead(IR3),
+    analogRead(IR2),
+    analogRead(IR4)
+  };
+  Serial.print(raw[0]);
+  Serial.print(","); Serial.print(raw[1]);
+  Serial.print(","); Serial.print(raw[2]);
+  Serial.print(","); Serial.print(raw[3]);
 
-  // Si los 4 sensores detectan blanco seguir derecho
-  if (sensor1 < 100 && sensor2 < 100 && sensor3 < 100 && sensor4 < 100) {
-    moverAdelante();
-  } else {
-    buscarLinea();  // Si alguno ve negro, corregir
+  int error = 0;
+  for (int i = 0; i < 4; i++) {
+    if (raw[i] > cutoff) {
+      if (i < 2) {
+        error++;
+      } else {
+        error--;
+      }
+    }
   }
+  return error;
 }
 
-void buscarLinea() {
-  static bool giroIzquierda = true;
-  if (giroIzquierda) {
-    correccionIzquierda();
-  } else {
-    correccionDerecha();
-  }
-  giroIzquierda = !giroIzquierda;
-  delay(200); // pequeña pausa para estabilidad
-}
+void follow_line() {
+  int err = get_error(500);
+  float adj = pid.compute(err);  // You were missing a semicolon
 
-void moverAdelante() {
+  // Drive motors forward with speed adjustment
   digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadIzquierda);
-  analogWrite(ENB, velocidadDerecha);
-}
 
-void moverAtras() {
-  digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);
-  analogWrite(ENA, velocidadIzquierda);
-  analogWrite(ENB, velocidadDerecha);
+  int leftSpeed = velocidadIzquierda;
+  int rightSpeed = velocidadDerecha;
+
+  // Adjust motor speeds based on PID output
+  leftSpeed = constrain(leftSpeed + (adj * velocidadCorreccion), 0, 255);
+  rightSpeed = constrain(rightSpeed - (adj * velocidadCorreccion), 0, 255);
+
+  analogWrite(ENA, leftSpeed);
+  analogWrite(ENB, rightSpeed);
+
+  Serial.print(",");Serial.print(adj);
+  Serial.print(","); Serial.println(err);
 }
 
 void detenerRobot() {
   digitalWrite(IN1, LOW); digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW); digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadMinima); 
+  analogWrite(ENA, velocidadMinima);
   analogWrite(ENB, velocidadMinima);
 }
-
-void correccionIzquierda() {
-  digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
-  digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadCorreccion);
-  analogWrite(ENB, velocidadDerecha);
-}
-
-void correccionDerecha() {
-  digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
-  digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW);
-  analogWrite(ENA, velocidadIzquierda);
-  analogWrite(ENB, velocidadCorreccion);
-}
-

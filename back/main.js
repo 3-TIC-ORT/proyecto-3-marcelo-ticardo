@@ -16,7 +16,7 @@ let curso, bloque, cursosIngles, objetivo, direccion, distancia, veces, motion, 
 
 const ports = await SerialPort.list()
 if (ports.length > 0) {
-  puerto = ports[0].path
+  puerto = 'COM10'
 } else {
   console.error('No serial ports found')
 }
